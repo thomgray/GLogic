@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLTerm.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLTerm</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLTerm.h</DeclaredIn>
+            
+			
+			<NodeRef refid="19"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLTerm/setIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLTerm.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger index</Declaration>
+			
+			
+			<Anchor>//api/name/index</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLTerm/index</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLTerm.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger index</Declaration>
+			
+			
+			<Anchor>//api/name/index</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLTerm/index</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLTerm.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger index</Declaration>
+			
+			
+			<Anchor>//api/name/index</Anchor>
+            <NodeRef refid="19"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

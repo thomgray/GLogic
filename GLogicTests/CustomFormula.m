@@ -22,5 +22,10 @@
         }
     }else return [super stringForConnective:conn composits:comps syntax:syntax language:language];
 }
+-(NSString *)stringForSentence:(GLSentence *)sentence syntax:(GLSyntaxType)syntax language:(GLLanguageType)language{
+    unichar s = 'P';
+    s += sentence.index;
+    return [NSString stringWithFormat:@"%c", s];
+}
 
 @end

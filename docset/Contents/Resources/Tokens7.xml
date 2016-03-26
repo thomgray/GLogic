@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLDeductionCheckList.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLDeductionCheckList</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+            
+			
+			<NodeRef refid="7"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/resetList</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (void)resetList</Declaration>
+			
+			
+			<Anchor>//api/name/resetList</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/addRestriction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (void)addRestriction:(GLFormula *)formula</Declaration>
+			
+			
+			<Anchor>//api/name/addRestriction:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/liftRestriction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (void)liftRestriction:(GLFormula *)formula</Declaration>
+			
+			
+			<Anchor>//api/name/liftRestriction:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/mayAttempt:conclusion:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)mayAttempt:(GLInferenceRule)rule conclusion:(GLFormula *)form</Declaration>
+			
+			
+			<Anchor>//api/name/mayAttempt:conclusion:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

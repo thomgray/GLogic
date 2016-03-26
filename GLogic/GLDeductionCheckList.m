@@ -11,14 +11,13 @@
 @interface GLCheckListItem : NSObject
 @property GLFormula* conclusion;
 @property GLInferenceRule inferenceRule;
-@property NSInteger index;
 @end
 
-//@implementation GLCheckListItem
-//
-//
-//
-//@end
+@implementation GLCheckListItem
+
+
+
+@end
 
 //---------------------------------------------------------------------------------------------------------
 //      Check List
@@ -29,29 +28,45 @@
     self = [super init];
     if (self) {
         items = [[NSMutableArray alloc]init];
+        tempRestrictions = [[NSMutableSet alloc]init];
     }
     return self;
 }
 
+
 /**
- * Checks to see whether the specified formula has been considered with the specified rule. If not, the method returns false and adds the specified inference to the checklist (so will return true if queried again)
- * @param rule: The inference rule
- * @param conc: The conclusion
- * @return BOOL: TRUE if the inference has been previously checked, FALSE otherwise
+ *  Checks as follows:<br/>
+        -# If the conclusion is temporarily restricted, returns FALSE
+        -# If the conclusion is restricted for the specified inference rule, returns FALSE
+        -# Otherwise, the formula is added to the rule restrictions (so will return false if checked again), then returns TRUE
+ *
+ *  @param rule The inference rule attempted
+ *  @param form The conclusion attempted
+ *
+ *  @return TRUE if no retrictions have been made on the conclusion with the specified inference rule. FALSE if the conclusion is retricted in any way. If true is returned, the formula is added to the restriction check list for the specified inference rule.
  */
--(BOOL)checkInference:(GLInferenceRule)rule conclusion:(GLFormula *)conc index:(NSInteger)idx{
+-(BOOL)mayAttempt:(GLInferenceRule)rule conclusion:(GLFormula *)conc{
+    if ([tempRestrictions containsObject:conc]) {
+        return false;
+    }
     for (NSInteger i=0; i<items.count; i++) {
         GLCheckListItem* item = items[i];
-        if ([item.conclusion isEqual:conc] && item.inferenceRule==rule && item.index==idx) {
-            return TRUE;
+        if ([item.conclusion isEqual:conc] && item.inferenceRule==rule) {
+            return FALSE;
         }
     }
     GLCheckListItem* newItem = [[GLCheckListItem alloc]init];
     newItem.conclusion = conc;
     newItem.inferenceRule = rule;
-    newItem.index = idx;
     [items addObject:newItem];
-    return FALSE;
+    return TRUE;
+}
+
+-(void)addRestriction:(GLFormula *)formula{
+    [tempRestrictions addObject:formula];
+}
+-(void)liftRestriction:(GLFormula *)formula{
+    [tempRestrictions removeObject:formula];
 }
 
 -(void)resetList{

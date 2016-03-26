@@ -10,77 +10,103 @@
 #import <GLogic/GLogic.h>
 #import <GLogic/GLDeduction(Inference).h>
 #import "CustomFormula.h"
+#import "SampleFormulas.h"
+#import <GLogic/GLDeduction(Internal).h>
+
+typedef CustomFormula Formula;
 
 @interface GLogicTests : XCTestCase
-@property CustomFormula* biconditional;
-@property CustomFormula* conjunction;
+
+@property Formula* P;
+@property Formula* Q;
+@property Formula* R;
+@property Formula* S;
+@property Formula* nP;
+@property Formula* PaQ;
+@property Formula* PvQ;
+@property Formula* PcQ;
+@property Formula* PbQ;
+@property Formula* RaS;
+@property Formula* RcS;
+
 @end
 
 @implementation GLogicTests
-@synthesize conjunction;
-@synthesize biconditional;
 
 - (void)setUp {
     [super setUp];
-    GLSentence* s1 = GLMakeSentence(0);
-    GLSentence* s2 = GLMakeSentence(1);
-    GLSentence* s3 = GLMakeSentence(2);
-    
-    conjunction = [[CustomFormula alloc]initWithPrimeFormula:s1];
-    [conjunction doNegationStrict];
-    [conjunction doNegationStrict];
-    [conjunction doConjunction:s2 keepLeft:YES];
-    
-    biconditional = [[CustomFormula alloc]initWithPrimeFormula:s3];
-    [biconditional doBiconditional:GLMakeSentence(1) keepLeft:YES];
-    
-    NSLog(@"Running test with formulas:");
-    NSLog(@"F1 = %@", conjunction);
-    NSLog(@"F2 = %@", biconditional);
-    printf("\n");
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    _P = [[Formula alloc]initWithPrimeFormula:GLMakeSentence(0)];
+    _Q = [[Formula alloc]initWithPrimeFormula:GLMakeSentence(1)];
+    _R = [[Formula alloc]initWithPrimeFormula:GLMakeSentence(2)];
+    _S = [[Formula alloc]initWithPrimeFormula:GLMakeSentence(3)];
+    _nP = [Formula makeNegationStrict:_P];
+    _PaQ = [Formula makeConjunction:_P f2:_Q];
+    _PvQ = [Formula makeDisjunction:_P f2:_Q];
+    _PcQ = [Formula makeConditional:_P f2:_Q];
+    _PbQ = [Formula makeBiconditional:_P f2:_Q];
+    _RaS = [Formula makeConjunction:_R f2:_S];
+    _RcS = [Formula makeConditional:_R f2:_S];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
 -(void)test1{
     GLDeduction* ded = [[GLDeduction alloc]init];
     
-    GLFormula* premise = [[GLFormula alloc]initWithPrimeFormula:GLMakeSentence(0)];
-    
-    [ded addPremises:@[premise]];
-    
-    GLFormula* conc = [premise copy];
-    [conc doNegationStrict];
-    [conc doNegationStrict];
-    [conc doNegationStrict];
-    [conc doNegationStrict];
-    [conc doNegationStrict];
-    [conc doNegationStrict];
-    
-    [ded infer_conclusion:conc];
-    NSLog(@"%@", ded);
-    
+    NSArray<Formula*>* prems = @[
+                                 [SampleFormulas PcQ],
+                                 [SampleFormulas RcS],
+                                 [Formula makeConditional:[SampleFormulas Q] f2:[SampleFormulas R]]
+                                 ];
+    [ded addPremises:prems];
+    Formula* conc = [Formula makeConditional:[SampleFormulas P] f2:[SampleFormulas S]];
+    [ded proveSoft:conc];
+    [ded tidyDeductionIncludingFormulas:@[conc]];
+    NSLog(@"Prove P->S: %@", ded);
 }
 
 -(void)test2{
-    GLSentence* s0 = GLMakeSentence(0);
-    GLSentence* s1 = GLMakeSentence(1);
-    GLSentence* s2 = GLMakeSentence(2);
+    GLDeduction* ded = [[GLDeduction alloc]init];
     
-    GLFormula * AaB = [[GLFormula alloc]initWithPrimeFormula:s0];
-    [AaB doConjunction:s1 keepLeft:YES];
-    
-    GLFormula * AaB2 = [[GLFormula alloc]initWithPrimeFormula:s0];
-    [AaB2 doConjunction:s1 keepLeft:YES];
-    
-    XCTAssert([AaB2 isEqual:AaB]);
-    
-    GLFormula* A = [[GLFormula alloc]initWithPrimeFormula:s0];
-    XCTAssert([[AaB getDecomposition:0]isEqual:A]);
+    NSArray<Formula*>* prems = @[
+                                 _PvQ,
+                                 [Formula makeConditional:[SampleFormulas P] f2:[SampleFormulas R]],
+                                 [Formula makeConditional:[SampleFormulas Q] f2:[SampleFormulas R]]
+                                 ];
+    [ded addPremises:prems];
+
+    [ded proveSemiSoft:_R];
+    [ded tidyDeductionIncludingFormulas:@[_R]];
+    NSLog(@"Prove R: %@", ded);
 }
+
+-(void)testDecomps{
+    Formula* f1 = _PcQ;
+    f1 = [Formula makeBiconditional:f1 f2:_RaS];
+    f1 = [Formula makeDisjunction:f1 f2:_Q];
+    NSLog(@"Formula = %@", f1);
+    NSSet<GLFormula*>* decomps = [f1 getAllDecompositions];
+    NSLog(@"All decomps: %@", decomps);
+    NSArray<GLFormula*>* array = [decomps allObjects];
+    for (NSInteger i=0; i<array.count; i++) {
+        GLFormula* f = array[i];
+        for (NSInteger j=i+1; j<array.count; j++) {
+            GLFormula* g = array[j];
+            XCTAssert(![f isEqual:g]);
+        }
+    }
+}
+
+-(void)testDedNode{
+    GLDedNode* prem = [GLDedNode infer:GLInference_Premise formula: _PaQ withNodes:nil];
+    GLDedNode* prem2 = [GLDedNode infer:GLInference_Premise formula: _PcQ withNodes:nil];
+    
+    GLDedNode* conc = [GLDedNode infer_CE:prem leftFormula:YES];
+    XCTAssert(conc!=nil);
+    NSLog(@"%@", conc.formula);
+}
+
 
 @end

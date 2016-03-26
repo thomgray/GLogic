@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLRelation.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLRelation</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+            
+			
+			<NodeRef refid="17"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/setIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger index</Declaration>
+			
+			
+			<Anchor>//api/name/index</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/index</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger index</Declaration>
+			
+			
+			<Anchor>//api/name/index</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLRelation/index</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSInteger index</Declaration>
+			
+			
+			<Anchor>//api/name/index</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/setArguments:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLTerm*&gt; *arguments</Declaration>
+			
+			
+			<Anchor>//api/name/arguments</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/arguments</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLTerm*&gt; *arguments</Declaration>
+			
+			
+			<Anchor>//api/name/arguments</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLRelation/arguments</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLTerm*&gt; *arguments</Declaration>
+			
+			
+			<Anchor>//api/name/arguments</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/setArity:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger arity</Declaration>
+			
+			
+			<Anchor>//api/name/arity</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/arity</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger arity</Declaration>
+			
+			
+			<Anchor>//api/name/arity</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLRelation/arity</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger arity</Declaration>
+			
+			
+			<Anchor>//api/name/arity</Anchor>
+            <NodeRef refid="17"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

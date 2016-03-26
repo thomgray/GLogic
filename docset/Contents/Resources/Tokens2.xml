@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLConnective.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLConnective</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+            
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLConnective/setType:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLConnectiveType type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLConnective/type</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLConnectiveType type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLConnective/type</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLConnectiveType type</Declaration>
+			
+			
+			<Anchor>//api/name/type</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLConnective/initWithType:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithType:(GLConnectiveType)typ</Declaration>
+			
+			
+			<Anchor>//api/name/initWithType:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLConnective/makeNegation</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeNegation</Declaration>
+			
+			
+			<Anchor>//api/name/makeNegation</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLConnective/makeConjunction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeConjunction</Declaration>
+			
+			
+			<Anchor>//api/name/makeConjunction</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLConnective/makeDisjunction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeDisjunction</Declaration>
+			
+			
+			<Anchor>//api/name/makeDisjunction</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLConnective/makeConditional</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeConditional</Declaration>
+			
+			
+			<Anchor>//api/name/makeConditional</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLConnective/makeBiconditional</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLConnective.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeBiconditional</Declaration>
+			
+			
+			<Anchor>//api/name/makeBiconditional</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

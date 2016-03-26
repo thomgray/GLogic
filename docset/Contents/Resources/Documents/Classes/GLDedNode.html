@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>GLDedNode Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">GLogic </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Gray</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/dependencies">dependencies</option>
+		
+		<option value="//api/name/formula">formula</option>
+		
+		<option value="//api/name/inferenceNodes">inferenceNodes</option>
+		
+		<option value="//api/name/inferenceRule">inferenceRule</option>
+		
+		<option value="//api/name/subProof">subProof</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/infer:formula:withNodes:">+ infer:formula:withNodes:</option>
+		
+		<option value="//api/name/infer_BE:leftToRight:">+ infer_BE:leftToRight:</option>
+		
+		<option value="//api/name/infer_BI:conditional2:">+ infer_BI:conditional2:</option>
+		
+		<option value="//api/name/infer_CE:leftFormula:">+ infer_CE:leftFormula:</option>
+		
+		<option value="//api/name/infer_CI:right:">+ infer_CI:right:</option>
+		
+		<option value="//api/name/infer_CP:minorConc:">+ infer_CP:minorConc:</option>
+		
+		<option value="//api/name/infer_DE:conditional1:conditional2:">+ infer_DE:conditional1:conditional2:</option>
+		
+		<option value="//api/name/infer_DI:otherDisjunct:keepLeft:">+ infer_DI:otherDisjunct:keepLeft:</option>
+		
+		<option value="//api/name/infer_DNE:">+ infer_DNE:</option>
+		
+		<option value="//api/name/infer_DNI:">+ infer_DNI:</option>
+		
+		<option value="//api/name/infer_MP:antecedent:">+ infer_MP:antecedent:</option>
+		
+		<option value="//api/name/infer_MT:negConsequent:">+ infer_MT:negConsequent:</option>
+		
+		<option value="//api/name/infer_RAA:contradiction:">+ infer_RAA:contradiction:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/dischargeDependency:">- dischargeDependency:</option>
+		
+		<option value="//api/name/inheritDependencies:">- inheritDependencies:</option>
+		
+		<option value="//api/name/initWithFormula:inference:">- initWithFormula:inference:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">GLDedNode Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>GLDedNode.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/formula" title="formula"></a>
+	<h3 class="method-title"><code><a href="#//api/name/formula">&nbsp;&nbsp;formula</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property GLFormula *formula</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/inferenceRule" title="inferenceRule"></a>
+	<h3 class="method-title"><code><a href="#//api/name/inferenceRule">&nbsp;&nbsp;inferenceRule</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property GLInferenceRule inferenceRule</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/dependencies" title="dependencies"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dependencies">&nbsp;&nbsp;dependencies</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property NSArray&lt;GLDedNode*&gt; *dependencies</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/inferenceNodes" title="inferenceNodes"></a>
+	<h3 class="method-title"><code><a href="#//api/name/inferenceNodes">&nbsp;&nbsp;inferenceNodes</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property NSArray&lt;GLDedNode*&gt; *inferenceNodes</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/subProof" title="subProof"></a>
+	<h3 class="method-title"><code><a href="#//api/name/subProof">&nbsp;&nbsp;subProof</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property GLDeduction *subProof</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithFormula:inference:" title="initWithFormula:inference:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithFormula:inference:">&ndash;&nbsp;initWithFormula:inference:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)initWithFormula:(GLFormula *)<em>form</em> inference:(GLInferenceRule)<em>inf</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/inheritDependencies:" title="inheritDependencies:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/inheritDependencies:">&ndash;&nbsp;inheritDependencies:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)inheritDependencies:(NSArray&lt;GLDedNode*&gt; *)<em>nodes</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer:formula:withNodes:" title="infer:formula:withNodes:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer:formula:withNodes:">+&nbsp;infer:formula:withNodes:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer:(GLInferenceRule)<em>inf</em> formula:(GLFormula *)<em>form</em> withNodes:(NSArray&lt;GLDedNode*&gt; *)<em>nodes</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/dischargeDependency:" title="dischargeDependency:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dischargeDependency:">&ndash;&nbsp;dischargeDependency:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)dischargeDependency:(GLDedNode *)<em>node</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_DNE:" title="infer_DNE:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_DNE:">+&nbsp;infer_DNE:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_DNE:(GLDedNode *)<em>dn</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_DNI:" title="infer_DNI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_DNI:">+&nbsp;infer_DNI:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_DNI:(GLDedNode *)<em>node</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_BE:leftToRight:" title="infer_BE:leftToRight:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_BE:leftToRight:">+&nbsp;infer_BE:leftToRight:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_BE:(GLDedNode *)<em>node</em> leftToRight:(BOOL)<em>leftToRight</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_BI:conditional2:" title="infer_BI:conditional2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_BI:conditional2:">+&nbsp;infer_BI:conditional2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_BI:(GLDedNode *)<em>cd1</em> conditional2:(GLDedNode *)<em>cd2</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_CE:leftFormula:" title="infer_CE:leftFormula:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_CE:leftFormula:">+&nbsp;infer_CE:leftFormula:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_CE:(GLDedNode *)<em>conjunction</em> leftFormula:(BOOL)<em>left</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_CI:right:" title="infer_CI:right:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_CI:right:">+&nbsp;infer_CI:right:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_CI:(GLDedNode *)<em>leftNode</em> right:(GLDedNode *)<em>rightNode</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_DE:conditional1:conditional2:" title="infer_DE:conditional1:conditional2:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_DE:conditional1:conditional2:">+&nbsp;infer_DE:conditional1:conditional2:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_DE:(GLDedNode *)<em>disjunction</em> conditional1:(GLDedNode *)<em>c1</em> conditional2:(GLDedNode *)<em>c2</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_DI:otherDisjunct:keepLeft:" title="infer_DI:otherDisjunct:keepLeft:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_DI:otherDisjunct:keepLeft:">+&nbsp;infer_DI:otherDisjunct:keepLeft:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_DI:(GLDedNode *)<em>node</em> otherDisjunct:(GLFormula *)<em>dj2</em> keepLeft:(BOOL)<em>left</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_MP:antecedent:" title="infer_MP:antecedent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_MP:antecedent:">+&nbsp;infer_MP:antecedent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_MP:(GLDedNode *)<em>conditinal</em> antecedent:(GLDedNode *)<em>ant</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_MT:negConsequent:" title="infer_MT:negConsequent:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_MT:negConsequent:">+&nbsp;infer_MT:negConsequent:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_MT:(GLDedNode *)<em>conditional</em> negConsequent:(GLDedNode *)<em>cons</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_CP:minorConc:" title="infer_CP:minorConc:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_CP:minorConc:">+&nbsp;infer_CP:minorConc:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_CP:(GLDedNode *)<em>assumption</em> minorConc:(GLDedNode *)<em>minorConc</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_RAA:contradiction:" title="infer_RAA:contradiction:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_RAA:contradiction:">+&nbsp;infer_RAA:contradiction:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype)infer_RAA:(GLDedNode *)<em>assumption</em> contradiction:(GLDedNode *)<em>contra</em></code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Gray. All rights reserved. Updated: 2016-03-25</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

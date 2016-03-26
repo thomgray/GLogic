@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/GLSyntaxType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/GLSyntaxType</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+            
+			
+			<NodeRef refid="22"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/GLSyntax_Standard</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>GLSyntax_Standard</Declaration>
+            
+            <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/GLSyntax_Polish</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>GLSyntax_Polish</Declaration>
+            
+            <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+            
+            <NodeRef refid="22"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

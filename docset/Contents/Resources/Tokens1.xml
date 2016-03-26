@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLCompositor.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLCompositor</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLCompositor/isNegation</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isNegation</Declaration>
+			
+			
+			<Anchor>//api/name/isNegation</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLCompositor/isConjunction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isConjunction</Declaration>
+			
+			
+			<Anchor>//api/name/isConjunction</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLCompositor/isDisjunction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isDisjunction</Declaration>
+			
+			
+			<Anchor>//api/name/isDisjunction</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLCompositor/isConditional</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isConditional</Declaration>
+			
+			
+			<Anchor>//api/name/isConditional</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLCompositor/isBiconditional</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isBiconditional</Declaration>
+			
+			
+			<Anchor>//api/name/isBiconditional</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLCompositor/isExistentialQuantifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isExistentialQuantifier</Declaration>
+			
+			
+			<Anchor>//api/name/isExistentialQuantifier</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLCompositor/isUniversalQuantifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLCompositor.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isUniversalQuantifier</Declaration>
+			
+			
+			<Anchor>//api/name/isUniversalQuantifier</Anchor>
+            <NodeRef refid="1"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

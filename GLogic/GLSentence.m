@@ -27,10 +27,15 @@
 }
 
 -(BOOL)isEqual:(id)object{
-    if ([object isMemberOfClass:self.class]) {
+    if ([object isKindOfClass:[GLSentence class]]) {
         GLSentence* sen = (GLSentence*)object;
         return sen.index==index;
     }else return FALSE;
+}
+
+-(NSUInteger)hash{
+    NSUInteger classHash = [GLSentence hash];
+    return classHash ^ (NSUInteger)index;
 }
 
 @end

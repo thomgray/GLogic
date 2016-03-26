@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLInferenceResult.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLInferenceResult</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+            
+			
+			<NodeRef refid="13"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLInferenceResult/setSteps:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+			
+			<Declaration>@property NSArray&lt;GLFormula*&gt; *steps</Declaration>
+			
+			
+			<Anchor>//api/name/steps</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLInferenceResult/steps</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+			
+			<Declaration>@property NSArray&lt;GLFormula*&gt; *steps</Declaration>
+			
+			
+			<Anchor>//api/name/steps</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLInferenceResult/steps</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+			
+			<Declaration>@property NSArray&lt;GLFormula*&gt; *steps</Declaration>
+			
+			
+			<Anchor>//api/name/steps</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLInferenceResult/setRule:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+			
+			<Declaration>@property GLInferenceRule rule</Declaration>
+			
+			
+			<Anchor>//api/name/rule</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLInferenceResult/rule</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+			
+			<Declaration>@property GLInferenceRule rule</Declaration>
+			
+			
+			<Anchor>//api/name/rule</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLInferenceResult/rule</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+			
+			<Declaration>@property GLInferenceRule rule</Declaration>
+			
+			
+			<Anchor>//api/name/rule</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLInferenceResult/rule:steps:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)rule:(GLInferenceRule)rule steps:(NSArray&lt;GLFormula*&gt; *)steps</Declaration>
+			
+			
+			<Anchor>//api/name/rule:steps:</Anchor>
+            <NodeRef refid="13"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

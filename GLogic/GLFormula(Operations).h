@@ -8,6 +8,8 @@
 
 #import "GLFormula.h"
 
+/*! Block returning BOOL for a paramter GLFormula object
+ */
 typedef BOOL(^GLFormulaCriterion)(GLFormula* formula);
 
 @interface GLFormula (Operations) 

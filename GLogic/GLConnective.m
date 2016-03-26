@@ -26,10 +26,13 @@
 }
 
 -(BOOL)isEqual:(id)object{
-    if ([object isMemberOfClass:self.class]) {
+    if ([object isKindOfClass:[GLConnective class]]) {
         GLConnective* con = (GLConnective*)object;
         return type==con.type;
     }else return FALSE;
+}
+-(NSUInteger)hash{
+    return [GLConnective hash] ^ (NSUInteger)type;
 }
 
 -(BOOL)isConnective{ return true; }

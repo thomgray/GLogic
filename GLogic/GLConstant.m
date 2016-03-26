@@ -19,5 +19,16 @@
     return self;
 }
 
+-(BOOL)isEqual:(id)object{
+    if ([object isKindOfClass:[GLConstant class]]) {
+        GLTerm* t = (GLTerm*)object;
+        return t.index == self.index;
+    }else return FALSE;
+}
+
+-(NSUInteger)hash{
+    return [GLConstant hash] ^ index;
+}
+
 -(BOOL)isConstant{ return true; }
 @end

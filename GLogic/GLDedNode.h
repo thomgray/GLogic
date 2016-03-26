@@ -10,7 +10,6 @@
 
 @class GLDeduction;
 
-
 typedef enum {
     //SL Inferences
     GLInference_Premise, GLInference_Reiteration,
@@ -35,6 +34,32 @@ typedef enum {
 -(instancetype)initWithFormula:(GLFormula*)form inference:(GLInferenceRule)inf;
 -(void)inheritDependencies:(NSArray<GLDedNode*>*) nodes;
 +(instancetype)infer:(GLInferenceRule)inf formula:(GLFormula*)form withNodes:(NSArray<GLDedNode*>*)nodes;
+
+-(void)dischargeDependency:(GLDedNode*)node;
+
+//---------------------------------------------------------------------------------------------------------
+//      Inferences
+//---------------------------------------------------------------------------------------------------------
+#pragma mark Inferences
+
++(instancetype)infer_DNE:(GLDedNode*)dn;
++(instancetype)infer_DNI:(GLDedNode *)node;
+
++(instancetype)infer_BE:(GLDedNode *)node leftToRight:(BOOL)leftToRight;
++(instancetype)infer_BI:(GLDedNode *)cd1 conditional2:(GLDedNode*)cd2;
+
++(instancetype)infer_CE:(GLDedNode *)conjunction leftFormula:(BOOL)left;
++(instancetype)infer_CI:(GLDedNode *)leftNode right:(GLDedNode*)rightNode;
+
++(instancetype)infer_DE:(GLDedNode *)disjunction conditional1:(GLDedNode*)c1 conditional2:(GLDedNode*)c2;
++(instancetype)infer_DI:(GLDedNode *)node otherDisjunct:(GLFormula*)dj2 keepLeft:(BOOL)left;
+
++(instancetype)infer_MP:(GLDedNode *)conditinal antecedent:(GLDedNode*)ant;
++(instancetype)infer_MT:(GLDedNode *)conditional negConsequent:(GLDedNode*)cons;
++(instancetype)infer_CP:(GLDedNode *)assumption minorConc:(GLDedNode*)minorConc;
+
++(instancetype)infer_RAA:(GLDedNode *)assumption contradiction:(GLDedNode*)contra;
+
 
 @end
 

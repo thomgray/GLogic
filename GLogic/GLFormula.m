@@ -116,6 +116,20 @@
     }
 }
 
+/**
+ *  Returns a set of all formulas that are either this formula, or any of this formula's decompositions.<p/> The return collection is a set, so tokenwise equal formulas are not repeated
+ *
+ *  @return NSSet<GLFormula*>* of unique decompositions
+ */
+-(NSSet<GLFormula *> *)getAllDecompositions{
+    NSSet<GLFormula*>* out = [[NSSet alloc]initWithObjects:self, nil];
+    for (NSInteger i=0; i<children.count; i++) {
+        NSSet<GLFormula*>* childDecomp = [children[i] getAllDecompositions];
+        out = [out setByAddingObjectsFromSet:childDecomp];
+    }
+    return out;
+}
+
 -(BOOL)isEqual:(id)object{
     if ([object isKindOfClass:[GLFormula class]]) {
         GLFormula* f = (GLFormula*)object;
@@ -129,6 +143,14 @@
             return [children isEqualToArray:f.children];
         }
     }else return FALSE;
+}
+
+-(NSUInteger)hash{
+    NSUInteger out = [rootElement hash];
+    for (NSInteger i=0; i<children.count; i++) {
+        out ^= [children[i] hash] ^ i;
+    }
+    return out;
 }
 
 

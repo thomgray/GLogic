@@ -25,13 +25,21 @@
 }
 
 -(BOOL)isEqual:(id)object{
-    if ([object isMemberOfClass:self.class]) {
+    if ([object isKindOfClass:[GLRelation class]]) {
         GLRelation* rel = (GLRelation*)object;
         if (rel.index!=self.index) return FALSE;
         if (rel.arity!=self.arity) return FALSE;
         if (self.arguments==NULL && rel.arguments==NULL) return TRUE;
         else return [self.arguments isEqualToArray:rel.arguments];
     }else return FALSE;
+}
+
+-(NSUInteger)hash{
+    NSUInteger out = [GLRelation hash];
+    for (NSInteger i=0; i<_arguments.count; i++) {
+        out ^= [_arguments[i] hash] ^ i;
+    }
+    return out;
 }
 
 @end

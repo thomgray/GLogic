@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLEquals.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLEquals</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLEquals.h</DeclaredIn>
+            
+			
+			<NodeRef refid="9"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/setLeftTerm:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLEquals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLTerm *leftTerm</Declaration>
+			
+			
+			<Anchor>//api/name/leftTerm</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/leftTerm</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLEquals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLTerm *leftTerm</Declaration>
+			
+			
+			<Anchor>//api/name/leftTerm</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLEquals/leftTerm</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLEquals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLTerm *leftTerm</Declaration>
+			
+			
+			<Anchor>//api/name/leftTerm</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/setRightTerm:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLEquals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLTerm *rightTerm</Declaration>
+			
+			
+			<Anchor>//api/name/rightTerm</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/rightTerm</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLEquals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLTerm *rightTerm</Declaration>
+			
+			
+			<Anchor>//api/name/rightTerm</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLEquals/rightTerm</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLEquals.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLTerm *rightTerm</Declaration>
+			
+			
+			<Anchor>//api/name/rightTerm</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

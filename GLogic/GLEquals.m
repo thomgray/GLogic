@@ -12,11 +12,18 @@
 -(BOOL)isEquals{ return true;}
 
 -(BOOL)isEqual:(id)object{
-    if ([object isMemberOfClass:self.class]) {
+    if ([object isKindOfClass:[GLEquals class]]) {
         GLEquals* eq = (GLEquals*)object;
         if (![self.leftTerm isEqual:eq.leftTerm]) return FALSE;
         return [self.rightTerm isEqual:eq.rightTerm];
     }else return FALSE;
+}
+
+-(NSUInteger)hash{
+    NSUInteger out = [GLEquals hash];
+    out ^= [_leftTerm hash] ^ 1;
+    out ^= [_rightTerm hash] ^ 2;
+    return out;
 }
 
 -(id)copyWithZone:(NSZone *)zone{
@@ -25,5 +32,7 @@
     out.rightTerm = [self.rightTerm copyWithZone:zone];
     return out;
 }
+
+
 
 @end

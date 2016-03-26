@@ -10,12 +10,6 @@
 
 @implementation GLTerm
 -(BOOL)isTerm{ return true;}
--(BOOL)isEqual:(id)object{
-    if ([object isMemberOfClass:self.class]) {
-        GLTerm* t = (GLTerm*)object;
-        return t.index == self.index;
-    }else return FALSE;
-}
 
 -(id)copyWithZone:(NSZone *)zone{
     GLTerm* out = [super copyWithZone:zone];

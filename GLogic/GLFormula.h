@@ -37,6 +37,7 @@
 
 -(instancetype)getDecomposition:(NSInteger)i;
 -(instancetype)getDecompositionAtNode:(NSArray<NSNumber*>*)node;
+-(NSSet<GLFormula*>*)getAllDecompositions;
 
 -(BOOL)isPrime;
 -(BOOL)isComposite;

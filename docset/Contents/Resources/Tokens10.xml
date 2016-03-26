@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/GLFormula.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/GLFormula</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+            
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/setChildren:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLFormula*&gt; *children</Declaration>
+			
+			
+			<Anchor>//api/name/children</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/children</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLFormula*&gt; *children</Declaration>
+			
+			
+			<Anchor>//api/name/children</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLFormula/children</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLFormula*&gt; *children</Declaration>
+			
+			
+			<Anchor>//api/name/children</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/setRootElement:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLElement *rootElement</Declaration>
+			
+			
+			<Anchor>//api/name/rootElement</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/rootElement</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLElement *rootElement</Declaration>
+			
+			
+			<Anchor>//api/name/rootElement</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLFormula/rootElement</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) GLElement *rootElement</Declaration>
+			
+			
+			<Anchor>//api/name/rootElement</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/initWithPrimeFormula:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)initWithPrimeFormula:(GLPrimeFormula *)form</Declaration>
+			
+			
+			<Anchor>//api/name/initWithPrimeFormula:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/mainConnective</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (GLCompositor *)mainConnective</Declaration>
+			
+			
+			<Anchor>//api/name/mainConnective</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/mainConnective:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (GLConnective *)mainConnective:(GLConnectiveType)type</Declaration>
+			
+			
+			<Anchor>//api/name/mainConnective:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/mainQuantifier:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (GLQuantifier *)mainQuantifier:(GLQuantifierType)type</Declaration>
+			
+			
+			<Anchor>//api/name/mainQuantifier:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/primeFormula</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (GLPrimeFormula *)primeFormula</Declaration>
+			
+			
+			<Anchor>//api/name/primeFormula</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/getDecomposition:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)getDecomposition:(NSInteger)i</Declaration>
+			
+			
+			<Anchor>//api/name/getDecomposition:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/getDecompositionAtNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (instancetype)getDecompositionAtNode:(NSArray&lt;NSNumber*&gt; *)node</Declaration>
+			
+			
+			<Anchor>//api/name/getDecompositionAtNode:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/getAllDecompositions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (NSSet&lt;GLFormula*&gt; *)getAllDecompositions</Declaration>
+			
+			
+			<Anchor>//api/name/getAllDecompositions</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isPrime</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isPrime</Declaration>
+			
+			
+			<Anchor>//api/name/isPrime</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isComposite</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isComposite</Declaration>
+			
+			
+			<Anchor>//api/name/isComposite</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isNegation</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isNegation</Declaration>
+			
+			
+			<Anchor>//api/name/isNegation</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isDoubleNegation</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isDoubleNegation</Declaration>
+			
+			
+			<Anchor>//api/name/isDoubleNegation</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isConjunction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isConjunction</Declaration>
+			
+			
+			<Anchor>//api/name/isConjunction</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isDisjunction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isDisjunction</Declaration>
+			
+			
+			<Anchor>//api/name/isDisjunction</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isConditional</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isConditional</Declaration>
+			
+			
+			<Anchor>//api/name/isConditional</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isBiconditional</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isBiconditional</Declaration>
+			
+			
+			<Anchor>//api/name/isBiconditional</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isUniversalQualtifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isUniversalQualtifier</Declaration>
+			
+			
+			<Anchor>//api/name/isUniversalQualtifier</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/isExistentialQuantifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isExistentialQuantifier</Declaration>
+			
+			
+			<Anchor>//api/name/isExistentialQuantifier</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/doNegation</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (void)doNegation</Declaration>
+			
+			
+			<Anchor>//api/name/doNegation</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/doNegationStrict</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (void)doNegationStrict</Declaration>
+			
+			
+			<Anchor>//api/name/doNegationStrict</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/doConjunction:keepLeft:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (void)doConjunction:(GLPrimeFormula *)pf keepLeft:(BOOL)left</Declaration>
+			
+			
+			<Anchor>//api/name/doConjunction:keepLeft:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/doDisjunction:keepLeft:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (void)doDisjunction:(GLPrimeFormula *)pf keepLeft:(BOOL)left</Declaration>
+			
+			
+			<Anchor>//api/name/doDisjunction:keepLeft:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/doConditional:keepLeft:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (void)doConditional:(GLPrimeFormula *)pf keepLeft:(BOOL)left</Declaration>
+			
+			
+			<Anchor>//api/name/doConditional:keepLeft:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/doBiconditional:keepLeft:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (void)doBiconditional:(GLPrimeFormula *)pf keepLeft:(BOOL)left</Declaration>
+			
+			
+			<Anchor>//api/name/doBiconditional:keepLeft:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/doQuantification:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>- (void)doQuantification:(GLQuantifier *)quant</Declaration>
+			
+			
+			<Anchor>//api/name/doQuantification:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLFormula/makeNegation:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeNegation:(GLFormula *)form</Declaration>
+			
+			
+			<Anchor>//api/name/makeNegation:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLFormula/makeNegationStrict:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeNegationStrict:(GLFormula *)form</Declaration>
+			
+			
+			<Anchor>//api/name/makeNegationStrict:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLFormula/makeConjunction:f2:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeConjunction:(GLFormula *)f1 f2:(GLFormula *)f2</Declaration>
+			
+			
+			<Anchor>//api/name/makeConjunction:f2:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLFormula/makeDisjunction:f2:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeDisjunction:(GLFormula *)f1 f2:(GLFormula *)f2</Declaration>
+			
+			
+			<Anchor>//api/name/makeDisjunction:f2:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLFormula/makeConditional:f2:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeConditional:(GLFormula *)f1 f2:(GLFormula *)f2</Declaration>
+			
+			
+			<Anchor>//api/name/makeConditional:f2:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLFormula/makeBiconditional:f2:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeBiconditional:(GLFormula *)f1 f2:(GLFormula *)f2</Declaration>
+			
+			
+			<Anchor>//api/name/makeBiconditional:f2:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLFormula/makeQuantification:formula:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)makeQuantification:(GLQuantifier *)quant formula:(GLFormula *)form</Declaration>
+			
+			
+			<Anchor>//api/name/makeQuantification:formula:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/enumerateComposition</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Internal).h</DeclaredIn>
+			
+			<Declaration>- (NSEnumerator&lt;GLFormula*&gt; *)enumerateComposition</Declaration>
+			
+			
+			<Anchor>//api/name/enumerateComposition</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/compositAtNode:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Internal).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)compositAtNode:(NSArray&lt;NSNumber*&gt; *)node</Declaration>
+			
+			
+			<Anchor>//api/name/compositAtNode:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/defaultLanguage</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (GLLanguageType)defaultLanguage</Declaration>
+			
+			
+			<Anchor>//api/name/defaultLanguage</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/defaultSyntax</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (GLSyntaxType)defaultSyntax</Declaration>
+			
+			
+			<Anchor>//api/name/defaultSyntax</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringWithSyntax:andLanguage:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringWithSyntax:(GLSyntaxType)syntax andLanguage:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringWithSyntax:andLanguage:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForSentence:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForSentence:(GLSentence *)sentence syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForSentence:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForRelation:arguments:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForRelation:(GLRelation *)rel arguments:(NSArray&lt;NSString*&gt; *)args syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForRelation:arguments:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForEquals:arguments:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForEquals:(GLEquals *)equals arguments:(NSArray&lt;NSString*&gt; *)args syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForEquals:arguments:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForConnective:composits:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForConnective:(GLConnective *)conn composits:(NSArray&lt;NSString*&gt; *)comps syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForConnective:composits:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForQuantifier:composit:variable:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForQuantifier:(GLQuantifier *)quant composit:(NSString *)comp variable:(NSString *)var syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForQuantifier:composit:variable:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForVariable:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForVariable:(GLVariable *)var syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForVariable:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForConstant:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForConstant:(GLConstant *)cons syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForConstant:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/stringForFunction:arguments:syntax:language:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)stringForFunction:(GLFunction *)func arguments:(NSArray&lt;NSString*&gt; *)args syntax:(GLSyntaxType)syntax language:(GLLanguageType)language</Declaration>
+			
+			
+			<Anchor>//api/name/stringForFunction:arguments:syntax:language:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/restrictToConjunctions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Operations).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)restrictToConjunctions</Declaration>
+			
+			
+			<Anchor>//api/name/restrictToConjunctions</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/restrictToDisjunctions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Operations).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)restrictToDisjunctions</Declaration>
+			
+			
+			<Anchor>//api/name/restrictToDisjunctions</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/restrictToConditionals</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Operations).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)restrictToConditionals</Declaration>
+			
+			
+			<Anchor>//api/name/restrictToConditionals</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/restrictToUniversalQuantifiers</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Operations).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)restrictToUniversalQuantifiers</Declaration>
+			
+			
+			<Anchor>//api/name/restrictToUniversalQuantifiers</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/restrictToExistentialQuantifiers</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Operations).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)restrictToExistentialQuantifiers</Declaration>
+			
+			
+			<Anchor>//api/name/restrictToExistentialQuantifiers</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/removeBiconditionals</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Operations).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)removeBiconditionals</Declaration>
+			
+			
+			<Anchor>//api/name/removeBiconditionals</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLFormula/replace:with:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLFormula(Operations).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)replace:(GLConnectiveType)oldConnective with:(GLConnectiveType)newConnective</Declaration>
+			
+			
+			<Anchor>//api/name/replace:with:</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

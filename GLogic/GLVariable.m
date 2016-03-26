@@ -19,5 +19,16 @@
     return self;
 }
 
+-(BOOL)isEqual:(id)object{
+    if ([object isKindOfClass:[GLVariable class]]) {
+        GLTerm* t = (GLTerm*)object;
+        return t.index == self.index;
+    }else return FALSE;
+}
+
+-(NSUInteger)hash{
+    return [GLVariable hash] ^ index;
+}
+
 -(BOOL)isVariable{ return true; }
 @end

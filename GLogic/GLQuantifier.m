@@ -14,8 +14,8 @@
 -(instancetype)initWithType:(GLQuantifierType)type variable:(GLVariable *)var{
     self = [super init];
     if (self) {
-        self.type = type;
-        self.boundVariable = var;
+        _type = type;
+        _boundVariable = var;
     }
     return self;
 }
@@ -35,11 +35,15 @@
 }
 
 -(BOOL)isEqual:(id)object{
-    if ([object isMemberOfClass:self.class]) {
+    if ([object isKindOfClass:[GLQuantifier class]]) {
         GLQuantifier* q = (GLQuantifier*)object;
         if (q.type!=self.type) return FALSE;
         return [q.boundVariable isEqual:self.boundVariable];
     }else return FALSE;
+}
+
+-(NSUInteger)hash{
+    return [GLQuantifier hash] ^ [_boundVariable hash] ^ (NSUInteger)_type;
 }
 
 -(BOOL)isUniversalQuantifier{

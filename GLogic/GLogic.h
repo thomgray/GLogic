@@ -40,7 +40,7 @@ FOUNDATION_EXPORT const unsigned char GLogicVersionString[];
 //Deduction
 
 #import "GLDedNode.h"
-#import "GLDeductionSequence.h"
 //#import "GLDeduction(Inference).h"
 #import "GLDeduction.h"
+#import "GLDeduction(Public).h"
 
