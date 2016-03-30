@@ -193,6 +193,42 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDedNode/setTier:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDedNode.h</DeclaredIn>
+			
+			<Declaration>@property NSInteger tier</Declaration>
+			
+			
+			<Anchor>//api/name/tier</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDedNode/tier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDedNode.h</DeclaredIn>
+			
+			<Declaration>@property NSInteger tier</Declaration>
+			
+			
+			<Anchor>//api/name/tier</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLDedNode/tier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDedNode.h</DeclaredIn>
+			
+			<Declaration>@property NSInteger tier</Declaration>
+			
+			
+			<Anchor>//api/name/tier</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDedNode/initWithFormula:inference:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDedNode.h</DeclaredIn>

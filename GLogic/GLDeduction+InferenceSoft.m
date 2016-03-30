@@ -126,8 +126,7 @@
 #pragma mark Deconstructive Inferences
 
 -(GLDedNode *)infer_Soft_Generatives:(GLFormula *)conclusion{
-    GLDeduction* subproof = [[GLDeduction alloc]init];
-    [subproof.sequence addObjectsFromArray:self.sequence];
+    GLDeduction* subproof = [self tempProof];
     BOOL repeat;
     do {
         repeat = FALSE;

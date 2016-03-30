@@ -126,7 +126,7 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeduction.h</DeclaredIn>
 			
-			<Declaration>@property NSUInteger tier</Declaration>
+			<Declaration>@property NSInteger tier</Declaration>
 			
 			
 			<Anchor>//api/name/tier</Anchor>
@@ -138,7 +138,7 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeduction.h</DeclaredIn>
 			
-			<Declaration>@property NSUInteger tier</Declaration>
+			<Declaration>@property NSInteger tier</Declaration>
 			
 			
 			<Anchor>//api/name/tier</Anchor>
@@ -150,10 +150,46 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeduction.h</DeclaredIn>
 			
-			<Declaration>@property NSUInteger tier</Declaration>
+			<Declaration>@property NSInteger tier</Declaration>
 			
 			
 			<Anchor>//api/name/tier</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/setLogDelegate:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>@property GLDeductionLogDelegate *logDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/logDelegate</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/logDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>@property GLDeductionLogDelegate *logDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/logDelegate</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLDeduction/logDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>@property GLDeductionLogDelegate *logDelegate</Declaration>
+			
+			
+			<Anchor>//api/name/logDelegate</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
@@ -230,50 +266,14 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/tidyDeductionIncludingFormulas:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/getLinearSequence</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
 			
-			<Declaration>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)forms</Declaration>
-			
-			
-			<Anchor>//api/name/tidyDeductionIncludingFormulas:</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/toString</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
-			
-			<Declaration>- (NSString *)toString</Declaration>
+			<Declaration>- (NSArray&lt;GLDedNode*&gt; *)getLinearSequence</Declaration>
 			
 			
-			<Anchor>//api/name/toString</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/sequentString</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
-			
-			<Declaration>- (NSString *)sequentString</Declaration>
-			
-			
-			<Anchor>//api/name/sequentString</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/GLDeduction/sequentString:conclusion:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
-			
-			<Declaration>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)premises conclusion:(GLFormula *)conc</Declaration>
-			
-			
-			<Anchor>//api/name/sequentString:conclusion:</Anchor>
+			<Anchor>//api/name/getLinearSequence</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
@@ -658,6 +658,54 @@
 			
 			
 			<Anchor>//api/name/infer_Deconstructive_MT</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/tidyDeductionIncludingFormulas:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)forms</Declaration>
+			
+			
+			<Anchor>//api/name/tidyDeductionIncludingFormulas:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/toString</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)toString</Declaration>
+			
+			
+			<Anchor>//api/name/toString</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/sequentString</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)sequentString</Declaration>
+			
+			
+			<Anchor>//api/name/sequentString</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLDeduction/sequentString:conclusion:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)premises conclusion:(GLFormula *)conc</Declaration>
+			
+			
+			<Anchor>//api/name/sequentString:conclusion:</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		

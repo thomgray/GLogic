@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/GLSyntaxType.html">
+	<File path="Constants/GLLanguageType.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/GLSyntaxType</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/c/tdef/GLLanguageType</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
             
@@ -14,9 +14,9 @@
 		
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/GLSyntax_Standard</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/GLLanguage_Alphabetic</TokenIdentifier>
             <Abstract type="html"></Abstract>
-            <Declaration>GLSyntax_Standard</Declaration>
+            <Declaration>GLLanguage_Alphabetic</Declaration>
             
             <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
             
@@ -24,9 +24,9 @@
         </Token>
         
         <Token>
-            <TokenIdentifier>//apple_ref/c/econst/GLSyntax_Polish</TokenIdentifier>
+            <TokenIdentifier>//apple_ref/c/econst/GLLanguage_Indexed</TokenIdentifier>
             <Abstract type="html"></Abstract>
-            <Declaration>GLSyntax_Polish</Declaration>
+            <Declaration>GLLanguage_Indexed</Declaration>
             
             <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
             

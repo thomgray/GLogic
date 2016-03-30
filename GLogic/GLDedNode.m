@@ -89,6 +89,10 @@
         case GLInference_AssumptionRAA:
             [out setDependencies:@[out]];
             break;
+        case GLInference_Reiteration:
+            if (nodes[0].inferenceRule==GLInference_Reiteration) {
+                [out setInferenceNodes: nodes[0].inferenceNodes ];
+            }
         default:
             break;
     }

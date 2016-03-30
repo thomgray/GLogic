@@ -20,7 +20,7 @@
 @property NSMutableArray<GLDedNode*>* sequence;
 @property GLFormula* conclusion;
 @property NSArray<GLFormula*>* premises;
-@property NSUInteger tier;
+@property NSInteger tier;
 
 @property GLDeductionLogDelegate* logDelegate;
 
