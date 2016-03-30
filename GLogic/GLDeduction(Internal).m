@@ -28,7 +28,7 @@
 }
 
 -(BOOL)mayAttempt:(GLInferenceRule)rule forConclusion:(GLFormula *)conclusion{
-    return ![_checkList mayAttempt:rule conclusion:conclusion];
+    return [_checkList mayAttempt:rule conclusion:conclusion];
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -37,6 +37,7 @@
 #pragma mark Adding / Modifying
 
 -(void)appendNode:(GLDedNode *)node{
+    //NSLog(@"Appended: %@", node);
     [self.sequence addObject:node];
     [_checkList resetList];
 }
@@ -86,8 +87,22 @@
     }else return nil;
 }
 
+/*!
+ Adds the nodes in the parameter deduction to this one starting at the specified index. Nodes are added only if they are not already present in the deduction sequence. <p/>
+ This method should be used when doing a temporary deduction. If that deduction is successful, tidy the deduction so that it only includes the necessary steps to the conclusion, then assimilate using this method. <p/>
+ When initialising deductions for temporary proofs, do not initialise with <code>subproofWithAssumption:</code>, instead, copy the present deduction sequence to the temporary deduction, and go from there.
+ */
+-(void)assimilateDeduction:(GLDeduction *)deduction fromLine:(NSInteger)line{
+    for (NSInteger i=line; i<deduction.sequence.count; i++) {
+        GLDedNode* node = deduction.sequence[i];
+        if (![self.sequence containsObject:node]) {
+            [self appendNode:node];
+        }
+    }
+}
+
 /**
- *  Iterated backwards through the deduction, retaining only nodes that:
+ *  Iterates backwards through the deduction, retaining only nodes that:
  <ul><li>Are contained in the parameter <code>nodes</code> array <br/>OR</li>
  <li>Are included in the inference nodes of any retained node</li></ul>
  *
@@ -129,8 +144,22 @@
  */
 -(instancetype)subProofWithAssumption:(GLDedNode *)assumption{
     GLDeduction* out = [[self.class alloc]init];
-    [out appendNode:assumption];
+    [out setPremises:self.premises];
+    [out setConclusion:self.conclusion];
+    if (assumption) [out appendNode:assumption];
     [out addReiteration:self.sequence];
+    [out.checkList setDERestrictions:[NSMutableSet setWithSet:_checkList.DERestrictions]];
+    [out.checkList setTempRestrictions:[NSMutableSet setWithSet:_checkList.tempRestrictions]];
+    [out setTier:self.tier+1];
+    return out;
+}
+
+-(instancetype)tempProof{
+    GLDeduction* out = [[self.class alloc]init];
+    [out setPremises:self.premises];
+    [out setConclusion:self.conclusion];
+    [out setSequence:[NSMutableArray arrayWithArray:self.sequence]];
+    [out setCheckList:[_checkList copy]];
     return out;
 }
 
@@ -214,6 +243,24 @@
 -(NSSet<GLFormula *> *)getAllFormulaDecompositionsAndTheirNegations{
     NSSet<GLFormula*>* out = [self getAllFormulaDecompositions];
     return [GLDeduction getAllFormulasAndTheirNegations:out];
+}
+
+-(NSArray<GLFormula *> *)formulasForReductio{
+    NSMutableSet<GLFormula*>* prems = [NSMutableSet setWithSet:[GLDeduction getAllFormulaDecompositions:self.premises]];
+    [prems unionSet:[self.conclusion getAllDecompositions]];
+    prems = [prems subsetWithScheme:^BOOL(GLFormula *object) {
+        return !object.isNegation;
+    }];
+    NSArray<GLFormula*>* formulaArray = [prems allObjects];
+    formulaArray = [formulaArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        NSInteger f1nodes = [(GLFormula*)obj1 getAllDecompositions].count;
+        NSInteger f2nodes = [(GLFormula*)obj2 getAllDecompositions].count;
+        
+        if (f1nodes>f2nodes) return NSOrderedDescending;
+        else if (f1nodes<f2nodes) return NSOrderedAscending;
+        else return NSOrderedSame;
+    }];
+    return formulaArray;    
 }
 
 @end

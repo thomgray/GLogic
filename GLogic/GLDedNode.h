@@ -10,6 +10,9 @@
 
 @class GLDeduction;
 
+/*!
+ @typedef enum GLInferenceRule
+ */
 typedef enum {
     //SL Inferences
     GLInference_Premise, GLInference_Reiteration,
@@ -30,6 +33,7 @@ typedef enum {
 @property NSArray<GLDedNode*>* dependencies;
 @property NSArray<GLDedNode*>* inferenceNodes;
 @property GLDeduction* subProof;
+@property NSInteger* tier;
 
 -(instancetype)initWithFormula:(GLFormula*)form inference:(GLInferenceRule)inf;
 -(void)inheritDependencies:(NSArray<GLDedNode*>*) nodes;
@@ -64,3 +68,46 @@ typedef enum {
 @end
 
 typedef BOOL(^GLDedNodeCriterion)(GLDedNode* node);
+
+NS_INLINE NSString* GLStringForRule(GLInferenceRule rule){
+    switch (rule) {
+        case GLInference_AssumptionCP:
+            return @"Assumption (CP)";
+        case GLInference_AssumptionDE:
+            return @"Assumption (DE)";
+        case GLInference_AssumptionRAA:
+            return @"Assumption (RAA)";
+        case GLInference_BiconditionalElim:
+            return @"Biconditional Elimination";
+        case GLInference_BiconditionalIntro:
+            return @"Biconditional Introduction";
+        case GLInference_ConditionalProof:
+            return @"Conditional Proof";
+        case GLInference_ConditionalProofDE:
+            return @"Conditional Proof (DE)";
+        case GLInference_ConjunctionElim:
+            return @"Conjunction Elimination";
+        case GLInference_ConjunctionIntro:
+            return @"Conjunction Introduction";
+        case GLInference_DisjunctionElim:
+            return @"Disjunction Elimination";
+        case GLInference_DisjunctionIntro:
+            return @"Disjunction Introduction";
+        case GLInference_DNE:
+            return @"DNE";
+        case GLInference_DNI:
+            return @"DNI";
+        case GLInference_ModusPonens:
+            return @"Modus Ponens";
+        case GLInference_ModusTollens:
+            return @"Modus Tollens";
+        case GLInference_Premise:
+            return @"Premise";
+        case GLInference_ReductioAA:
+            return @"Reductio Ad Absurdum";
+        case GLInference_Reiteration:
+            return @"Reiteration";
+        default:
+            return nil;
+    }
+}

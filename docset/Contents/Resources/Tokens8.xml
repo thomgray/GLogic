@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/GLElement.html">
+	<File path="Classes/GLDeductionTemp.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/GLElement</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/GLDeductionTemp</TokenIdentifier>
+			<Abstract type="html">@class A temporary deduction list intended to hold a &apos;working out&apos; of an inference, to be assimilated into a deduction proper</Abstract>
+			<DeclaredIn>GLDeductionTemp.h</DeclaredIn>
             
 			
 			<NodeRef refid="8"/>
@@ -13,134 +13,62 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isPrimeFormula</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionTemp/setNodes:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
+			<DeclaredIn>GLDeductionTemp.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isPrimeFormula</Declaration>
+			<Declaration>@property NSMutableArray&lt;GLDedNode*&gt; *nodes</Declaration>
 			
 			
-			<Anchor>//api/name/isPrimeFormula</Anchor>
+			<Anchor>//api/name/nodes</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isSentence</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionTemp/nodes</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
+			<DeclaredIn>GLDeductionTemp.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isSentence</Declaration>
+			<Declaration>@property NSMutableArray&lt;GLDedNode*&gt; *nodes</Declaration>
 			
 			
-			<Anchor>//api/name/isSentence</Anchor>
+			<Anchor>//api/name/nodes</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isRelation</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/GLDeductionTemp/nodes</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
+			<DeclaredIn>GLDeductionTemp.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isRelation</Declaration>
+			<Declaration>@property NSMutableArray&lt;GLDedNode*&gt; *nodes</Declaration>
 			
 			
-			<Anchor>//api/name/isRelation</Anchor>
+			<Anchor>//api/name/nodes</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isEquals</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionTemp/initWithInheritedNodes:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
+			<DeclaredIn>GLDeductionTemp.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isEquals</Declaration>
+			<Declaration>- (instancetype)initWithInheritedNodes:(NSArray&lt;GLDedNode*&gt; *)inheritedNodes</Declaration>
 			
 			
-			<Anchor>//api/name/isEquals</Anchor>
+			<Anchor>//api/name/initWithInheritedNodes:</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isCompositor</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionTemp/appendNode:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
+			<DeclaredIn>GLDeductionTemp.h</DeclaredIn>
 			
-			<Declaration>- (BOOL)isCompositor</Declaration>
-			
-			
-			<Anchor>//api/name/isCompositor</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isConnective</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isConnective</Declaration>
+			<Declaration>- (void)appendNode:(GLDedNode *)node</Declaration>
 			
 			
-			<Anchor>//api/name/isConnective</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isQuantifier</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isQuantifier</Declaration>
-			
-			
-			<Anchor>//api/name/isQuantifier</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isTerm</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isTerm</Declaration>
-			
-			
-			<Anchor>//api/name/isTerm</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isConstant</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isConstant</Declaration>
-			
-			
-			<Anchor>//api/name/isConstant</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isFunction</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isFunction</Declaration>
-			
-			
-			<Anchor>//api/name/isFunction</Anchor>
-            <NodeRef refid="8"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isVariable</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLElement.h</DeclaredIn>
-			
-			<Declaration>- (BOOL)isVariable</Declaration>
-			
-			
-			<Anchor>//api/name/isVariable</Anchor>
+			<Anchor>//api/name/appendNode:</Anchor>
             <NodeRef refid="8"/>
 		</Token>
 		

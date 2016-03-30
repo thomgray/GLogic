@@ -4,7 +4,8 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/cl/GLDeduction</TokenIdentifier>
-			<Abstract type="html"></Abstract>
+			<Abstract type="html">@author Thomas Gray
+@copyright 2016. Thomas Gray</Abstract>
 			<DeclaredIn>GLDeduction.h</DeclaredIn>
             
 			
@@ -85,11 +86,11 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/addPremises:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/setPremises:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeduction.h</DeclaredIn>
 			
-			<Declaration>@property (setter=addPremises:) NSArray&lt;GLFormula*&gt; *premises</Declaration>
+			<Declaration>@property NSArray&lt;GLFormula*&gt; *premises</Declaration>
 			
 			
 			<Anchor>//api/name/premises</Anchor>
@@ -101,7 +102,7 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeduction.h</DeclaredIn>
 			
-			<Declaration>@property (setter=addPremises:) NSArray&lt;GLFormula*&gt; *premises</Declaration>
+			<Declaration>@property NSArray&lt;GLFormula*&gt; *premises</Declaration>
 			
 			
 			<Anchor>//api/name/premises</Anchor>
@@ -113,10 +114,46 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeduction.h</DeclaredIn>
 			
-			<Declaration>@property (setter=addPremises:) NSArray&lt;GLFormula*&gt; *premises</Declaration>
+			<Declaration>@property NSArray&lt;GLFormula*&gt; *premises</Declaration>
 			
 			
 			<Anchor>//api/name/premises</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/setTier:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>@property NSUInteger tier</Declaration>
+			
+			
+			<Anchor>//api/name/tier</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/tier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>@property NSUInteger tier</Declaration>
+			
+			
+			<Anchor>//api/name/tier</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLDeduction/tier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>@property NSUInteger tier</Declaration>
+			
+			
+			<Anchor>//api/name/tier</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
@@ -141,6 +178,18 @@
 			
 			
 			<Anchor>//api/name/initWithPremises:conclusion:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/addPremises:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>- (void)addPremises:(NSArray&lt;GLFormula*&gt; *)premises</Declaration>
+			
+			
+			<Anchor>//api/name/addPremises:</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
@@ -177,6 +226,54 @@
 			
 			
 			<Anchor>//api/name/getNodesWithCriterion:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/tidyDeductionIncludingFormulas:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)forms</Declaration>
+			
+			
+			<Anchor>//api/name/tidyDeductionIncludingFormulas:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/toString</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)toString</Declaration>
+			
+			
+			<Anchor>//api/name/toString</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/sequentString</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>- (NSString *)sequentString</Declaration>
+			
+			
+			<Anchor>//api/name/sequentString</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/GLDeduction/sequentString:conclusion:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			
+			<Declaration>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)premises conclusion:(GLFormula *)conc</Declaration>
+			
+			
+			<Anchor>//api/name/sequentString:conclusion:</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
@@ -277,6 +374,18 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/assimilateDeduction:fromLine:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Internal).h</DeclaredIn>
+			
+			<Declaration>- (void)assimilateDeduction:(GLDeduction *)deduction fromLine:(NSInteger)line</Declaration>
+			
+			
+			<Anchor>//api/name/assimilateDeduction:fromLine:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/tidyDeductionIncludingNodes:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeduction(Internal).h</DeclaredIn>
@@ -297,6 +406,54 @@
 			
 			
 			<Anchor>//api/name/subProofWithAssumption:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/tempProof</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Internal).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)tempProof</Declaration>
+			
+			
+			<Anchor>//api/name/tempProof</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/getAllFormulaDecompositions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Internal).h</DeclaredIn>
+			
+			<Declaration>- (NSSet&lt;GLFormula*&gt; *)getAllFormulaDecompositions</Declaration>
+			
+			
+			<Anchor>//api/name/getAllFormulaDecompositions</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/getAllFormulaDecompositions_includingNegations:includingConclusion:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Internal).h</DeclaredIn>
+			
+			<Declaration>- (NSSet&lt;GLFormula*&gt; *)getAllFormulaDecompositions_includingNegations:(BOOL)includeNegations includingConclusion:(BOOL)includeConclusion</Declaration>
+			
+			
+			<Anchor>//api/name/getAllFormulaDecompositions_includingNegations:includingConclusion:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/getAllFormulaDecompositionsAndTheirNegations</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction(Internal).h</DeclaredIn>
+			
+			<Declaration>- (NSSet&lt;GLFormula*&gt; *)getAllFormulaDecompositionsAndTheirNegations</Declaration>
+			
+			
+			<Anchor>//api/name/getAllFormulaDecompositionsAndTheirNegations</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
@@ -325,81 +482,21 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/deductionSequenceMerged</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/formulasForReductio</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
+			<DeclaredIn>GLDeduction(Internal).h</DeclaredIn>
 			
-			<Declaration>- (NSArray&lt;GLDedNode*&gt; *)deductionSequenceMerged</Declaration>
-			
-			
-			<Anchor>//api/name/deductionSequenceMerged</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/tidyDeductionIncludingFormulas:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
-			
-			<Declaration>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)forms</Declaration>
+			<Declaration>- (NSArray&lt;GLFormula*&gt; *)formulasForReductio</Declaration>
 			
 			
-			<Anchor>//api/name/tidyDeductionIncludingFormulas:</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/toString</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
-			
-			<Declaration>- (NSString *)toString</Declaration>
-			
-			
-			<Anchor>//api/name/toString</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/clm/GLDeduction/sequentString:conclusion:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Public).h</DeclaredIn>
-			
-			<Declaration>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)premises conclusion:(GLFormula *)conc</Declaration>
-			
-			
-			<Anchor>//api/name/sequentString:conclusion:</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/proveGenerative</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
-			
-			<Declaration>- (BOOL)proveGenerative</Declaration>
-			
-			
-			<Anchor>//api/name/proveGenerative</Anchor>
-            <NodeRef refid="5"/>
-		</Token>
-		
-		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_GenerativeBlock:</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
-			
-			<Declaration>- (BOOL)infer_GenerativeBlock:(GenerativeInferenceBlock)block</Declaration>
-			
-			
-			<Anchor>//api/name/infer_GenerativeBlock:</Anchor>
+			<Anchor>//api/name/formulasForReductio</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/proveSoft:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
 			
 			<Declaration>- (GLDedNode *)proveSoft:(GLFormula *)conclusion</Declaration>
 			
@@ -409,45 +506,165 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_SoftBlock:conclusion:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/proveSoftSafe:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)infer_SoftBlock:(DirectedInferenceBlock)block conclusion:(GLFormula *)conc</Declaration>
+			<Declaration>- (GLDedNode *)proveSoftSafe:(GLFormula *)conclusion</Declaration>
 			
 			
-			<Anchor>//api/name/infer_SoftBlock:conclusion:</Anchor>
+			<Anchor>//api/name/proveSoftSafe:</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/proveSemiSoft:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Soft_CI:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)proveSemiSoft:(GLFormula *)conclusion</Declaration>
+			<Declaration>- (GLDedNode *)infer_Soft_CI:(GLFormula *)conclusion</Declaration>
 			
 			
-			<Anchor>//api/name/proveSemiSoft:</Anchor>
+			<Anchor>//api/name/infer_Soft_CI:</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_SemiSoft_DE:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Soft_DI:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)infer_SemiSoft_DE:(GLFormula *)conc</Declaration>
+			<Declaration>- (GLDedNode *)infer_Soft_DI:(GLFormula *)conclusion</Declaration>
 			
 			
-			<Anchor>//api/name/infer_SemiSoft_DE:</Anchor>
+			<Anchor>//api/name/infer_Soft_DI:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Soft_BI:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Soft_BI:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Soft_BI:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Soft_DNI:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Soft_DNI:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Soft_DNI:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Soft_CP:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Soft_CP:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Soft_CP:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Soft_DE:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Soft_DE:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Soft_DE:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Soft_Generatives:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Soft_Generatives:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Soft_Generatives:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Deconstructive_CE</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)infer_Deconstructive_CE</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Deconstructive_CE</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Deconstructive_DNE</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)infer_Deconstructive_DNE</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Deconstructive_DNE</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Deconstructive_BE</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)infer_Deconstructive_BE</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Deconstructive_BE</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Deconstructive_MP</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)infer_Deconstructive_MP</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Deconstructive_MP</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Deconstructive_MT</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceSoft.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)infer_Deconstructive_MT</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Deconstructive_MT</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/proveHard:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
 			
 			<Declaration>- (GLDedNode *)proveHard:(GLFormula *)conclusion</Declaration>
 			
@@ -457,23 +674,71 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_HardBlock:conclusion:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_CI:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)infer_HardBlock:(DirectedInferenceBlock)block conclusion:(GLFormula *)conc</Declaration>
+			<Declaration>- (GLDedNode *)infer_Hard_CI:(GLFormula *)conclusion</Declaration>
 			
 			
-			<Anchor>//api/name/infer_HardBlock:conclusion:</Anchor>
+			<Anchor>//api/name/infer_Hard_CI:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_DNI:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_DNI:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_DNI:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_DI:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_DI:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_DI:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_BI:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_BI:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_BI:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_CP:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_CP:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_CP:</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_CE:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)infer_Hard_CE:(GLFormula *)conc</Declaration>
+			<Declaration>- (GLDedNode *)infer_Hard_CE:(GLFormula *)conclusion</Declaration>
 			
 			
 			<Anchor>//api/name/infer_Hard_CE:</Anchor>
@@ -483,9 +748,9 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_BE:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)infer_Hard_BE:(GLFormula *)conc</Declaration>
+			<Declaration>- (GLDedNode *)infer_Hard_BE:(GLFormula *)conclusion</Declaration>
 			
 			
 			<Anchor>//api/name/infer_Hard_BE:</Anchor>
@@ -493,11 +758,47 @@
 		</Token>
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_DNE:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_DNE:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_DNE:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_MP:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_MP:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_MP:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_MT:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_MT:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_MT:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_RAA:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)infer_Hard_RAA:(GLFormula *)conc</Declaration>
+			<Declaration>- (GLDedNode *)infer_Hard_RAA:(GLFormula *)conclusion</Declaration>
 			
 			
 			<Anchor>//api/name/infer_Hard_RAA:</Anchor>
@@ -507,12 +808,36 @@
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_DE:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLDeduction(Inference).h</DeclaredIn>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
 			
-			<Declaration>- (GLDedNode *)infer_Hard_DE:(GLFormula *)conc</Declaration>
+			<Declaration>- (GLDedNode *)infer_Hard_DE:(GLFormula *)conclusion</Declaration>
 			
 			
 			<Anchor>//api/name/infer_Hard_DE:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_DE:withDisjunction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_DE:(GLFormula *)conclusion withDisjunction:(GLDedNode *)node</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_DE:withDisjunction:</Anchor>
+            <NodeRef refid="5"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeduction/infer_Hard_CPDE:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction+InferenceHard.h</DeclaredIn>
+			
+			<Declaration>- (GLDedNode *)infer_Hard_CPDE:(GLFormula *)conclusion</Declaration>
+			
+			
+			<Anchor>//api/name/infer_Hard_CPDE:</Anchor>
             <NodeRef refid="5"/>
 		</Token>
 		

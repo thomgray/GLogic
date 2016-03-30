@@ -8,10 +8,12 @@
 
 #import <XCTest/XCTest.h>
 #import <GLogic/GLogic.h>
-#import <GLogic/GLDeduction(Inference).h>
 #import "CustomFormula.h"
 #import "SampleFormulas.h"
 #import <GLogic/GLDeduction(Internal).h>
+#import <GLogic/GLDeduction+InferenceSoft.h>
+#import <GLogic/GLDeduction+InferenceHard.h>
+
 
 typedef CustomFormula Formula;
 
@@ -28,10 +30,12 @@ typedef CustomFormula Formula;
 @property Formula* PbQ;
 @property Formula* RaS;
 @property Formula* RcS;
+@property GLDeduction* deduction;
 
 @end
 
 @implementation GLogicTests
+@synthesize deduction;
 
 - (void)setUp {
     [super setUp];
@@ -46,6 +50,7 @@ typedef CustomFormula Formula;
     _PbQ = [Formula makeBiconditional:_P f2:_Q];
     _RaS = [Formula makeConjunction:_R f2:_S];
     _RcS = [Formula makeConditional:_R f2:_S];
+    deduction = [[GLDeduction alloc]init];
 }
 
 - (void)tearDown {
@@ -53,59 +58,110 @@ typedef CustomFormula Formula;
 }
 
 -(void)test1{
-    GLDeduction* ded = [[GLDeduction alloc]init];
-    
-    NSArray<Formula*>* prems = @[
-                                 [SampleFormulas PcQ],
-                                 [SampleFormulas RcS],
-                                 [Formula makeConditional:[SampleFormulas Q] f2:[SampleFormulas R]]
+    NSArray<Formula*>* prems = @[   _PcQ,
+                                    _RcS,
+                                    [Formula makeConditional:_Q f2:_R]
                                  ];
-    [ded addPremises:prems];
-    Formula* conc = [Formula makeConditional:[SampleFormulas P] f2:[SampleFormulas S]];
-    [ded proveSoft:conc];
-    [ded tidyDeductionIncludingFormulas:@[conc]];
-    NSLog(@"Prove P->S: %@", ded);
+    [deduction addPremises:prems];
+    Formula* conc = [Formula makeConditional: _P f2:_S];
+    [deduction setConclusion:conc];
+    [deduction proveSoftSafe:conc];
+    [deduction tidyDeductionIncludingFormulas:@[conc]];
+    NSLog(@"Prove P->S: %@", deduction);
+    [self logTestResults];
+}
+
+-(void)test4{
+    [deduction addPremises:@[_PaQ]];
+    [deduction setConclusion:_P];
+    [deduction proveSoftSafe:_P];
+    
+    NSLog(@"%@", deduction);
+    [self logTestResults];
 }
 
 -(void)test2{
-    GLDeduction* ded = [[GLDeduction alloc]init];
-    
-    NSArray<Formula*>* prems = @[
-                                 _PvQ,
-                                 [Formula makeConditional:[SampleFormulas P] f2:[SampleFormulas R]],
-                                 [Formula makeConditional:[SampleFormulas Q] f2:[SampleFormulas R]]
+        NSArray<Formula*>* prems = @[
+                                 [Formula makeConditional:_PaQ f2:_R],
                                  ];
-    [ded addPremises:prems];
-
-    [ded proveSemiSoft:_R];
-    [ded tidyDeductionIncludingFormulas:@[_R]];
-    NSLog(@"Prove R: %@", ded);
-}
-
--(void)testDecomps{
-    Formula* f1 = _PcQ;
-    f1 = [Formula makeBiconditional:f1 f2:_RaS];
-    f1 = [Formula makeDisjunction:f1 f2:_Q];
-    NSLog(@"Formula = %@", f1);
-    NSSet<GLFormula*>* decomps = [f1 getAllDecompositions];
-    NSLog(@"All decomps: %@", decomps);
-    NSArray<GLFormula*>* array = [decomps allObjects];
-    for (NSInteger i=0; i<array.count; i++) {
-        GLFormula* f = array[i];
-        for (NSInteger j=i+1; j<array.count; j++) {
-            GLFormula* g = array[j];
-            XCTAssert(![f isEqual:g]);
-        }
-    }
-}
-
--(void)testDedNode{
-    GLDedNode* prem = [GLDedNode infer:GLInference_Premise formula: _PaQ withNodes:nil];
-    GLDedNode* prem2 = [GLDedNode infer:GLInference_Premise formula: _PcQ withNodes:nil];
+    [deduction addPremises:prems];
+    GLFormula* conc = [Formula makeConditional:_Q f2:_R];
+    conc = [Formula makeConditional:_P f2:conc];
+    [deduction setConclusion:conc];
+    [deduction proveHard:conc];
     
-    GLDedNode* conc = [GLDedNode infer_CE:prem leftFormula:YES];
-    XCTAssert(conc!=nil);
-    NSLog(@"%@", conc.formula);
+//    [deduction tidyDeductionIncludingFormulas:@[_R]];
+    NSLog(@"%@", deduction);
+    [self logTestResults];
+}
+
+-(void)testUnprovable{
+    [deduction addPremises:@[_PvQ,
+                             _R
+                             ]];
+    [deduction setConclusion:_S];
+    [deduction proveHard:_S];
+    
+    NSLog(@"%@", deduction);
+    [self logTestResults];
+}
+
+-(void)testVeryHard{
+    Formula* antecedent = _PcQ;
+    antecedent = [Formula makeBiconditional:antecedent f2:_RaS];
+    antecedent = [Formula makeNegationStrict:antecedent];
+    Formula* consequent = [antecedent restrictToDisjunctions];
+    Formula* conclusion = [Formula makeConditional:antecedent f2:consequent];
+    [deduction setConclusion:conclusion];
+    [deduction proveHard:conclusion];
+    
+    NSLog(@"%@", deduction);
+    [self logTestResults];
+}
+
+-(void)testDE{
+    Formula* PvQvR = [Formula makeDisjunction:_PvQ f2:_R];
+    
+    Formula* RcS = _RcS;
+    Formula * PcS = [Formula makeConditional:_P f2:_S];
+    Formula * SvQ = [Formula makeDisjunction:_S f2:_Q];
+    
+    [deduction addPremises:@[PvQvR, RcS, PcS]];
+    [deduction setConclusion:SvQ];
+    NSLog(@"%@", deduction);
+    
+    NSThread* newThread = [[NSThread alloc]initWithTarget:self selector:@selector(printDeduction) object:nil];
+    [newThread start];
+    
+    [deduction proveHard:SvQ];
+    [deduction tidyDeductionIncludingFormulas:@[SvQ]];
+    
+    NSLog(@"*******************************************************************");
+    NSLog(@"%@", deduction);
+    [self logTestResults];
+}
+
+-(void)printDeduction{
+    while (true){
+        NSLog(@"%@", deduction);
+        [NSThread sleepForTimeInterval:1.0f];
+    }
+    
+}
+
+-(void)logTestResults{
+    NSString* methodName = [self name];
+    NSRange preRange = [methodName rangeOfString:@"-[GLogicTests "];
+    methodName = [methodName substringFromIndex:preRange.length];
+    methodName = [methodName substringToIndex:methodName.length-1];
+    NSString* path =  [NSString stringWithFormat:@"/Users/thomdikdave/Projects/XCodeDepository/GLogic/TestLogs/%@.txt", methodName];
+    NSString* dedString = [deduction sequentString];
+    dedString = [dedString stringByAppendingFormat:@"\n\n%@", [deduction toString]];
+    
+    NSString* preample = [deduction containsFormula:deduction.conclusion] ? @"Proven" : @"Not Proven";
+    
+    NSString* logString = [NSString stringWithFormat:@"%@\n\n%@", preample, dedString];
+    [logString writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:nil];    
 }
 
 

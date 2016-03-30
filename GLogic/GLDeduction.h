@@ -11,6 +11,7 @@
 #import "GLDedNode.h"
 
 @class GLDeductionCheckList;
+@class GLDeductionLogDelegate;
 
 @interface GLDeduction : NSObject{
     GLDeductionCheckList* _checkList;
@@ -18,10 +19,15 @@
 
 @property NSMutableArray<GLDedNode*>* sequence;
 @property GLFormula* conclusion;
-@property (setter=addPremises:) NSArray<GLFormula*>* premises;
+@property NSArray<GLFormula*>* premises;
+@property NSUInteger tier;
+
+@property GLDeductionLogDelegate* logDelegate;
 
 -(instancetype)initWithPremises:(NSArray<GLFormula*>*)prems;
 -(instancetype)initWithPremises:(NSArray<GLFormula *> *)prems conclusion:(GLFormula*)conc;
+
+-(void)addPremises:(NSArray<GLFormula*> *)premises;
 
 #pragma mark Querying
 
@@ -32,5 +38,18 @@
 -(GLDedNode*)findNodeInSequence:(GLFormula*)form;
 -(NSArray<GLDedNode*>*)getNodesWithCriterion:(GLDedNodeCriterion)criterion;
 
+-(NSArray<GLDedNode*>*)getLinearSequence;
 
 @end
+
+@protocol GLDeductionLogDelegate <NSObject>
+
+-(void)log:(NSString*)string;
+-(void)openSubproof:(GLFormula*)conclusion description:(NSString*)description;
+-(void)openTempProof:(GLFormula*)conclusion description:(NSString*)description;
+-(void)closeSubproof;
+-(void)closeTempProof;
+
+@end
+
+

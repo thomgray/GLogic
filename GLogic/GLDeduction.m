@@ -7,6 +7,7 @@
 //
 
 #import "GLDeduction.h"
+#import "GLDeductionCheckList.h"
 
 @implementation GLDeduction
 @synthesize sequence = _sequence;
@@ -16,6 +17,8 @@
     self = [super init];
     if (self) {
         _sequence = [[NSMutableArray alloc]init];
+        _checkList = [[GLDeductionCheckList alloc]init];
+        _tier = 0;
     }
     return self;
 }
@@ -23,6 +26,8 @@
     self = [super init];
     if (self) {
         _sequence = [[NSMutableArray alloc]init];
+        _checkList = [[GLDeductionCheckList alloc]init];
+        _tier = 0;
         [self addPremises:prems];
     }
     return self;
@@ -41,9 +46,6 @@
         GLDedNode* prem = [GLDedNode infer:GLInference_Premise formula:premises[i] withNodes:nil];
         [_sequence addObject:prem];
     }
-}
--(NSArray<GLFormula *> *)premises{
-    return _premises;
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -78,6 +80,21 @@
         if (criterion(node)) {
             [out addObject:node];
         }
+    }
+    return out;
+}
+
+/*!
+ Returns an array of arrays. The inner arrays contain [DedNode, NSNumber(of NSInteger)]. The first object is the dednode, the second is the tier
+ */
+-(NSArray<GLDedNode *> *)getLinearSequence{
+    NSMutableArray<GLDedNode*>* out = [[NSMutableArray alloc]init];
+    for (NSInteger i=0; i<_sequence.count; i++) {
+        GLDedNode* node = _sequence[i];
+        if (node.subProof) {
+            [out addObjectsFromArray:[node.subProof getLinearSequence]];
+        }
+        [out addObject:node];
     }
     return out;
 }

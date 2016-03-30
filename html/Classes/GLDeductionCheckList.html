@@ -52,15 +52,35 @@
 
 	
 	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/DERestrictions">DERestrictions</option>
+		
+		<option value="//api/name/items">items</option>
+		
+		<option value="//api/name/tempRestrictions">tempRestrictions</option>
+		
+	</optgroup>
+	
 
 	
 
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/addDERestriction:">- addDERestriction:</option>
+		
 		<option value="//api/name/addRestriction:">- addRestriction:</option>
 		
+		<option value="//api/name/addRestriction:forRule:">- addRestriction:forRule:</option>
+		
+		<option value="//api/name/disjunctionIsRestrictedForDE:">- disjunctionIsRestrictedForDE:</option>
+		
+		<option value="//api/name/liftDERestriction:">- liftDERestriction:</option>
+		
 		<option value="//api/name/liftRestriction:">- liftRestriction:</option>
+		
+		<option value="//api/name/liftRestriction:forRule:">- liftRestriction:forRule:</option>
 		
 		<option value="//api/name/mayAttempt:conclusion:">- mayAttempt:conclusion:</option>
 		
@@ -89,6 +109,9 @@
 	<th>Inherits from</th>
 	<td>NSObject</td>
 </tr><tr>
+	<th>Conforms to</th>
+	<td>NSCopying</td>
+</tr><tr>
 	<th>Declared in</th>
 	<td>GLDeductionCheckList.h</td>
 </tr>
@@ -108,6 +131,54 @@
 
 						<div class="task-list">
 							<div class="section-method">
+	<a name="//api/name/items" title="items"></a>
+	<h3 class="method-title"><code><a href="#//api/name/items">&nbsp;&nbsp;items</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property NSMutableSet&lt;GLCheckListItem*&gt; *items</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/tempRestrictions" title="tempRestrictions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/tempRestrictions">&nbsp;&nbsp;tempRestrictions</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property NSMutableSet&lt;GLFormula*&gt; *tempRestrictions</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/DERestrictions" title="DERestrictions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/DERestrictions">&nbsp;&nbsp;DERestrictions</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property NSMutableSet&lt;GLFormula*&gt; *DERestrictions</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/resetList" title="resetList"></a>
 	<h3 class="method-title"><code><a href="#//api/name/resetList">&ndash;&nbsp;resetList</a></code>
 </h3>
@@ -134,7 +205,7 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (void)addRestriction:(GLFormula *)<em>formula</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)addRestriction:(GLFormula *)<em>formula</em></code></div>
 
 		    
 		</div>
@@ -150,7 +221,39 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (void)liftRestriction:(GLFormula *)<em>formula</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (BOOL)liftRestriction:(GLFormula *)<em>formula</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addRestriction:forRule:" title="addRestriction:forRule:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addRestriction:forRule:">&ndash;&nbsp;addRestriction:forRule:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)addRestriction:(GLFormula *)<em>formula</em> forRule:(GLInferenceRule)<em>rule</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liftRestriction:forRule:" title="liftRestriction:forRule:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liftRestriction:forRule:">&ndash;&nbsp;liftRestriction:forRule:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)liftRestriction:(GLFormula *)<em>formula</em> forRule:(GLInferenceRule)<em>rule</em></code></div>
 
 		    
 		</div>
@@ -171,6 +274,54 @@
 		    
 		</div>
 	</div>
+</div><div class="section-method">
+	<a name="//api/name/addDERestriction:" title="addDERestriction:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addDERestriction:">&ndash;&nbsp;addDERestriction:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)addDERestriction:(GLFormula *)<em>disjunction</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/liftDERestriction:" title="liftDERestriction:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/liftDERestriction:">&ndash;&nbsp;liftDERestriction:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)liftDERestriction:(GLFormula *)<em>disjunctin</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disjunctionIsRestrictedForDE:" title="disjunctionIsRestrictedForDE:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disjunctionIsRestrictedForDE:">&ndash;&nbsp;disjunctionIsRestrictedForDE:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)disjunctionIsRestrictedForDE:(GLFormula *)<em>disjunction</em></code></div>
+
+		    
+		</div>
+	</div>
 </div>
 						</div>
 						
@@ -186,7 +337,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Gray. All rights reserved. Updated: 2016-03-25</p>
+						<p class="copyright">Copyright &copy; 2016 Gray. All rights reserved. Updated: 2016-03-30</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

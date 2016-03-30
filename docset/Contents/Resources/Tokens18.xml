@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/GLSentence.html">
+	<File path="Classes/GLRelation.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/GLSentence</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/GLRelation</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLSentence.h</DeclaredIn>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
             
 			
 			<NodeRef refid="18"/>
@@ -13,9 +13,9 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLSentence/setIndex:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/setIndex:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLSentence.h</DeclaredIn>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger index</Declaration>
 			
@@ -25,9 +25,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLSentence/index</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/index</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLSentence.h</DeclaredIn>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger index</Declaration>
 			
@@ -37,9 +37,9 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/GLSentence/index</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instp/GLRelation/index</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLSentence.h</DeclaredIn>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
 			
 			<Declaration>@property (nonatomic) NSInteger index</Declaration>
 			
@@ -49,14 +49,74 @@
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLSentence/initWithIndex:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/setArguments:</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLSentence.h</DeclaredIn>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
 			
-			<Declaration>- (instancetype)initWithIndex:(NSInteger)i</Declaration>
+			<Declaration>@property (nonatomic) NSArray&lt;GLTerm*&gt; *arguments</Declaration>
 			
 			
-			<Anchor>//api/name/initWithIndex:</Anchor>
+			<Anchor>//api/name/arguments</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/arguments</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLTerm*&gt; *arguments</Declaration>
+			
+			
+			<Anchor>//api/name/arguments</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLRelation/arguments</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic) NSArray&lt;GLTerm*&gt; *arguments</Declaration>
+			
+			
+			<Anchor>//api/name/arguments</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/setArity:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger arity</Declaration>
+			
+			
+			<Anchor>//api/name/arity</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLRelation/arity</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger arity</Declaration>
+			
+			
+			<Anchor>//api/name/arity</Anchor>
+            <NodeRef refid="18"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLRelation/arity</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLRelation.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, readonly) NSUInteger arity</Declaration>
+			
+			
+			<Anchor>//api/name/arity</Anchor>
             <NodeRef refid="18"/>
 		</Token>
 		

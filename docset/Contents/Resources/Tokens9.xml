@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/GLEquals.html">
+	<File path="Classes/GLElement.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/GLEquals</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/GLElement</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLEquals.h</DeclaredIn>
+			<DeclaredIn>GLElement.h</DeclaredIn>
             
 			
 			<NodeRef refid="9"/>
@@ -13,74 +13,134 @@
 		
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/setLeftTerm:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isPrimeFormula</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLEquals.h</DeclaredIn>
+			<DeclaredIn>GLElement.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) GLTerm *leftTerm</Declaration>
+			<Declaration>- (BOOL)isPrimeFormula</Declaration>
 			
 			
-			<Anchor>//api/name/leftTerm</Anchor>
+			<Anchor>//api/name/isPrimeFormula</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/leftTerm</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isSentence</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLEquals.h</DeclaredIn>
+			<DeclaredIn>GLElement.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) GLTerm *leftTerm</Declaration>
+			<Declaration>- (BOOL)isSentence</Declaration>
 			
 			
-			<Anchor>//api/name/leftTerm</Anchor>
+			<Anchor>//api/name/isSentence</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/GLEquals/leftTerm</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isRelation</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLEquals.h</DeclaredIn>
+			<DeclaredIn>GLElement.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) GLTerm *leftTerm</Declaration>
+			<Declaration>- (BOOL)isRelation</Declaration>
 			
 			
-			<Anchor>//api/name/leftTerm</Anchor>
+			<Anchor>//api/name/isRelation</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/setRightTerm:</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isEquals</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLEquals.h</DeclaredIn>
+			<DeclaredIn>GLElement.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) GLTerm *rightTerm</Declaration>
+			<Declaration>- (BOOL)isEquals</Declaration>
 			
 			
-			<Anchor>//api/name/rightTerm</Anchor>
+			<Anchor>//api/name/isEquals</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instm/GLEquals/rightTerm</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isCompositor</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLEquals.h</DeclaredIn>
+			<DeclaredIn>GLElement.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) GLTerm *rightTerm</Declaration>
+			<Declaration>- (BOOL)isCompositor</Declaration>
 			
 			
-			<Anchor>//api/name/rightTerm</Anchor>
+			<Anchor>//api/name/isCompositor</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/instp/GLEquals/rightTerm</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isConnective</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLEquals.h</DeclaredIn>
+			<DeclaredIn>GLElement.h</DeclaredIn>
 			
-			<Declaration>@property (nonatomic) GLTerm *rightTerm</Declaration>
+			<Declaration>- (BOOL)isConnective</Declaration>
 			
 			
-			<Anchor>//api/name/rightTerm</Anchor>
+			<Anchor>//api/name/isConnective</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isQuantifier</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLElement.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isQuantifier</Declaration>
+			
+			
+			<Anchor>//api/name/isQuantifier</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isTerm</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLElement.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isTerm</Declaration>
+			
+			
+			<Anchor>//api/name/isTerm</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isConstant</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLElement.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isConstant</Declaration>
+			
+			
+			<Anchor>//api/name/isConstant</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isFunction</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLElement.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isFunction</Declaration>
+			
+			
+			<Anchor>//api/name/isFunction</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLElement/isVariable</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLElement.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)isVariable</Declaration>
+			
+			
+			<Anchor>//api/name/isVariable</Anchor>
             <NodeRef refid="9"/>
 		</Token>
 		

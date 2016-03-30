@@ -7,11 +7,12 @@
 //
 
 #import "GLDeduction(Public).h"
-#import "GLDeduction(Inference).h"
+#import "GLDeduction+InferenceHard.h"
 
 @interface GLDeduction (PublicPrivate)
 
-+(NSString*)stringForInferenceRule:(GLInferenceRule)inf;
+-(NSArray<GLDedNode*>*)deductionSequenceMerged;
+
 +(NSArray<NSString*>*)stringsForDependencies:(NSArray<GLDedNode*>*)deduction;
 +(NSArray<NSString*>*)stringsForInferences:(NSArray<GLDedNode*>*)deduction;
 +(NSArray<NSString*>*)stringsForFormulas:(NSArray<GLDedNode*>*)deduction;
@@ -45,10 +46,19 @@
 //---------------------------------------------------------------------------------------------------------
 #pragma mark To String
 
-/**
+-(NSString *)sequentString{
+    return [GLDeduction sequentString:self.premises conclusion:self.conclusion];
+}
+
+/*!
  *  Returns a string representation of the Deduction:<p/>
-    Each node in the deduction is represented as follows:<br/>
-    'LN  {DN<sub>0</sub>,...DN<sub>N</sub>}   FORMULA       IN<sub>0</sub>,...IN<sub>N</sub>: INFERENCE'<p/>
+    Each node in the deduction is represented on a single line as follows:<br/>
+    <ol>
+    <li>LINE</li>
+    <li>Dependencies: {DN<sub>0</sub>,...DN<sub>N</sub>}</li>
+    <li>FORMULA</li>
+    <li>Inferences: IN<sub>0</sub>,...IN<sub>N</sub>: INFERENCE</li>
+    </ol>
  *  Subproofs are indented by 3 spaces.
  *
  *  @return The String representation of the deduction
@@ -85,11 +95,13 @@
     return out;
 }
 
+
+
 -(NSString *)description{
     return [NSString stringWithFormat:@"%@\n%@",[GLDeduction sequentString:self.premises conclusion:self.conclusion], [self toString]];
 }
 
-/**
+/*!
  *  For each Node in the parameter deduction, returns a string in the form:<br/>
  *  '1,...N: Inference Rule'<br/>
  *  Or alternatively<br/>
@@ -110,12 +122,13 @@
             for (NSInteger j=0; j<node.inferenceNodes.count; j++) {
                 GLDedNode* infNode = node.inferenceNodes[j];
                 NSInteger infLine = [deduction indexOfObjectIdenticalTo:infNode]+1;
+                if (infLine<1) infLine = 0;
                 if (j<node.inferenceNodes.count-1) {
                     [str appendFormat:@"%ld,", infLine];
                 }else [str appendFormat:@"%ld: ", infLine];
             }
         }
-        [str appendString:[self stringForInferenceRule:node.inferenceRule]];
+        [str appendString:GLStringForRule(node.inferenceRule)];
         maxLength = str.length>maxLength? str.length : maxLength;
         [out addObject:[NSString stringWithString:str]];
     }
@@ -127,7 +140,7 @@
     return out;
 }
 
-/**
+/*!
  *  Returns an array, mapped 1-1 to the parameter array, of String representations of the parameter formulas.<p/> Each formula is mapped to its <code>description:</code> function.
  *
  *  @param deduction The deduction
@@ -152,7 +165,7 @@
     return out;
 }
 
-/**
+/*!
  *  For each node in the parameter array, returns a string representatin of the node's dependency numbers.<p/> The return array is mapped 1-1 to the parameter array.<p/>
  *  Each Dependency String is writted in the form:<br/>
  *  '{1,2...,N}'<br/>
@@ -172,7 +185,9 @@
         //First make array of the line numbers
         for (NSInteger j=0; j<node.dependencies.count; j++) {
             GLDedNode* dep = node.dependencies[j];
-            [depLines addObject:[NSNumber numberWithInteger:[deduction indexOfObjectIdenticalTo:dep]+1]];
+            NSUInteger lineNumber = [deduction indexOfObjectIdenticalTo:dep];
+            lineNumber = (lineNumber==NSNotFound)? 0: lineNumber+1;
+            [depLines addObject:[NSNumber numberWithInteger:lineNumber]];
         }
         
         //order the array
@@ -196,60 +211,7 @@
     return out;
 }
 
-/**
- *  Returns a plain english readable string value for a parameter inference rule.
-    e.g.
-    - GLInference_AssumptionCP returns "Assumption (CP)"
-    - GLInference_ModusPonens returns "Modus Ponens"
-    -etc.
- *
- *  @param inf The inference rule
- *  @return The string value of the rule
- */
-+(NSString *)stringForInferenceRule:(GLInferenceRule)inf{
-    switch (inf) {
-        case GLInference_AssumptionCP:
-            return @"Assumption (CP)";
-        case GLInference_AssumptionDE:
-            return @"Assumption (∨E)";
-        case GLInference_AssumptionRAA:
-            return @"Assumption (RAA)";
-        case GLInference_BiconditionalElim:
-            return @"⟷ Elimination";
-        case GLInference_BiconditionalIntro:
-            return @"⟷ Introduction";
-        case GLInference_ConditionalProof:
-            return @"Condiional Proof";
-        case GLInference_ConditionalProofDE:
-            return @"Conditional Proof (∨E)";
-        case GLInference_ConjunctionElim:
-            return @"∧ Elimination";
-        case GLInference_ConjunctionIntro:
-            return @"∧ Introduction";
-        case GLInference_DisjunctionElim:
-            return @"∨ Elimination";
-        case GLInference_DisjunctionIntro:
-            return @"∨ Introduction";
-        case GLInference_DNE:
-            return @"¬¬ Elimination";
-        case GLInference_DNI:
-            return @"¬¬ Introduction";
-        case GLInference_ModusPonens:
-            return @"Modus Ponens";
-        case GLInference_ModusTollens:
-            return @"Modus Tollens";
-        case GLInference_Premise:
-            return @"Premise";
-        case GLInference_ReductioAA:
-            return @"Reductio Ad Absurdum";
-        case GLInference_Reiteration:
-            return @"Reiteration";
-        default:
-            break;
-    }
-}
-
-/**
+/*!
  *  Returns a string in the form of "P<sub>0</sub>, ... P<sub>N</sub> ⊢ Conclusion" given premises P<sub>0</sub> to P<sub>N</sub> and Conclusion. If no premises are specified, the string "∅ ⊢ Conclusion" is returned. 
  
     @warning Non-Nullable conclusion parameter
@@ -278,14 +240,14 @@
     return [NSString stringWithString:out];
 }
 
-/**
+/*!
  *  Returns a single array merging all subproofs into a single deduction in the required order. <p/>
  *  For any node in the deduction with a subproof, the suproof is incorporated into the deduction just before the node.<p/> Node indexes in the array now represent:<br/> Line Number - 1.
  *
  *  @return An GLDedNode * array merging all subproofs in the currrent deduction in the correct order.
  */
--(NSArray<GLDedNode *> *)deductionSequenceMerged{
-    NSMutableArray<GLDedNode*>* out = [[NSMutableArray alloc]init];
+-(NSArray<GLDedNode*> *)deductionSequenceMerged{
+    NSMutableArray* out = [[NSMutableArray alloc]init];
     for (NSInteger i=0; i<self.sequence.count; i++) {
         GLDedNode* node = self.sequence[i];
         if (node.subProof) {

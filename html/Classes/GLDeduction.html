@@ -43,6 +43,8 @@
 							<select id="jump-to">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 
 	
 	
@@ -62,6 +64,8 @@
 		
 		<option value="//api/name/sequence">sequence</option>
 		
+		<option value="//api/name/tier">tier</option>
+		
 	</optgroup>
 	
 
@@ -80,35 +84,81 @@
 	
 	<optgroup label="Instance Methods">
 		
+		<option value="//api/name/addPremises:">- addPremises:</option>
+		
 		<option value="//api/name/addReiteration:">- addReiteration:</option>
 		
 		<option value="//api/name/append:rule:dependencies:">- append:rule:dependencies:</option>
 		
 		<option value="//api/name/appendNode:">- appendNode:</option>
 		
-		<option value="//api/name/containsFormula:">- containsFormula:</option>
+		<option value="//api/name/assimilateDeduction:fromLine:">- assimilateDeduction:fromLine:</option>
 		
-		<option value="//api/name/deductionSequenceMerged">- deductionSequenceMerged</option>
+		<option value="//api/name/containsFormula:">- containsFormula:</option>
 		
 		<option value="//api/name/findNodeInSequence:">- findNodeInSequence:</option>
 		
+		<option value="//api/name/formulasForReductio">- formulasForReductio</option>
+		
+		<option value="//api/name/getAllFormulaDecompositions">- getAllFormulaDecompositions</option>
+		
+		<option value="//api/name/getAllFormulaDecompositionsAndTheirNegations">- getAllFormulaDecompositionsAndTheirNegations</option>
+		
+		<option value="//api/name/getAllFormulaDecompositions_includingNegations:includingConclusion:">- getAllFormulaDecompositions_includingNegations:includingConclusion:</option>
+		
 		<option value="//api/name/getNodesWithCriterion:">- getNodesWithCriterion:</option>
 		
-		<option value="//api/name/infer_GenerativeBlock:">- infer_GenerativeBlock:</option>
+		<option value="//api/name/infer_Deconstructive_BE">- infer_Deconstructive_BE</option>
 		
-		<option value="//api/name/infer_HardBlock:conclusion:">- infer_HardBlock:conclusion:</option>
+		<option value="//api/name/infer_Deconstructive_CE">- infer_Deconstructive_CE</option>
+		
+		<option value="//api/name/infer_Deconstructive_DNE">- infer_Deconstructive_DNE</option>
+		
+		<option value="//api/name/infer_Deconstructive_MP">- infer_Deconstructive_MP</option>
+		
+		<option value="//api/name/infer_Deconstructive_MT">- infer_Deconstructive_MT</option>
 		
 		<option value="//api/name/infer_Hard_BE:">- infer_Hard_BE:</option>
 		
+		<option value="//api/name/infer_Hard_BI:">- infer_Hard_BI:</option>
+		
 		<option value="//api/name/infer_Hard_CE:">- infer_Hard_CE:</option>
+		
+		<option value="//api/name/infer_Hard_CI:">- infer_Hard_CI:</option>
+		
+		<option value="//api/name/infer_Hard_CP:">- infer_Hard_CP:</option>
+		
+		<option value="//api/name/infer_Hard_CPDE:">- infer_Hard_CPDE:</option>
 		
 		<option value="//api/name/infer_Hard_DE:">- infer_Hard_DE:</option>
 		
+		<option value="//api/name/infer_Hard_DE:withDisjunction:">- infer_Hard_DE:withDisjunction:</option>
+		
+		<option value="//api/name/infer_Hard_DI:">- infer_Hard_DI:</option>
+		
+		<option value="//api/name/infer_Hard_DNE:">- infer_Hard_DNE:</option>
+		
+		<option value="//api/name/infer_Hard_DNI:">- infer_Hard_DNI:</option>
+		
+		<option value="//api/name/infer_Hard_MP:">- infer_Hard_MP:</option>
+		
+		<option value="//api/name/infer_Hard_MT:">- infer_Hard_MT:</option>
+		
 		<option value="//api/name/infer_Hard_RAA:">- infer_Hard_RAA:</option>
 		
-		<option value="//api/name/infer_SemiSoft_DE:">- infer_SemiSoft_DE:</option>
+		<option value="//api/name/infer_Soft_BI:">- infer_Soft_BI:</option>
 		
-		<option value="//api/name/infer_SoftBlock:conclusion:">- infer_SoftBlock:conclusion:</option>
+		<option value="//api/name/infer_Soft_CI:">- infer_Soft_CI:</option>
+		
+		<option value="//api/name/infer_Soft_CP:">- infer_Soft_CP:</option>
+		
+		<option value="//api/name/infer_Soft_DE:">- infer_Soft_DE:</option>
+		
+		<option value="//api/name/infer_Soft_DI:">- infer_Soft_DI:</option>
+		
+		<option value="//api/name/infer_Soft_DNI:">- infer_Soft_DNI:</option>
+		
+		<option value="//api/name/infer_Soft_Generatives:">- infer_Soft_Generatives:</option>
 		
 		<option value="//api/name/initWithPremises:">- initWithPremises:</option>
 		
@@ -118,15 +168,17 @@
 		
 		<option value="//api/name/mayAttempt:forConclusion:">- mayAttempt:forConclusion:</option>
 		
-		<option value="//api/name/proveGenerative">- proveGenerative</option>
-		
 		<option value="//api/name/proveHard:">- proveHard:</option>
-		
-		<option value="//api/name/proveSemiSoft:">- proveSemiSoft:</option>
 		
 		<option value="//api/name/proveSoft:">- proveSoft:</option>
 		
+		<option value="//api/name/proveSoftSafe:">- proveSoftSafe:</option>
+		
+		<option value="//api/name/sequentString">- sequentString</option>
+		
 		<option value="//api/name/subProofWithAssumption:">- subProofWithAssumption:</option>
+		
+		<option value="//api/name/tempProof">- tempProof</option>
 		
 		<option value="//api/name/tidyDeductionIncludingFormulas:">- tidyDeductionIncludingFormulas:</option>
 		
@@ -164,6 +216,15 @@
 					
 
                     
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>@author Thomas Gray
+@copyright 2016. Thomas Gray</p>
+					</div>
+					
+					
 
 					
 					
@@ -218,7 +279,23 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>@property (setter=addPremises:) NSArray&lt;GLFormula*&gt; *premises</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSArray&lt;GLFormula*&gt; *premises</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/tier" title="tier"></a>
+	<h3 class="method-title"><code><a href="#//api/name/tier">&nbsp;&nbsp;tier</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property NSUInteger tier</code></div>
 
 		    
 		</div>
@@ -251,6 +328,22 @@
 			
 
 			<div class="method-subsection method-declaration"><code>- (instancetype)initWithPremises:(NSArray&lt;GLFormula*&gt; *)<em>prems</em> conclusion:(GLFormula *)<em>conc</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/addPremises:" title="addPremises:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/addPremises:">&ndash;&nbsp;addPremises:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)addPremises:(NSArray&lt;GLFormula*&gt; *)<em>premises</em></code></div>
 
 		    
 		</div>
@@ -299,6 +392,78 @@
 			
 
 			<div class="method-subsection method-declaration"><code>- (NSArray&lt;GLDedNode*&gt; *)getNodesWithCriterion:(GLDedNodeCriterion)<em>criterion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Public Methods" name="task_Public Methods"></a>
+						<h2 class="task-title">Public Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/tidyDeductionIncludingFormulas:" title="tidyDeductionIncludingFormulas:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/tidyDeductionIncludingFormulas:">&ndash;&nbsp;tidyDeductionIncludingFormulas:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)<em>forms</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/toString" title="toString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/toString">&ndash;&nbsp;toString</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)toString</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sequentString" title="sequentString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sequentString">&ndash;&nbsp;sequentString</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)sequentString</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sequentString:conclusion:" title="sequentString:conclusion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sequentString:conclusion:">+&nbsp;sequentString:conclusion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)<em>premises</em> conclusion:(GLFormula *)<em>conc</em></code></div>
 
 		    
 		</div>
@@ -408,6 +573,22 @@
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/assimilateDeduction:fromLine:" title="assimilateDeduction:fromLine:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/assimilateDeduction:fromLine:">&ndash;&nbsp;assimilateDeduction:fromLine:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)assimilateDeduction:(GLDeduction *)<em>deduction</em> fromLine:(NSInteger)<em>line</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/tidyDeductionIncludingNodes:" title="tidyDeductionIncludingNodes:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/tidyDeductionIncludingNodes:">&ndash;&nbsp;tidyDeductionIncludingNodes:</a></code>
 </h3>
@@ -435,6 +616,70 @@
 			
 
 			<div class="method-subsection method-declaration"><code>- (instancetype)subProofWithAssumption:(GLDedNode *)<em>assumption</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/tempProof" title="tempProof"></a>
+	<h3 class="method-title"><code><a href="#//api/name/tempProof">&ndash;&nbsp;tempProof</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (instancetype)tempProof</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getAllFormulaDecompositions" title="getAllFormulaDecompositions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getAllFormulaDecompositions">&ndash;&nbsp;getAllFormulaDecompositions</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSSet&lt;GLFormula*&gt; *)getAllFormulaDecompositions</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getAllFormulaDecompositions_includingNegations:includingConclusion:" title="getAllFormulaDecompositions_includingNegations:includingConclusion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getAllFormulaDecompositions_includingNegations:includingConclusion:">&ndash;&nbsp;getAllFormulaDecompositions_includingNegations:includingConclusion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSSet&lt;GLFormula*&gt; *)getAllFormulaDecompositions_includingNegations:(BOOL)<em>includeNegations</em> includingConclusion:(BOOL)<em>includeConclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getAllFormulaDecompositionsAndTheirNegations" title="getAllFormulaDecompositionsAndTheirNegations"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getAllFormulaDecompositionsAndTheirNegations">&ndash;&nbsp;getAllFormulaDecompositionsAndTheirNegations</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSSet&lt;GLFormula*&gt; *)getAllFormulaDecompositionsAndTheirNegations</code></div>
 
 		    
 		</div>
@@ -471,33 +716,9 @@
 		    
 		</div>
 	</div>
-</div>
-						</div>
-						
-
-						<a title="Public Methods" name="task_Public Methods"></a>
-						<h2 class="task-title">Public Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/deductionSequenceMerged" title="deductionSequenceMerged"></a>
-	<h3 class="method-title"><code><a href="#//api/name/deductionSequenceMerged">&ndash;&nbsp;deductionSequenceMerged</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (NSArray&lt;GLDedNode*&gt; *)deductionSequenceMerged</code></div>
-
-		    
-		</div>
-	</div>
 </div><div class="section-method">
-	<a name="//api/name/tidyDeductionIncludingFormulas:" title="tidyDeductionIncludingFormulas:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/tidyDeductionIncludingFormulas:">&ndash;&nbsp;tidyDeductionIncludingFormulas:</a></code>
+	<a name="//api/name/formulasForReductio" title="formulasForReductio"></a>
+	<h3 class="method-title"><code><a href="#//api/name/formulasForReductio">&ndash;&nbsp;formulasForReductio</a></code>
 </h3>
 
 	<div class="method-info">
@@ -506,39 +727,7 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)<em>forms</em></code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/toString" title="toString"></a>
-	<h3 class="method-title"><code><a href="#//api/name/toString">&ndash;&nbsp;toString</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (NSString *)toString</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/sequentString:conclusion:" title="sequentString:conclusion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sequentString:conclusion:">+&nbsp;sequentString:conclusion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)<em>premises</em> conclusion:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (NSArray&lt;GLFormula*&gt; *)formulasForReductio</code></div>
 
 		    
 		</div>
@@ -547,43 +736,11 @@
 						</div>
 						
 
-						<a title="Inference Methods" name="task_Inference Methods"></a>
-						<h2 class="task-title">Inference Methods</h2>
+						<a title="InferenceSoft Methods" name="task_InferenceSoft Methods"></a>
+						<h2 class="task-title">InferenceSoft Methods</h2>
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/proveGenerative" title="proveGenerative"></a>
-	<h3 class="method-title"><code><a href="#//api/name/proveGenerative">&ndash;&nbsp;proveGenerative</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (BOOL)proveGenerative</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/infer_GenerativeBlock:" title="infer_GenerativeBlock:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/infer_GenerativeBlock:">&ndash;&nbsp;infer_GenerativeBlock:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (BOOL)infer_GenerativeBlock:(GenerativeInferenceBlock)<em>block</em></code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
 	<a name="//api/name/proveSoft:" title="proveSoft:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/proveSoft:">&ndash;&nbsp;proveSoft:</a></code>
 </h3>
@@ -600,8 +757,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/infer_SoftBlock:conclusion:" title="infer_SoftBlock:conclusion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/infer_SoftBlock:conclusion:">&ndash;&nbsp;infer_SoftBlock:conclusion:</a></code>
+	<a name="//api/name/proveSoftSafe:" title="proveSoftSafe:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/proveSoftSafe:">&ndash;&nbsp;proveSoftSafe:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -610,14 +767,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_SoftBlock:(DirectedInferenceBlock)<em>block</em> conclusion:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)proveSoftSafe:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/proveSemiSoft:" title="proveSemiSoft:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/proveSemiSoft:">&ndash;&nbsp;proveSemiSoft:</a></code>
+	<a name="//api/name/infer_Soft_CI:" title="infer_Soft_CI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Soft_CI:">&ndash;&nbsp;infer_Soft_CI:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -626,14 +783,14 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)proveSemiSoft:(GLFormula *)<em>conclusion</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Soft_CI:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/infer_SemiSoft_DE:" title="infer_SemiSoft_DE:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/infer_SemiSoft_DE:">&ndash;&nbsp;infer_SemiSoft_DE:</a></code>
+	<a name="//api/name/infer_Soft_DI:" title="infer_Soft_DI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Soft_DI:">&ndash;&nbsp;infer_Soft_DI:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -642,12 +799,180 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_SemiSoft_DE:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Soft_DI:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/infer_Soft_BI:" title="infer_Soft_BI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Soft_BI:">&ndash;&nbsp;infer_Soft_BI:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Soft_BI:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Soft_DNI:" title="infer_Soft_DNI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Soft_DNI:">&ndash;&nbsp;infer_Soft_DNI:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Soft_DNI:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Soft_CP:" title="infer_Soft_CP:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Soft_CP:">&ndash;&nbsp;infer_Soft_CP:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Soft_CP:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Soft_DE:" title="infer_Soft_DE:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Soft_DE:">&ndash;&nbsp;infer_Soft_DE:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Soft_DE:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Soft_Generatives:" title="infer_Soft_Generatives:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Soft_Generatives:">&ndash;&nbsp;infer_Soft_Generatives:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Soft_Generatives:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Deconstructive_CE" title="infer_Deconstructive_CE"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Deconstructive_CE">&ndash;&nbsp;infer_Deconstructive_CE</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)infer_Deconstructive_CE</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Deconstructive_DNE" title="infer_Deconstructive_DNE"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Deconstructive_DNE">&ndash;&nbsp;infer_Deconstructive_DNE</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)infer_Deconstructive_DNE</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Deconstructive_BE" title="infer_Deconstructive_BE"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Deconstructive_BE">&ndash;&nbsp;infer_Deconstructive_BE</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)infer_Deconstructive_BE</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Deconstructive_MP" title="infer_Deconstructive_MP"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Deconstructive_MP">&ndash;&nbsp;infer_Deconstructive_MP</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)infer_Deconstructive_MP</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Deconstructive_MT" title="infer_Deconstructive_MT"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Deconstructive_MT">&ndash;&nbsp;infer_Deconstructive_MT</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)infer_Deconstructive_MT</code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="InferenceHard Methods" name="task_InferenceHard Methods"></a>
+						<h2 class="task-title">InferenceHard Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
 	<a name="//api/name/proveHard:" title="proveHard:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/proveHard:">&ndash;&nbsp;proveHard:</a></code>
 </h3>
@@ -664,8 +989,8 @@
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/infer_HardBlock:conclusion:" title="infer_HardBlock:conclusion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/infer_HardBlock:conclusion:">&ndash;&nbsp;infer_HardBlock:conclusion:</a></code>
+	<a name="//api/name/infer_Hard_CI:" title="infer_Hard_CI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_CI:">&ndash;&nbsp;infer_Hard_CI:</a></code>
 </h3>
 
 	<div class="method-info">
@@ -674,7 +999,71 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_HardBlock:(DirectedInferenceBlock)<em>block</em> conclusion:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_CI:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_DNI:" title="infer_Hard_DNI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_DNI:">&ndash;&nbsp;infer_Hard_DNI:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_DNI:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_DI:" title="infer_Hard_DI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_DI:">&ndash;&nbsp;infer_Hard_DI:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_DI:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_BI:" title="infer_Hard_BI:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_BI:">&ndash;&nbsp;infer_Hard_BI:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_BI:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_CP:" title="infer_Hard_CP:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_CP:">&ndash;&nbsp;infer_Hard_CP:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_CP:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
@@ -690,7 +1079,7 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_CE:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_CE:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
@@ -706,7 +1095,55 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_BE:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_BE:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_DNE:" title="infer_Hard_DNE:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_DNE:">&ndash;&nbsp;infer_Hard_DNE:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_DNE:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_MP:" title="infer_Hard_MP:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_MP:">&ndash;&nbsp;infer_Hard_MP:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_MP:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_MT:" title="infer_Hard_MT:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_MT:">&ndash;&nbsp;infer_Hard_MT:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_MT:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
@@ -722,7 +1159,7 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_RAA:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_RAA:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
@@ -738,7 +1175,39 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_DE:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_DE:(GLFormula *)<em>conclusion</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_DE:withDisjunction:" title="infer_Hard_DE:withDisjunction:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_DE:withDisjunction:">&ndash;&nbsp;infer_Hard_DE:withDisjunction:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_DE:(GLFormula *)<em>conclusion</em> withDisjunction:(GLDedNode *)<em>node</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/infer_Hard_CPDE:" title="infer_Hard_CPDE:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/infer_Hard_CPDE:">&ndash;&nbsp;infer_Hard_CPDE:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (GLDedNode *)infer_Hard_CPDE:(GLFormula *)<em>conclusion</em></code></div>
 
 		    
 		</div>
@@ -758,7 +1227,7 @@
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2016 Gray. All rights reserved. Updated: 2016-03-25</p>
+						<p class="copyright">Copyright &copy; 2016 Gray. All rights reserved. Updated: 2016-03-30</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>

@@ -35,6 +35,8 @@
 -(GLQuantifier*)mainQuantifier:(GLQuantifierType)type;
 -(GLPrimeFormula*)primeFormula;
 
+-(instancetype)firstDecomposition;
+-(instancetype)secondDecomposition;
 -(instancetype)getDecomposition:(NSInteger)i;
 -(instancetype)getDecompositionAtNode:(NSArray<NSNumber*>*)node;
 -(NSSet<GLFormula*>*)getAllDecompositions;

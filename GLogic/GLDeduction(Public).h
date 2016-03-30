@@ -10,11 +10,11 @@
 
 @interface GLDeduction (Public)
 
--(NSArray<GLDedNode*>*)deductionSequenceMerged;
-
 -(void)tidyDeductionIncludingFormulas:(NSArray<GLFormula*>*)forms;
 
 -(NSString*)toString;
+-(NSString*)sequentString;
+
 +(NSString*)sequentString:(NSArray<GLFormula*>*)premises conclusion:(GLFormula*)conc;
 
 @end

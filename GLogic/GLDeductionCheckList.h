@@ -8,15 +8,23 @@
 
 #import "GLDedNode.h"
 
-@interface GLDeductionCheckList : NSObject{
-    NSMutableArray* items;
-    NSMutableSet<GLFormula*>* tempRestrictions;
-}
+@class GLCheckListItem;
 
-//-(BOOL)checkInference:(GLInferenceRule)rule conclusion:(GLFormula*)conc;
+@interface GLDeductionCheckList : NSObject <NSCopying>
+
+@property NSMutableSet<GLCheckListItem*>* items;
+@property NSMutableSet<GLFormula*>* tempRestrictions;
+@property NSMutableSet<GLFormula*>* DERestrictions;
+
 -(void)resetList;
--(void)addRestriction:(GLFormula*)formula;
--(void)liftRestriction:(GLFormula*)formula;
+-(BOOL)addRestriction:(GLFormula*)formula;
+-(BOOL)liftRestriction:(GLFormula*)formula;
+-(BOOL)addRestriction:(GLFormula *)formula forRule:(GLInferenceRule)rule;
+-(BOOL)liftRestriction:(GLFormula *)formula forRule:(GLInferenceRule)rule;
 -(BOOL)mayAttempt:(GLInferenceRule)rule conclusion:(GLFormula*)form;
+
+-(BOOL)addDERestriction:(GLFormula*)disjunction;
+-(BOOL)liftDERestriction:(GLFormula*)disjunctin;
+-(BOOL)disjunctionIsRestrictedForDE:(GLFormula*)disjunction;
 
 @end

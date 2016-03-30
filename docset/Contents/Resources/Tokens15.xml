@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Classes/GLPrimeFormula.html">
+	<File path="Classes/GLInferenceScheme.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/occ/cl/GLPrimeFormula</TokenIdentifier>
-			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLPrimeFormula.h</DeclaredIn>
+			<TokenIdentifier>//apple_ref/occ/cl/GLInferenceScheme</TokenIdentifier>
+			<Abstract type="html">* For some conclusion C, we are looking for criteria for the following inference rules:
+&lt;dl&gt;
+    &lt;dt&gt;BE&lt;/dt&gt;
+    &lt;dd&gt;Where C = P-&gt;Q, either:&lt;br/&gt; P&lt;-&gt;Q &lt;br/&gt;OR&lt;br/&gt;Q&lt;-&gt;P&lt;/dd&gt;
+    &lt;dt&gt;CE&lt;/dt&gt;
+    &lt;dd&gt;For any formula P: &lt;br/&gt;P&amp;amp;C&lt;br/&gt;OR&lt;br/&gt; C&amp;amp;P&lt;/dd&gt;
+    &lt;dt&gt;DE&lt;/dt&gt;
+    &lt;dd&gt;Any disjunct (PvQ) &lt;br/&gt; AND &lt;br/&gt; P-&gt;C &lt;br/&gt;  AND &lt;br/&gt; Q-&gt;C &lt;/dd&gt;
+    &lt;dt&gt;DNE&lt;/dt&gt;
+    &lt;dd&gt;The formula ~~C&lt;/dd&gt;
+    &lt;dt&gt;MP&lt;/dt&gt;
+    &lt;dd&gt;Any conditional P-&gt;C &lt;br/&gt; AND &lt;br/&gt; The antecent P&lt;/dd&gt;
+    &lt;dt&gt;MT&lt;/dt&gt;
+    &lt;dd&gt;Given a formula P where C = ~P, any conditional P-&gt;Q &lt;br/&gt; AND &lt;br/&gt; ~Q&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;table&gt;
+&lt;tt&gt;Something&lt;/tt&gt;
+&lt;/table&gt;</Abstract>
+			<DeclaredIn>GLDeductionBlocks.h</DeclaredIn>
             
 			
 			<NodeRef refid="15"/>

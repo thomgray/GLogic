@@ -1,4 +1,4 @@
 Documentation set was installed to Xcode!
 
 Path: /Users/thomdikdave/Library/Developer/Shared/Documentation/DocSets/com.Gray.GLogic.docset
-Time: 2016-03-25 10:32:14 +0000
+Time: 2016-03-30 09:13:19 +0000

@@ -48,6 +48,9 @@
     _deps = [NSArray arrayWithArray:newDeps];
 }
 
+-(NSString *)description{
+    return [NSString stringWithFormat:@"%@ : %@", self.formula, GLStringForRule(self.inferenceRule)];
+}
 
 -(BOOL)isEqual:(id)object{
     if ([object isKindOfClass:[GLDedNode class]]) {

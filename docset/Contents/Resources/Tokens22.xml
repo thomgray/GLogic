@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/GLSyntaxType.html">
+	<File path="Classes/NSSet.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/GLSyntaxType</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/cl/NSSet</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			<DeclaredIn>NSSet(Internal).h</DeclaredIn>
             
 			
 			<NodeRef refid="22"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/GLSyntax_Standard</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>GLSyntax_Standard</Declaration>
-            
-            <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NSSet/subsetWithScheme:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NSSet(Internal).h</DeclaredIn>
+			
+			<Declaration>- (instancetype)subsetWithScheme:(BOOL ( ^ ) ( ObjectType object ))scheme</Declaration>
+			
+			
+			<Anchor>//api/name/subsetWithScheme:</Anchor>
             <NodeRef refid="22"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/GLSyntax_Polish</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>GLSyntax_Polish</Declaration>
-            
-            <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
-            
-            <NodeRef refid="22"/>
-        </Token>
+		</Token>
+		
         
         
 	</File>

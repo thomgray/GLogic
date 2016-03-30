@@ -31,6 +31,8 @@
 						<NodeRef refid="18"/>
 						<NodeRef refid="19"/>
 						<NodeRef refid="20"/>
+						<NodeRef refid="21"/>
+						<NodeRef refid="22"/>
 						
 					</Subnodes>
 				</Node>
@@ -42,8 +44,8 @@
 					<Name>Constants</Name>
 					<Path>index.html</Path>
 					<Subnodes>
-						<NodeRef refid="21"/>
-						<NodeRef refid="22"/>
+						<NodeRef refid="23"/>
+						<NodeRef refid="24"/>
 						
 					</Subnodes>
 				</Node>
@@ -53,9 +55,9 @@
                     <Name>Blocks</Name>
                     <Path>index.html</Path>
                     <Subnodes>
-                        <NodeRef refid="23"/>
-                        <NodeRef refid="24"/>
                         <NodeRef refid="25"/>
+                        <NodeRef refid="26"/>
+                        <NodeRef refid="27"/>
                         
                     </Subnodes>
                 </Node>
@@ -279,6 +281,12 @@
                     <Anchor>tasks</Anchor>
                 </Node>
                 
+                <Node type="section">
+                    <Path>Classes/GLDeductionCheckList.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
                 
                 
                 <Node type="section">
@@ -291,6 +299,39 @@
             
         </Node>
 		<Node id="8" type="file" documentType="reference">
+            <Name>GLDeductionTemp</Name>
+            <Path>Classes/GLDeductionTemp.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/GLDeductionTemp.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/GLDeductionTemp.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/GLDeductionTemp.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/GLDeductionTemp.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="9" type="file" documentType="reference">
             <Name>GLElement</Name>
             <Path>Classes/GLElement.html</Path>
             
@@ -317,7 +358,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="9" type="file" documentType="reference">
+		<Node id="10" type="file" documentType="reference">
             <Name>GLEquals</Name>
             <Path>Classes/GLEquals.html</Path>
             
@@ -344,7 +385,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="10" type="file" documentType="reference">
+		<Node id="11" type="file" documentType="reference">
             <Name>GLFormula</Name>
             <Path>Classes/GLFormula.html</Path>
             
@@ -383,12 +424,12 @@
             </Subnodes>
             
         </Node>
-		<Node id="11" type="file" documentType="reference">
+		<Node id="12" type="file" documentType="reference">
             <Name>GLFormulaCondition</Name>
             <Path>Classes/GLFormulaCondition.html</Path>
             
         </Node>
-		<Node id="12" type="file" documentType="reference">
+		<Node id="13" type="file" documentType="reference">
             <Name>GLFunction</Name>
             <Path>Classes/GLFunction.html</Path>
             
@@ -415,7 +456,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="13" type="file" documentType="reference">
+		<Node id="14" type="file" documentType="reference">
             <Name>GLInferenceResult</Name>
             <Path>Classes/GLInferenceResult.html</Path>
             
@@ -448,17 +489,17 @@
             </Subnodes>
             
         </Node>
-		<Node id="14" type="file" documentType="reference">
+		<Node id="15" type="file" documentType="reference">
             <Name>GLInferenceScheme</Name>
             <Path>Classes/GLInferenceScheme.html</Path>
             
         </Node>
-		<Node id="15" type="file" documentType="reference">
+		<Node id="16" type="file" documentType="reference">
             <Name>GLPrimeFormula</Name>
             <Path>Classes/GLPrimeFormula.html</Path>
             
         </Node>
-		<Node id="16" type="file" documentType="reference">
+		<Node id="17" type="file" documentType="reference">
             <Name>GLQuantifier</Name>
             <Path>Classes/GLQuantifier.html</Path>
             
@@ -497,7 +538,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="17" type="file" documentType="reference">
+		<Node id="18" type="file" documentType="reference">
             <Name>GLRelation</Name>
             <Path>Classes/GLRelation.html</Path>
             
@@ -524,7 +565,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="18" type="file" documentType="reference">
+		<Node id="19" type="file" documentType="reference">
             <Name>GLSentence</Name>
             <Path>Classes/GLSentence.html</Path>
             
@@ -557,7 +598,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="19" type="file" documentType="reference">
+		<Node id="20" type="file" documentType="reference">
             <Name>GLTerm</Name>
             <Path>Classes/GLTerm.html</Path>
             
@@ -584,7 +625,7 @@
             </Subnodes>
             
         </Node>
-		<Node id="20" type="file" documentType="reference">
+		<Node id="21" type="file" documentType="reference">
             <Name>GLVariable</Name>
             <Path>Classes/GLVariable.html</Path>
             
@@ -611,31 +652,58 @@
             </Subnodes>
             
         </Node>
+		<Node id="22" type="file" documentType="reference">
+            <Name>NSSet</Name>
+            <Path>Classes/NSSet.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/NSSet.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/NSSet.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/NSSet.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
 		
 		
         
-        <Node id="21" type="file" documentType="reference">
+        <Node id="23" type="file" documentType="reference">
             <Name>GLLanguageType</Name>
             <Path>Constants/GLLanguageType.html</Path>
             
         </Node>
-		<Node id="22" type="file" documentType="reference">
+		<Node id="24" type="file" documentType="reference">
             <Name>GLSyntaxType</Name>
             <Path>Constants/GLSyntaxType.html</Path>
             
         </Node>
 		
-        <Node id="23" type="file" documentType="reference">
+        <Node id="25" type="file" documentType="reference">
             <Name>DirectedInferenceBlock</Name>
             <Path>Blocks/DirectedInferenceBlock.html</Path>
             
         </Node>
-        <Node id="24" type="file" documentType="reference">
+        <Node id="26" type="file" documentType="reference">
             <Name>GLDedNodeCriterion</Name>
             <Path>Blocks/GLDedNodeCriterion.html</Path>
             
         </Node>
-        <Node id="25" type="file" documentType="reference">
+        <Node id="27" type="file" documentType="reference">
             <Name>GLFormulaCriterion</Name>
             <Path>Blocks/GLFormulaCriterion.html</Path>
             

@@ -13,6 +13,114 @@
 		
 		
 		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/setItems:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLCheckListItem*&gt; *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/items</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLCheckListItem*&gt; *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLDeductionCheckList/items</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLCheckListItem*&gt; *items</Declaration>
+			
+			
+			<Anchor>//api/name/items</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/setTempRestrictions:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLFormula*&gt; *tempRestrictions</Declaration>
+			
+			
+			<Anchor>//api/name/tempRestrictions</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/tempRestrictions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLFormula*&gt; *tempRestrictions</Declaration>
+			
+			
+			<Anchor>//api/name/tempRestrictions</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLDeductionCheckList/tempRestrictions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLFormula*&gt; *tempRestrictions</Declaration>
+			
+			
+			<Anchor>//api/name/tempRestrictions</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/setDERestrictions:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLFormula*&gt; *DERestrictions</Declaration>
+			
+			
+			<Anchor>//api/name/DERestrictions</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/DERestrictions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLFormula*&gt; *DERestrictions</Declaration>
+			
+			
+			<Anchor>//api/name/DERestrictions</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/GLDeductionCheckList/DERestrictions</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>@property NSMutableSet&lt;GLFormula*&gt; *DERestrictions</Declaration>
+			
+			
+			<Anchor>//api/name/DERestrictions</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
 			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/resetList</TokenIdentifier>
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
@@ -29,7 +137,7 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
 			
-			<Declaration>- (void)addRestriction:(GLFormula *)formula</Declaration>
+			<Declaration>- (BOOL)addRestriction:(GLFormula *)formula</Declaration>
 			
 			
 			<Anchor>//api/name/addRestriction:</Anchor>
@@ -41,10 +149,34 @@
 			<Abstract type="html"></Abstract>
 			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
 			
-			<Declaration>- (void)liftRestriction:(GLFormula *)formula</Declaration>
+			<Declaration>- (BOOL)liftRestriction:(GLFormula *)formula</Declaration>
 			
 			
 			<Anchor>//api/name/liftRestriction:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/addRestriction:forRule:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)addRestriction:(GLFormula *)formula forRule:(GLInferenceRule)rule</Declaration>
+			
+			
+			<Anchor>//api/name/addRestriction:forRule:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/liftRestriction:forRule:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)liftRestriction:(GLFormula *)formula forRule:(GLInferenceRule)rule</Declaration>
+			
+			
+			<Anchor>//api/name/liftRestriction:forRule:</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		
@@ -57,6 +189,42 @@
 			
 			
 			<Anchor>//api/name/mayAttempt:conclusion:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/addDERestriction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)addDERestriction:(GLFormula *)disjunction</Declaration>
+			
+			
+			<Anchor>//api/name/addDERestriction:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/liftDERestriction:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)liftDERestriction:(GLFormula *)disjunctin</Declaration>
+			
+			
+			<Anchor>//api/name/liftDERestriction:</Anchor>
+            <NodeRef refid="7"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/GLDeductionCheckList/disjunctionIsRestrictedForDE:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeductionCheckList.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)disjunctionIsRestrictedForDE:(GLFormula *)disjunction</Declaration>
+			
+			
+			<Anchor>//api/name/disjunctionIsRestrictedForDE:</Anchor>
             <NodeRef refid="7"/>
 		</Token>
 		

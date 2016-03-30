@@ -4,7 +4,7 @@
 		
 		<Token>
 			<TokenIdentifier>//apple_ref/occ/cl/GLDedNode</TokenIdentifier>
-			<Abstract type="html"></Abstract>
+			<Abstract type="html">@typedef enum GLInferenceRule</Abstract>
 			<DeclaredIn>GLDedNode.h</DeclaredIn>
             
 			

@@ -100,6 +100,13 @@
     }else return nil;
 }
 
+-(instancetype)firstDecomposition{
+    return children? children[0]:nil;
+}
+-(instancetype)secondDecomposition{
+    return children? children[1]:nil;
+}
+
 -(instancetype)getDecomposition:(NSInteger)i{
     if (children && i<children.count) {
         return children[i];
