@@ -39,13 +39,22 @@
 				
 				
                 
+				<Node>
+					<Name>Protocols</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="23"/>
+						
+					</Subnodes>
+				</Node>
+				
                 
 				<Node>
 					<Name>Constants</Name>
 					<Path>index.html</Path>
 					<Subnodes>
-						<NodeRef refid="23"/>
 						<NodeRef refid="24"/>
+						<NodeRef refid="25"/>
 						
 					</Subnodes>
 				</Node>
@@ -55,9 +64,9 @@
                     <Name>Blocks</Name>
                     <Path>index.html</Path>
                     <Subnodes>
-                        <NodeRef refid="25"/>
                         <NodeRef refid="26"/>
                         <NodeRef refid="27"/>
+                        <NodeRef refid="28"/>
                         
                     </Subnodes>
                 </Node>
@@ -681,29 +690,56 @@
         </Node>
 		
 		
-        
         <Node id="23" type="file" documentType="reference">
+            <Name>GLDeductionLogDelegate</Name>
+            <Path>Protocols/GLDeductionLogDelegate.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Protocols/GLDeductionLogDelegate.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Protocols/GLDeductionLogDelegate.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Protocols/GLDeductionLogDelegate.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		
+        <Node id="24" type="file" documentType="reference">
             <Name>GLLanguageType</Name>
             <Path>Constants/GLLanguageType.html</Path>
             
         </Node>
-		<Node id="24" type="file" documentType="reference">
+		<Node id="25" type="file" documentType="reference">
             <Name>GLSyntaxType</Name>
             <Path>Constants/GLSyntaxType.html</Path>
             
         </Node>
 		
-        <Node id="25" type="file" documentType="reference">
+        <Node id="26" type="file" documentType="reference">
             <Name>DirectedInferenceBlock</Name>
             <Path>Blocks/DirectedInferenceBlock.html</Path>
             
         </Node>
-        <Node id="26" type="file" documentType="reference">
+        <Node id="27" type="file" documentType="reference">
             <Name>GLDedNodeCriterion</Name>
             <Path>Blocks/GLDedNodeCriterion.html</Path>
             
         </Node>
-        <Node id="27" type="file" documentType="reference">
+        <Node id="28" type="file" documentType="reference">
             <Name>GLFormulaCriterion</Name>
             <Path>Blocks/GLFormulaCriterion.html</Path>
             

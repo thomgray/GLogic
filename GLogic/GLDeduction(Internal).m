@@ -38,6 +38,7 @@
 
 -(void)appendNode:(GLDedNode *)node{
     //NSLog(@"Appended: %@", node);
+    [node setTier:self.tier];
     [self.sequence addObject:node];
     [_checkList resetList];
 }
@@ -82,6 +83,7 @@
 -(GLDedNode*)append:(GLFormula*)conc rule:(GLInferenceRule)rule dependencies:(NSArray<GLDedNode*>*)nodes{
     if ([self isInformedBy:conc]) {
         GLDedNode* node = [GLDedNode infer:rule formula:conc withNodes:nodes];
+        [node setTier:self.tier];
         [self appendNode:node];
         return node;
     }else return nil;
@@ -96,7 +98,7 @@
     for (NSInteger i=line; i<deduction.sequence.count; i++) {
         GLDedNode* node = deduction.sequence[i];
         if (![self.sequence containsObject:node]) {
-            [self appendNode:node];
+            [self.sequence addObject:node];
         }
     }
 }
@@ -144,18 +146,19 @@
  */
 -(instancetype)subProofWithAssumption:(GLDedNode *)assumption{
     GLDeduction* out = [[self.class alloc]init];
+    [out setTier:self.tier+1];
     [out setPremises:self.premises];
     [out setConclusion:self.conclusion];
     if (assumption) [out appendNode:assumption];
     [out addReiteration:self.sequence];
     [out.checkList setDERestrictions:[NSMutableSet setWithSet:_checkList.DERestrictions]];
     [out.checkList setTempRestrictions:[NSMutableSet setWithSet:_checkList.tempRestrictions]];
-    [out setTier:self.tier+1];
     return out;
 }
 
 -(instancetype)tempProof{
     GLDeduction* out = [[self.class alloc]init];
+    [out setTier:self.tier];
     [out setPremises:self.premises];
     [out setConclusion:self.conclusion];
     [out setSequence:[NSMutableArray arrayWithArray:self.sequence]];

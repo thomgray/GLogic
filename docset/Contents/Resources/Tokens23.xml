@@ -1,37 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Tokens version="1.0">
-	<File path="Constants/GLLanguageType.html">
+	<File path="Protocols/GLDeductionLogDelegate.html">
 		
 		<Token>
-			<TokenIdentifier>//apple_ref/c/tdef/GLLanguageType</TokenIdentifier>
+			<TokenIdentifier>//apple_ref/occ/intf/GLDeductionLogDelegate</TokenIdentifier>
 			<Abstract type="html"></Abstract>
-			<DeclaredIn>GLFormula(Notation).h</DeclaredIn>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
             
 			
 			<NodeRef refid="23"/>
 		</Token>
 		
 		
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/GLLanguage_Alphabetic</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>GLLanguage_Alphabetic</Declaration>
-            
-            <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
-            
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GLDeductionLogDelegate/log:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>- (void)log:(NSString *)string</Declaration>
+			
+			
+			<Anchor>//api/name/log:</Anchor>
             <NodeRef refid="23"/>
-        </Token>
-        
-        <Token>
-            <TokenIdentifier>//apple_ref/c/econst/GLLanguage_Indexed</TokenIdentifier>
-            <Abstract type="html"></Abstract>
-            <Declaration>GLLanguage_Indexed</Declaration>
-            
-            <DeclaredIn>GLFormula(Notation).h</DeclaredIn>
-            
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GLDeductionLogDelegate/openSubproof:description:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>- (void)openSubproof:(GLFormula *)conclusion description:(NSString *)description</Declaration>
+			
+			
+			<Anchor>//api/name/openSubproof:description:</Anchor>
             <NodeRef refid="23"/>
-        </Token>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GLDeductionLogDelegate/openTempProof:description:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>- (void)openTempProof:(GLFormula *)conclusion description:(NSString *)description</Declaration>
+			
+			
+			<Anchor>//api/name/openTempProof:description:</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GLDeductionLogDelegate/closeSubproof</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>- (void)closeSubproof</Declaration>
+			
+			
+			<Anchor>//api/name/closeSubproof</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/GLDeductionLogDelegate/closeTempProof</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>GLDeduction.h</DeclaredIn>
+			
+			<Declaration>- (void)closeTempProof</Declaration>
+			
+			
+			<Anchor>//api/name/closeTempProof</Anchor>
+            <NodeRef refid="23"/>
+		</Token>
+		
         
         
 	</File>

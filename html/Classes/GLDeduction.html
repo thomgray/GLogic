@@ -60,6 +60,8 @@
 		
 		<option value="//api/name/conclusion">conclusion</option>
 		
+		<option value="//api/name/logDelegate">logDelegate</option>
+		
 		<option value="//api/name/premises">premises</option>
 		
 		<option value="//api/name/sequence">sequence</option>
@@ -105,6 +107,8 @@
 		<option value="//api/name/getAllFormulaDecompositionsAndTheirNegations">- getAllFormulaDecompositionsAndTheirNegations</option>
 		
 		<option value="//api/name/getAllFormulaDecompositions_includingNegations:includingConclusion:">- getAllFormulaDecompositions_includingNegations:includingConclusion:</option>
+		
+		<option value="//api/name/getLinearSequence">- getLinearSequence</option>
 		
 		<option value="//api/name/getNodesWithCriterion:">- getNodesWithCriterion:</option>
 		
@@ -295,7 +299,23 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>@property NSUInteger tier</code></div>
+			<div class="method-subsection method-declaration"><code>@property NSInteger tier</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/logDelegate" title="logDelegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/logDelegate">&nbsp;&nbsp;logDelegate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>@property GLDeductionLogDelegate *logDelegate</code></div>
 
 		    
 		</div>
@@ -396,33 +416,9 @@
 		    
 		</div>
 	</div>
-</div>
-						</div>
-						
-
-						<a title="Public Methods" name="task_Public Methods"></a>
-						<h2 class="task-title">Public Methods</h2>
-
-						<div class="task-list">
-							<div class="section-method">
-	<a name="//api/name/tidyDeductionIncludingFormulas:" title="tidyDeductionIncludingFormulas:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/tidyDeductionIncludingFormulas:">&ndash;&nbsp;tidyDeductionIncludingFormulas:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)<em>forms</em></code></div>
-
-		    
-		</div>
-	</div>
 </div><div class="section-method">
-	<a name="//api/name/toString" title="toString"></a>
-	<h3 class="method-title"><code><a href="#//api/name/toString">&ndash;&nbsp;toString</a></code>
+	<a name="//api/name/getLinearSequence" title="getLinearSequence"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getLinearSequence">&ndash;&nbsp;getLinearSequence</a></code>
 </h3>
 
 	<div class="method-info">
@@ -431,39 +427,7 @@
 		<div class="method-info-container">
 			
 
-			<div class="method-subsection method-declaration"><code>- (NSString *)toString</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/sequentString" title="sequentString"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sequentString">&ndash;&nbsp;sequentString</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>- (NSString *)sequentString</code></div>
-
-		    
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/sequentString:conclusion:" title="sequentString:conclusion:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/sequentString:conclusion:">+&nbsp;sequentString:conclusion:</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-
-			<div class="method-subsection method-declaration"><code>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)<em>premises</em> conclusion:(GLFormula *)<em>conc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (NSArray&lt;GLDedNode*&gt; *)getLinearSequence</code></div>
 
 		    
 		</div>
@@ -960,6 +924,78 @@
 			
 
 			<div class="method-subsection method-declaration"><code>- (BOOL)infer_Deconstructive_MT</code></div>
+
+		    
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Public Methods" name="task_Public Methods"></a>
+						<h2 class="task-title">Public Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/tidyDeductionIncludingFormulas:" title="tidyDeductionIncludingFormulas:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/tidyDeductionIncludingFormulas:">&ndash;&nbsp;tidyDeductionIncludingFormulas:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (void)tidyDeductionIncludingFormulas:(NSArray&lt;GLFormula*&gt; *)<em>forms</em></code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/toString" title="toString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/toString">&ndash;&nbsp;toString</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)toString</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sequentString" title="sequentString"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sequentString">&ndash;&nbsp;sequentString</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>- (NSString *)sequentString</code></div>
+
+		    
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sequentString:conclusion:" title="sequentString:conclusion:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sequentString:conclusion:">+&nbsp;sequentString:conclusion:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *)sequentString:(NSArray&lt;GLFormula*&gt; *)<em>premises</em> conclusion:(GLFormula *)<em>conc</em></code></div>
 
 		    
 		</div>
