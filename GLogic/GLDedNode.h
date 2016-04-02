@@ -33,7 +33,7 @@ typedef enum {
 @property NSArray<GLDedNode*>* dependencies;
 @property NSArray<GLDedNode*>* inferenceNodes;
 @property GLDeduction* subProof;
-@property NSInteger* tier;
+@property NSInteger tier;
 
 -(instancetype)initWithFormula:(GLFormula*)form inference:(GLInferenceRule)inf;
 -(void)inheritDependencies:(NSArray<GLDedNode*>*) nodes;

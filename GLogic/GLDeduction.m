@@ -45,6 +45,7 @@
     for (NSInteger i=0; i<premises.count; i++) {
         GLDedNode* prem = [GLDedNode infer:GLInference_Premise formula:premises[i] withNodes:nil];
         [_sequence addObject:prem];
+        [self.logDelegate log:[prem description] deduction:self];
     }
 }
 

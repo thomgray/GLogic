@@ -102,7 +102,7 @@
         GLDedNode* concNode = [GLDedNode infer:GLInference_ConditionalProofDE formula:conclusion withNodes:@[assumptionNode, minorConcNode]];
         [concNode dischargeDependency:assumptionNode];
         [concNode setSubProof:subproof];
-        [self appendNode:concNode];
+//        [self appendNode:concNode];
         return concNode;
     }else return nil;
 }
@@ -126,8 +126,7 @@
 #pragma mark Deconstructive Inferences
 
 -(GLDedNode *)infer_Soft_Generatives:(GLFormula *)conclusion{
-    GLDeduction* subproof = [[GLDeduction alloc]init];
-    [subproof.sequence addObjectsFromArray:self.sequence];
+    GLDeduction* subproof = [self tempProof];
     BOOL repeat;
     do {
         repeat = FALSE;
@@ -257,16 +256,19 @@
         GLFormula* cond1 = [dj1.class makeConditional:dj1 f2:conclusion];
         GLFormula* cond2 = [dj2.class makeConditional:dj2 f2:conclusion];
         
-        GLDeduction* tempProof = [self tempProof];
+        GLDeduction* subproof = [self subProofWithAssumption:nil];
         
-        GLDedNode* cond1Node = [tempProof infer_Soft_CPDE:cond1];
+        GLDedNode* cond1Node = [subproof infer_Soft_CPDE:cond1];
         if (!cond1Node) continue;
         
-        GLDedNode* cond2Node = [tempProof infer_Soft_CPDE:cond2];
+        GLDedNode* cond2Node = [subproof infer_Soft_CPDE:cond2];
         if (!cond2Node) continue;
         
-        [self assimilateDeduction:tempProof fromLine:self.sequence.count];
+        [subproof appendNode:cond1Node];
+        [subproof appendNode:cond2Node];
+        
         GLDedNode* concNode = [self append:conclusion rule:GLInference_DisjunctionElim dependencies:@[djNode, cond1Node, cond2Node]];
+        [concNode setSubProof:subproof];
         return concNode;        
     }
     return nil;

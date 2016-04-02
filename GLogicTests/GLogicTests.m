@@ -13,7 +13,7 @@
 #import <GLogic/GLDeduction(Internal).h>
 #import <GLogic/GLDeduction+InferenceSoft.h>
 #import <GLogic/GLDeduction+InferenceHard.h>
-
+#import <GLogic/GLDeductionTestLogger.h>
 
 typedef CustomFormula Formula;
 
@@ -31,11 +31,13 @@ typedef CustomFormula Formula;
 @property Formula* RaS;
 @property Formula* RcS;
 @property GLDeduction* deduction;
+@property GLDeductionTestLogger* logger;
 
 @end
 
 @implementation GLogicTests
 @synthesize deduction;
+@synthesize logger;
 
 - (void)setUp {
     [super setUp];
@@ -51,9 +53,14 @@ typedef CustomFormula Formula;
     _RaS = [Formula makeConjunction:_R f2:_S];
     _RcS = [Formula makeConditional:_R f2:_S];
     deduction = [[GLDeduction alloc]init];
+    logger = [[GLDeductionTestLogger alloc]init];
+    [deduction setLogDelegate:logger];
+    [logger setFileName:[self methodName]];
 }
 
 - (void)tearDown {
+    [self logTestResults];
+    [logger writeToFile:[self methodName]];
     [super tearDown];
 }
 
@@ -67,17 +74,11 @@ typedef CustomFormula Formula;
     [deduction setConclusion:conc];
     [deduction proveSoftSafe:conc];
     [deduction tidyDeductionIncludingFormulas:@[conc]];
-    NSLog(@"Prove P->S: %@", deduction);
-    [self logTestResults];
 }
 
--(void)test4{
-    [deduction addPremises:@[_PaQ]];
-    [deduction setConclusion:_P];
-    [deduction proveSoftSafe:_P];
-    
-    NSLog(@"%@", deduction);
-    [self logTestResults];
+-(void)testPvnP{
+    [deduction setConclusion:[Formula makeDisjunction:_P f2:_nP]];
+    [deduction proveHard:deduction.conclusion];
 }
 
 -(void)test2{
@@ -89,35 +90,28 @@ typedef CustomFormula Formula;
     conc = [Formula makeConditional:_P f2:conc];
     [deduction setConclusion:conc];
     [deduction proveHard:conc];
-    
-//    [deduction tidyDeductionIncludingFormulas:@[_R]];
-    NSLog(@"%@", deduction);
-    [self logTestResults];
 }
 
 -(void)testUnprovable{
-    [deduction addPremises:@[_PvQ,
+    [deduction addPremises:@[_PcQ,
                              _R
                              ]];
     [deduction setConclusion:_S];
     [deduction proveHard:_S];
-    
-    NSLog(@"%@", deduction);
-    [self logTestResults];
 }
 
--(void)testVeryHard{
-    Formula* antecedent = _PcQ;
-    antecedent = [Formula makeBiconditional:antecedent f2:_RaS];
-    antecedent = [Formula makeNegationStrict:antecedent];
-    Formula* consequent = [antecedent restrictToDisjunctions];
-    Formula* conclusion = [Formula makeConditional:antecedent f2:consequent];
-    [deduction setConclusion:conclusion];
-    [deduction proveHard:conclusion];
-    
-    NSLog(@"%@", deduction);
-    [self logTestResults];
-}
+//-(void)testVeryHard{
+//    Formula* antecedent = _PcQ;
+//    antecedent = [Formula makeBiconditional:antecedent f2:_RaS];
+//    antecedent = [Formula makeNegationStrict:antecedent];
+//    Formula* consequent = [antecedent restrictToDisjunctions];
+//    Formula* conclusion = [Formula makeConditional:antecedent f2:consequent];
+//    [deduction setConclusion:conclusion];
+//    [deduction proveHard:conclusion];
+//    
+//    NSLog(@"%@", deduction);
+//    [self logTestResults];
+//}
 
 -(void)testDE{
     Formula* PvQvR = [Formula makeDisjunction:_PvQ f2:_R];
@@ -134,11 +128,7 @@ typedef CustomFormula Formula;
     [newThread start];
     
     [deduction proveHard:SvQ];
-    [deduction tidyDeductionIncludingFormulas:@[SvQ]];
-    
-    NSLog(@"*******************************************************************");
-    NSLog(@"%@", deduction);
-    [self logTestResults];
+    [deduction tidyDeductionIncludingFormulas:@[SvQ]];    
 }
 
 -(void)printDeduction{
@@ -149,11 +139,16 @@ typedef CustomFormula Formula;
     
 }
 
--(void)logTestResults{
+-(NSString*)methodName{
     NSString* methodName = [self name];
     NSRange preRange = [methodName rangeOfString:@"-[GLogicTests "];
     methodName = [methodName substringFromIndex:preRange.length];
     methodName = [methodName substringToIndex:methodName.length-1];
+    return methodName;
+}
+
+-(void)logTestResults{
+    NSString* methodName = [self methodName];
     NSString* path =  [NSString stringWithFormat:@"/Users/thomdikdave/Projects/XCodeDepository/GLogic/TestLogs/%@.txt", methodName];
     NSString* dedString = [deduction sequentString];
     dedString = [dedString stringByAppendingFormat:@"\n\n%@", [deduction toString]];

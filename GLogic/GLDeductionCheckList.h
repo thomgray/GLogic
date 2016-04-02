@@ -13,7 +13,19 @@
 @interface GLDeductionCheckList : NSObject <NSCopying>
 
 @property NSMutableSet<GLCheckListItem*>* items;
+/*!
+ Set of CheckListItems mapping formulas to restricted rules
+ */
+@property NSMutableSet<GLCheckListItem*>* restrictions;
+/*!
+ Set of Formulas restricted for any rule
+ */
+@property NSMutableSet<GLFormula*>* categoricalRestrictions;
+
 @property NSMutableSet<GLFormula*>* tempRestrictions;
+/*!
+ Set of Disjunctions restricted for DE
+ */
 @property NSMutableSet<GLFormula*>* DERestrictions;
 
 -(void)resetList;

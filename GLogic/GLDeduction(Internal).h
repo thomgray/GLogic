@@ -29,13 +29,21 @@
 -(instancetype)subProofWithAssumption:(GLDedNode*)assumption;
 -(instancetype)tempProof;
 
+//phase these out
 -(NSSet<GLFormula*>*)getAllFormulaDecompositions;
 -(NSSet<GLFormula*>*)getAllFormulaDecompositions_includingNegations:(BOOL)includeNegations includingConclusion:(BOOL)includeConclusion;
 -(NSSet<GLFormula*>*)getAllFormulaDecompositionsAndTheirNegations;
 +(NSSet<GLFormula*>*)getAllFormulaDecompositions:(NSArray<GLFormula*>*)formulas;
 +(NSSet<GLFormula*>*)getAllFormulasAndTheirNegations:(NSSet<GLFormula*>*)formulas;
 
+//keep these
+-(NSMutableSet<GLFormula*>*)allFormulaDecompositions;
+-(NSMutableSet<GLFormula*>*)allFormulaDecompositionsIncludingConclusion;
+
 -(NSArray<GLFormula*>*)formulasForReductio;
+-(NSArray<GLFormula*>*)formulasForMPWithConclusion:(GLFormula*)conclusion;
+-(NSArray<GLFormula*>*)formulasForCEWithConclusion:(GLFormula*)conclusion;
+-(NSArray<GLFormula*>*)formulasForDE;
 
 
 @end

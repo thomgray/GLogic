@@ -5,6 +5,8 @@
 @interface GLDeduction (InternalPrivate)
 
 -(void)recursiveTidyDeduction:(NSMutableArray<GLDedNode*>*)retainList;
+-(NSComparisonResult(^)(GLFormula* f1, GLFormula* f2))formulaInDeductionComparator;
+-(NSString*)callFromStack:(NSArray*)stack;
 
 @end
 
@@ -37,9 +39,25 @@
 #pragma mark Adding / Modifying
 
 -(void)appendNode:(GLDedNode *)node{
-    //NSLog(@"Appended: %@", node);
+    [node setTier:self.tier];
     [self.sequence addObject:node];
     [_checkList resetList];
+    NSArray* stack = [[NSThread callStackSymbols]subarrayWithRange:NSMakeRange(0, 5)];
+    [self.logDelegate log:[node description] annotation:[self callFromStack:stack] deduction:self];
+}
+
+-(NSString *)callFromStack:(NSArray *)stack{
+    for (NSInteger i=1; i<stack.count; i++) {
+        NSString* call = stack[i];
+        NSRange rngOpen = [call rangeOfString:@"["];
+        NSRange rngClose = [call rangeOfString:@"]"];
+        NSString* callString = [call substringWithRange:NSMakeRange(rngOpen.location+1, rngClose.location-rngOpen.location-1)];
+        callString = [callString componentsSeparatedByString:@" "].lastObject;
+        if ([callString containsString:@"infer_"]) {
+            return callString;
+        }
+    }
+    return nil;
 }
 
 /**
@@ -82,6 +100,7 @@
 -(GLDedNode*)append:(GLFormula*)conc rule:(GLInferenceRule)rule dependencies:(NSArray<GLDedNode*>*)nodes{
     if ([self isInformedBy:conc]) {
         GLDedNode* node = [GLDedNode infer:rule formula:conc withNodes:nodes];
+        [node setTier:self.tier];
         [self appendNode:node];
         return node;
     }else return nil;
@@ -96,7 +115,7 @@
     for (NSInteger i=line; i<deduction.sequence.count; i++) {
         GLDedNode* node = deduction.sequence[i];
         if (![self.sequence containsObject:node]) {
-            [self appendNode:node];
+            [self.sequence addObject:node];
         }
     }
 }
@@ -144,18 +163,22 @@
  */
 -(instancetype)subProofWithAssumption:(GLDedNode *)assumption{
     GLDeduction* out = [[self.class alloc]init];
+    [out setTier:self.tier+1];
+    [out setLogDelegate:self.logDelegate];
     [out setPremises:self.premises];
     [out setConclusion:self.conclusion];
     if (assumption) [out appendNode:assumption];
     [out addReiteration:self.sequence];
     [out.checkList setDERestrictions:[NSMutableSet setWithSet:_checkList.DERestrictions]];
     [out.checkList setTempRestrictions:[NSMutableSet setWithSet:_checkList.tempRestrictions]];
-    [out setTier:self.tier+1];
     return out;
 }
 
 -(instancetype)tempProof{
     GLDeduction* out = [[self.class alloc]init];
+    [out setTier:self.tier];
+    [out setLogDelegate:self.logDelegate];
+    
     [out setPremises:self.premises];
     [out setConclusion:self.conclusion];
     [out setSequence:[NSMutableArray arrayWithArray:self.sequence]];
@@ -245,6 +268,43 @@
     return [GLDeduction getAllFormulasAndTheirNegations:out];
 }
 
+//---------------------------------------------------------------------------------------------------------
+//      Formula Decompositions
+//---------------------------------------------------------------------------------------------------------
+#pragma mark Formula Decompositions
+
+-(NSComparisonResult (^)(GLFormula *, GLFormula *))formulaInDeductionComparator{
+    return ^(GLFormula* f1, GLFormula* f2){
+        if ([self containsFormula:f1] && ![self containsFormula:f2]) {
+            return NSOrderedAscending;
+        }else if (![self containsFormula:f1] && [self containsFormula:f2]){
+            return NSOrderedDescending;
+        }
+        
+        NSInteger f1nodes = [f1 getAllDecompositions].count;
+        NSInteger f2nodes = [f2 getAllDecompositions].count;
+        
+        if (f1nodes>f2nodes) return NSOrderedDescending;
+        else if (f1nodes<f2nodes) return NSOrderedAscending;
+        else return NSOrderedSame;
+
+    };
+}
+
+-(NSMutableSet<GLFormula *> *)allFormulaDecompositions{
+    NSMutableSet<GLFormula*>* out = [[NSMutableSet alloc]init];
+    for (NSInteger i=0; i<self.sequence.count; i++) {
+        [out unionSet:[self.sequence[i].formula getAllDecompositions]];
+    }
+    return out;
+}
+
+-(NSMutableSet<GLFormula *> *)allFormulaDecompositionsIncludingConclusion{
+    NSMutableSet<GLFormula*>* out = [self allFormulaDecompositions];
+    [out unionSet:[self.conclusion getAllDecompositions]];
+    return out;
+}
+
 -(NSArray<GLFormula *> *)formulasForReductio{
     NSMutableSet<GLFormula*>* prems = [NSMutableSet setWithSet:[GLDeduction getAllFormulaDecompositions:self.premises]];
     [prems unionSet:[self.conclusion getAllDecompositions]];
@@ -252,15 +312,33 @@
         return !object.isNegation;
     }];
     NSArray<GLFormula*>* formulaArray = [prems allObjects];
-    formulaArray = [formulaArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        NSInteger f1nodes = [(GLFormula*)obj1 getAllDecompositions].count;
-        NSInteger f2nodes = [(GLFormula*)obj2 getAllDecompositions].count;
-        
-        if (f1nodes>f2nodes) return NSOrderedDescending;
-        else if (f1nodes<f2nodes) return NSOrderedAscending;
-        else return NSOrderedSame;
+    return [formulaArray sortedArrayUsingComparator:[self formulaInDeductionComparator]];
+}
+
+-(NSArray<GLFormula *> *)formulasForMPWithConclusion:(GLFormula *)conclusion{
+    NSMutableSet<GLFormula*>* set = [self allFormulaDecompositions];
+    set = [set subsetWithScheme:^BOOL(GLFormula *object) {
+        return object.isConditional && [object.secondDecomposition isEqual:conclusion];
     }];
-    return formulaArray;    
+    NSArray<GLFormula*>* out = set.allObjects;
+    return [out sortedArrayUsingComparator:[self formulaInDeductionComparator]];
+}
+
+-(NSArray<GLFormula *> *)formulasForCEWithConclusion:(GLFormula *)conclusion{
+    NSMutableSet<GLFormula*>* set = [self allFormulaDecompositions];
+    set = [set subsetWithScheme:^BOOL(GLFormula *object) {
+        return object.isConjunction && ([conclusion isEqual:object.firstDecomposition] || [conclusion isEqual:object.secondDecomposition]);
+    }];
+    NSArray<GLFormula*>* out = set.allObjects;
+    return [out sortedArrayUsingComparator:[self formulaInDeductionComparator]];
+}
+
+-(NSArray<GLFormula *> *)formulasForDE{
+    NSMutableSet<GLFormula*>* set = [self allFormulaDecompositions];
+    set = [set subsetWithScheme:^BOOL(GLFormula *object) {
+        return object.isDisjunction;
+    }];
+    return [set.allObjects sortedArrayUsingComparator:[self formulaInDeductionComparator]];
 }
 
 @end

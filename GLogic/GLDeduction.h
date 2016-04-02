@@ -11,7 +11,13 @@
 #import "GLDedNode.h"
 
 @class GLDeductionCheckList;
-@class GLDeductionLogDelegate;
+@class GLDeduction;
+
+@protocol GLDeductionLogDelegate <NSObject>
+-(void)log:(NSString*)string deduction:(GLDeduction*)ded;
+-(void)log:(NSString*)string annotation:(NSString*)annote deduction:(GLDeduction*)ded;
+-(void)logNote:(NSString*)note deduction:(GLDeduction*)ded;
+@end
 
 @interface GLDeduction : NSObject{
     GLDeductionCheckList* _checkList;
@@ -20,9 +26,9 @@
 @property NSMutableArray<GLDedNode*>* sequence;
 @property GLFormula* conclusion;
 @property NSArray<GLFormula*>* premises;
-@property NSUInteger tier;
+@property NSInteger tier;
 
-@property GLDeductionLogDelegate* logDelegate;
+@property (weak) id <GLDeductionLogDelegate> logDelegate;
 
 -(instancetype)initWithPremises:(NSArray<GLFormula*>*)prems;
 -(instancetype)initWithPremises:(NSArray<GLFormula *> *)prems conclusion:(GLFormula*)conc;
@@ -42,14 +48,6 @@
 
 @end
 
-@protocol GLDeductionLogDelegate <NSObject>
 
--(void)log:(NSString*)string;
--(void)openSubproof:(GLFormula*)conclusion description:(NSString*)description;
--(void)openTempProof:(GLFormula*)conclusion description:(NSString*)description;
--(void)closeSubproof;
--(void)closeTempProof;
-
-@end
 
 

@@ -69,27 +69,12 @@
     NSArray<NSString*>* dependencies = [GLDeduction stringsForDependencies:linearSequence];
     NSArray<NSString*>* formulas = [GLDeduction stringsForFormulas:linearSequence];
     NSArray<NSString*>* inferences = [GLDeduction stringsForInferences:linearSequence];
-    NSString* indent = @"";
     for (NSInteger i=0; i<linearSequence.count; i++) {
         NSString* lineString = [[NSString stringWithFormat:@"%ld", i+1]stringByPaddingToLength:5 withString:@" " startingAtIndex:0];
         NSString* depString = dependencies[i];
         NSString* formula = formulas[i];
         NSString* inference = inferences[i];
-        switch (linearSequence[i].inferenceRule) {
-            case GLInference_AssumptionCP:
-            case GLInference_AssumptionDE:
-            case GLInference_AssumptionRAA:
-                indent = [indent stringByAppendingString:@"   "];
-                break;
-            case GLInference_ConditionalProof:
-            case GLInference_ConditionalProofDE:
-            case GLInference_ReductioAA:
-                indent = indent.length>2? [indent substringFromIndex:3]:@"";
-            default:
-                break;
-        }
-        //        formula = [formula substringToIndex:formula.length-indent.length];
-        [out appendFormat:@"%@%@%@%@%@", lineString, indent, depString, formula, inference];
+        [out appendFormat:@"%@%@%@%@", lineString, depString, formula, inference];
         if (i<linearSequence.count-1) [out appendString:@"\n"];
     }
     return out;
@@ -152,7 +137,8 @@
     NSInteger maxLength = 0;
     for (NSInteger i=0; i<deduction.count; i++) {
         GLDedNode* node = deduction[i];
-        NSString* formString = [NSString stringWithFormat:@"%@", node.formula];
+        NSString* indent = [@"" stringByPaddingToLength:node.tier*2 withString:@"| " startingAtIndex:0];
+        NSString* formString = [NSString stringWithFormat:@"%@%@", indent, node.formula];
         [out addObject:formString];
         maxLength = formString.length>maxLength ? formString.length: maxLength;
         
