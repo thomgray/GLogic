@@ -8,13 +8,32 @@
 
 #import "GLDeduction+InferenceHard.h"
 
+@interface GLDeduction (InferenceHardPrivate)
+
+-(NSInteger)proveHardStackCount;
+
+@end
+
 @implementation GLDeduction (InferenceHard)
+
+-(NSInteger)proveHardStackCount{
+    NSArray<NSString*>* stack = [NSThread callStackSymbols];
+    NSInteger out = 0;
+    for (NSInteger i=0; i<stack.count; i++) {
+        if ([stack[i] containsString:@"proveHard:"]) {
+            out++;
+        }
+    }
+    return out;
+}
 
 -(GLDedNode *)proveHard:(GLFormula *)conclusion{
     GLDedNode* concNode;
-    
-    //NSLog(@"Proving hard: %@", conclusion);
-    [self.logDelegate logNote:[NSString stringWithFormat:@"Trying to prove %@", conclusion] deduction:self];
+    [self.logger logInfo:@{@"Title":@"Prove Hard",
+                           @"Conclusion":conclusion,
+                           @"Recursion":[NSNumber numberWithInteger:[self proveHardStackCount]]
+                           }
+               deduction:self];
     
     if ((concNode= [self proveSoft:conclusion])) {NSLog(@"Proved %@ soft", conclusion);}
     else if ((concNode=[self infer_Hard_BI:conclusion])){NSLog(@"Proved by BI");}
@@ -73,7 +92,6 @@
 -(GLDedNode *)infer_Hard_DI:(GLFormula *)conclusion{
     if (!conclusion.isDisjunction || ![self mayAttempt:GLInference_DisjunctionIntro
                                          forConclusion:conclusion]) return nil;
-    [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting hard DI for %@", conclusion] deduction:self];
     
     [_checkList addRestriction:conclusion];
     
@@ -142,8 +160,6 @@
     
     GLDedNode* concNode = nil;
     GLDedNode* assumption = [GLDedNode infer:GLInference_AssumptionCP formula:ant withNodes:nil];
-    
-    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for CP, proving %@", conclusion] deduction:self];
     
     GLDeduction* subproof = [self subProofWithAssumption:assumption];
     GLDedNode* minorConcNode = [subproof proveHard:cons];
@@ -253,7 +269,7 @@
     for (NSInteger i=0; i<conditionals.count; i++) {
         GLDeduction * tempDed = [self tempProof];
         
-        [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting modus ponens for conclusion %@ by first proving %@ before proving %@", conclusion, conditionals[i], conditionals[i].firstDecomposition] deduction:self];
+//        [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting modus ponens for conclusion %@ by first proving %@ before proving %@", conclusion, conditionals[i], conditionals[i].firstDecomposition] deduction:self];
         
         BOOL lift = [_checkList addRestriction:conditionals[i] forRule:GLInference_ConditionalProof];
         GLDedNode* conditionalNode = [tempDed proveHard:conditionals[i]];
@@ -263,7 +279,7 @@
         
         GLFormula* antecedent = [conditionals[i] firstDecomposition];
         
-        [self.logDelegate logNote:[NSString stringWithFormat:@"Proved %@, now we prove %@ to infer conclusion %@", conditionalNode.formula, antecedent, conclusion] deduction:self];
+//        [self.logDelegate logNote:[NSString stringWithFormat:@"Proved %@, now we prove %@ to infer conclusion %@", conditionalNode.formula, antecedent, conclusion] deduction:self];
         
         GLDedNode* antNode = [tempDed proveHard:antecedent];
         if (!antNode) continue;
@@ -291,20 +307,25 @@
 -(GLDedNode *)infer_Hard_DE:(GLFormula *)conclusion{
     if (![self mayAttempt:GLInference_DisjunctionElim forConclusion:conclusion]) return nil;
     
+    GLDedNode* concNode = nil;
+    
     NSArray<GLFormula*>* disjunctionArray = [self formulasForDE];
     for (NSInteger i=0; i<disjunctionArray.count; i++) {
-        if ([_checkList disjunctionIsRestrictedForDE:disjunctionArray[i]]) continue;
+        GLFormula* disjunction = disjunctionArray[i];
+        if ([_checkList disjunctionIsRestrictedForDE:disjunction]) continue;
         
-        GLDedNode* djNode = [self proveHard:disjunctionArray[i]];
+        BOOL lift = [_checkList addRestriction:disjunction forRule:GLInference_DisjunctionIntro];
+        GLDedNode* djNode = [self proveHard:disjunction];
+        if (lift) [_checkList liftRestriction:disjunction forRule:GLInference_DisjunctionIntro];
         if (!djNode) continue;
         
         [_checkList addDERestriction:djNode.formula];
-        GLDedNode* concNode = [self infer_Hard_DE:conclusion withDisjunction:djNode];
+        concNode = [self infer_Hard_DE:conclusion withDisjunction:djNode];
         [_checkList liftDERestriction:djNode.formula];
         
-        if (concNode) return concNode;
+        if (concNode) break;
     }
-    return nil;
+    return concNode;
 }
 
 -(GLDedNode *)infer_Hard_DE:(GLFormula *)conclusion withDisjunction:(GLDedNode *)node{
@@ -314,7 +335,7 @@
     GLFormula* cond1 = [dj1.class makeConditional:dj1 f2:conclusion];
     GLFormula* cond2 = [dj1.class makeConditional:dj2 f2:conclusion];
     
-    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for DE"] deduction:self];
+//    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for DE"] deduction:self];
     
     GLDeduction * subproof = [self subProofWithAssumption:nil];
     
@@ -343,7 +364,7 @@
     
     GLDedNode* assumptionNode = [GLDedNode infer:GLInference_AssumptionDE formula:ant withNodes:nil];
     
-    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for CPDE to prove %@", conclusion] deduction:self];
+//    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for CPDE to prove %@", conclusion] deduction:self];
     GLDeduction* subproof = [self subProofWithAssumption:assumptionNode];
         
     GLDedNode* minorConc = [subproof proveHard:cons];
@@ -373,7 +394,7 @@
     
     NSArray<GLFormula*>* formulasForReduction = [self formulasForReductio];
     
-    [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting reductio on %@ to prove %@. The candidate formulas are %@", negConc, conclusion, formulasForReduction] deduction:self];
+//    [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting reductio on %@ to prove %@. The candidate formulas are %@", negConc, conclusion, formulasForReduction] deduction:self];
     
     GLDeduction* subProof = [self subProofWithAssumption:assumption];
     
@@ -383,12 +404,12 @@
         
 //        if ([self containsFormula:f1] || [self containsFormula:f2]) continue;
         
-        [self.logDelegate logNote:[NSString stringWithFormat:@"We first try to prove %@ before attempting %@", f1, f2] deduction:self];
+//        [self.logDelegate logNote:[NSString stringWithFormat:@"We first try to prove %@ before attempting %@", f1, f2] deduction:self];
         
         GLDedNode* cj1 = [subProof proveHard:f1];
         if (!cj1) continue;
         
-        [self.logDelegate logNote:[NSString stringWithFormat:@"We have proven %@ for reductio, now we try to prove %@", f1, f2] deduction:self];
+//        [self.logDelegate logNote:[NSString stringWithFormat:@"We have proven %@ for reductio, now we try to prove %@", f1, f2] deduction:self];
         
         GLDedNode* cj2 = [subProof proveHard:f2];
         if (!cj2) continue;
