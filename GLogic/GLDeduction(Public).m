@@ -26,9 +26,26 @@
 //---------------------------------------------------------------------------------------------------------
 #pragma mark Prove
 
+/**
+ *  Call this method to simultaneously set the deduction's conclusion, call proveHard: on that conclusion and tidy the deduction if proven.<p/> Returns true if the conclusion is proved, false otherwise.
+ *
+ *  @param conclusion The Conclusion
+ *
+ *  @return TRUE if proven, FALSE if not
+ */
 -(BOOL)prove:(GLFormula *)conclusion{
-    return FALSE;
+    [self setConclusion:conclusion];
+    GLDedNode* concNode = [self proveHard:conclusion];
+    if (concNode) {
+        [self tidyDeductionIncludingNodes:@[concNode]];
+    }
+    return concNode!=nil;
 }
+
+//---------------------------------------------------------------------------------------------------------
+//      Tidying
+//---------------------------------------------------------------------------------------------------------
+#pragma mark Tidying
 
 -(void)tidyDeductionIncludingFormulas:(NSArray<GLFormula *> *)forms{
     NSMutableArray<GLDedNode*>* nodes = [[NSMutableArray alloc]initWithCapacity:forms.count];

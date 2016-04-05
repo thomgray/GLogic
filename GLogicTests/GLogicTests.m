@@ -10,10 +10,12 @@
 #import <GLogic/GLogic.h>
 #import "CustomFormula.h"
 #import "SampleFormulas.h"
+#import "LogAnalysis.h"
 #import <GLogic/GLDeduction(Internal).h>
 #import <GLogic/GLDeduction+InferenceSoft.h>
 #import <GLogic/GLDeduction+InferenceHard.h>
-#import <GLogic/GLDeductionTestLogger.h>
+#import <GLogic/DeductionLogger.h>
+
 
 typedef CustomFormula Formula;
 
@@ -30,17 +32,23 @@ typedef CustomFormula Formula;
 @property Formula* PbQ;
 @property Formula* RaS;
 @property Formula* RcS;
+@property Formula* RvS;
 @property GLDeduction* deduction;
-@property GLDeductionTestLogger* logger;
+@property LogAnalysis* logAnalyser;
+@property DeductionLogger* log;
 
 @end
 
 @implementation GLogicTests
 @synthesize deduction;
-@synthesize logger;
+@synthesize logAnalyser;
+
+@synthesize log;
+
 
 - (void)setUp {
     [super setUp];
+    //make the formulas
     _P = [[Formula alloc]initWithPrimeFormula:GLMakeSentence(0)];
     _Q = [[Formula alloc]initWithPrimeFormula:GLMakeSentence(1)];
     _R = [[Formula alloc]initWithPrimeFormula:GLMakeSentence(2)];
@@ -52,17 +60,39 @@ typedef CustomFormula Formula;
     _PbQ = [Formula makeBiconditional:_P f2:_Q];
     _RaS = [Formula makeConjunction:_R f2:_S];
     _RcS = [Formula makeConditional:_R f2:_S];
+    _RvS = [Formula makeDisjunction:_R f2:_S];
+    
     deduction = [[GLDeduction alloc]init];
-    logger = [[GLDeductionTestLogger alloc]init];
-    [deduction setLogDelegate:logger];
-    [logger setFileName:[self methodName]];
+    log = [[DeductionLogger alloc]init];
+    [log setFileName:[self methodName]];
+    [log setMainDeduction:deduction];
+    [deduction setLogger:log];
+    [log setDynamicWriteLog:YES];
 }
 
 - (void)tearDown {
-    [self logTestResults];
-    [logger writeToFile:[self methodName]];
+    
+
     [super tearDown];
 }
+
+-(void)proveEtc{
+    if ([[self methodName]containsString:@"testUnprovable"]) {
+        XCTAssert(![deduction prove:deduction.conclusion]);
+    }else{
+        XCTAssert([deduction prove:deduction.conclusion]);
+    }
+    
+    [self logTestResults]; //write proof to file
+    NSLog(@"%@", deduction); //write proof to stderr
+    [log writeLogToSTDErr]; //write log to stderr;
+}
+
+
+//---------------------------------------------------------------------------------------------------------
+//      Tests
+//---------------------------------------------------------------------------------------------------------
+#pragma mark Tests
 
 -(void)test1{
     NSArray<Formula*>* prems = @[   _PcQ,
@@ -72,13 +102,12 @@ typedef CustomFormula Formula;
     [deduction addPremises:prems];
     Formula* conc = [Formula makeConditional: _P f2:_S];
     [deduction setConclusion:conc];
-    [deduction proveSoftSafe:conc];
-    [deduction tidyDeductionIncludingFormulas:@[conc]];
+    [self proveEtc];
 }
 
 -(void)testPvnP{
     [deduction setConclusion:[Formula makeDisjunction:_P f2:_nP]];
-    [deduction proveHard:deduction.conclusion];
+    [self proveEtc];
 }
 
 -(void)test2{
@@ -89,7 +118,18 @@ typedef CustomFormula Formula;
     GLFormula* conc = [Formula makeConditional:_Q f2:_R];
     conc = [Formula makeConditional:_P f2:conc];
     [deduction setConclusion:conc];
-    [deduction proveHard:conc];
+}
+
+-(void)testUnprovable2{
+    Formula* PvQvRvS = [Formula makeDisjunction:_PvQ f2:_R];
+//    PvQvRvS = [Formula makeDisjunction:PvQvRvS f2:_S];
+    [deduction addPremises:@[PvQvRvS]];
+    [deduction setConclusion:[[Formula alloc]initWithPrimeFormula:GLMakeSentence(4)]];
+    
+//    [log addOutputCriteria:^BOOL(NSDictionary *info, GLDeduction *deduction) {
+//    }];
+    
+    [self proveEtc];
 }
 
 -(void)testUnprovable{
@@ -97,21 +137,18 @@ typedef CustomFormula Formula;
                              _R
                              ]];
     [deduction setConclusion:_S];
-    [deduction proveHard:_S];
+    [self proveEtc];
 }
 
-//-(void)testVeryHard{
-//    Formula* antecedent = _PcQ;
-//    antecedent = [Formula makeBiconditional:antecedent f2:_RaS];
-//    antecedent = [Formula makeNegationStrict:antecedent];
-//    Formula* consequent = [antecedent restrictToDisjunctions];
-//    Formula* conclusion = [Formula makeConditional:antecedent f2:consequent];
-//    [deduction setConclusion:conclusion];
-//    [deduction proveHard:conclusion];
-//    
-//    NSLog(@"%@", deduction);
-//    [self logTestResults];
-//}
+-(void)testVeryHard{
+    Formula* antecedent = _PcQ;
+    antecedent = [Formula makeBiconditional:antecedent f2:_RaS];
+    antecedent = [Formula makeNegationStrict:antecedent];
+    Formula* consequent = [antecedent restrictToDisjunctions];
+    Formula* conclusion = [Formula makeConditional:antecedent f2:consequent];
+    [deduction setConclusion:conclusion];
+    [self proveEtc];
+}
 
 -(void)testDE{
     Formula* PvQvR = [Formula makeDisjunction:_PvQ f2:_R];
@@ -122,22 +159,13 @@ typedef CustomFormula Formula;
     
     [deduction addPremises:@[PvQvR, RcS, PcS]];
     [deduction setConclusion:SvQ];
-    NSLog(@"%@", deduction);
-    
-    NSThread* newThread = [[NSThread alloc]initWithTarget:self selector:@selector(printDeduction) object:nil];
-    [newThread start];
-    
-    [deduction proveHard:SvQ];
-    [deduction tidyDeductionIncludingFormulas:@[SvQ]];    
+    [self proveEtc];
 }
 
--(void)printDeduction{
-    while (true){
-        NSLog(@"%@", deduction);
-        [NSThread sleepForTimeInterval:1.0f];
-    }
-    
-}
+//---------------------------------------------------------------------------------------------------------
+//      Delegate Methods
+//---------------------------------------------------------------------------------------------------------
+#pragma mark Delegate Methods
 
 -(NSString*)methodName{
     NSString* methodName = [self name];
@@ -158,6 +186,5 @@ typedef CustomFormula Formula;
     NSString* logString = [NSString stringWithFormat:@"%@\n\n%@", preample, dedString];
     [logString writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:nil];    
 }
-
 
 @end

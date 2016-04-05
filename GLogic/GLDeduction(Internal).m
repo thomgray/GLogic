@@ -43,7 +43,13 @@
     [self.sequence addObject:node];
     [_checkList resetList];
     NSArray* stack = [[NSThread callStackSymbols]subarrayWithRange:NSMakeRange(0, 5)];
-    [self.logDelegate log:[node description] annotation:[self callFromStack:stack] deduction:self];
+//    [self.logger logNewNode:node deduction:self method:[self callFromStack:stack] comment:nil];
+    [self.logger logInfo:@{
+                           @"Title":@"Added to deduction",
+                           @"Node":node,
+                           @"Method":[self callFromStack:stack]
+                           }
+               deduction:self];
 }
 
 -(NSString *)callFromStack:(NSArray *)stack{
@@ -164,7 +170,8 @@
 -(instancetype)subProofWithAssumption:(GLDedNode *)assumption{
     GLDeduction* out = [[self.class alloc]init];
     [out setTier:self.tier+1];
-    [out setLogDelegate:self.logDelegate];
+    [out setLogger:self.logger];
+    
     [out setPremises:self.premises];
     [out setConclusion:self.conclusion];
     if (assumption) [out appendNode:assumption];
@@ -177,7 +184,7 @@
 -(instancetype)tempProof{
     GLDeduction* out = [[self.class alloc]init];
     [out setTier:self.tier];
-    [out setLogDelegate:self.logDelegate];
+    [out setLogger:self.logger];
     
     [out setPremises:self.premises];
     [out setConclusion:self.conclusion];

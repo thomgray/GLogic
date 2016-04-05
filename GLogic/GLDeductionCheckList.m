@@ -82,7 +82,8 @@
 
 -(id)copyWithZone:(NSZone *)zone{
     GLCheckListItem* out = [[self.class alloc]initWithFormula:_conclusion];
-    [out setRules:[self.rules copyWithZone:zone]];
+    
+    [out setRules:[NSMutableSet setWithSet:_rules]];
     return out;
 }
 

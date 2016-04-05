@@ -6,18 +6,30 @@
 //  Copyright © 2016 Thomas Gray. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "GLFormula(Operations).h"
 #import "GLDedNode.h"
+//#import "DeductionLogDelegate.h"
 
 @class GLDeductionCheckList;
 @class GLDeduction;
 
-@protocol GLDeductionLogDelegate <NSObject>
--(void)log:(NSString*)string deduction:(GLDeduction*)ded;
--(void)log:(NSString*)string annotation:(NSString*)annote deduction:(GLDeduction*)ded;
--(void)logNote:(NSString*)note deduction:(GLDeduction*)ded;
+
+//---------------------------------------------------------------------------------------------------------
+//      Log Delegate
+//---------------------------------------------------------------------------------------------------------
+#pragma mark Log Delegate
+
+@protocol DeductionLogDelegate <NSObject>
+
+-(void)logInfo:(NSDictionary<NSString*, id>*)info deduction:(GLDeduction*)deduction;
+
 @end
+
+#pragma mark 
+//---------------------------------------------------------------------------------------------------------
+//      Deduction
+//---------------------------------------------------------------------------------------------------------
+#pragma mark Deduction
 
 @interface GLDeduction : NSObject{
     GLDeductionCheckList* _checkList;
@@ -28,7 +40,7 @@
 @property NSArray<GLFormula*>* premises;
 @property NSInteger tier;
 
-@property (weak) id <GLDeductionLogDelegate> logDelegate;
+@property (weak) id <DeductionLogDelegate> logger;
 
 -(instancetype)initWithPremises:(NSArray<GLFormula*>*)prems;
 -(instancetype)initWithPremises:(NSArray<GLFormula *> *)prems conclusion:(GLFormula*)conc;
