@@ -1,13 +1,13 @@
 //
-//  GLDeduction.m
+//  GLDeduction+Inference.m
 //  GLogic
 //
 //  Created by Thomas Gray on 06/04/2016.
 //  Copyright © 2016 Thomas Gray. All rights reserved.
 //
 
-#import "GLDeduction.h"
+#import "GLDeduction+Inference.h"
 
-@implementation GLDeduction
+@implementation GLDeduction_Inference
 
 @end

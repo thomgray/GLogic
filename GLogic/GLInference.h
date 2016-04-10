@@ -1,13 +1,13 @@
 //
-//  GLDeduction.m
+//  GLInference.h
 //  GLogic
 //
-//  Created by Thomas Gray on 06/04/2016.
+//  Created by Thomas Gray on 07/04/2016.
 //  Copyright © 2016 Thomas Gray. All rights reserved.
 //
 
 #import "GLDeduction.h"
 
-@implementation GLDeduction
+@interface GLInference : GLDeduction
 
 @end
