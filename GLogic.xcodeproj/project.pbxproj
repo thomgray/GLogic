@@ -61,7 +61,7 @@
 		C539036E1C9783E200803508 /* GLQuantifier.m in Sources */ = {isa = PBXBuildFile; fileRef = C539036C1C9783E200803508 /* GLQuantifier.m */; };
 		C53903711C97870600803508 /* GLFormula(Notation).m in Sources */ = {isa = PBXBuildFile; fileRef = C53903701C97870600803508 /* GLFormula(Notation).m */; };
 		C53903731C98CA4C00803508 /* GLFormula(Notation).h in Headers */ = {isa = PBXBuildFile; fileRef = C53903721C97871D00803508 /* GLFormula(Notation).h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C5574DA41CB82A8C00044C9F /* GLogic in Resources */ = {isa = PBXBuildFile; fileRef = C5574DA31CB82A8C00044C9F /* GLogic */; };
+		C54F8C061CBADF8A00C93846 /* GLogic in Resources */ = {isa = PBXBuildFile; fileRef = C54F8C051CBADF8A00C93846 /* GLogic */; };
 		C5C244C01CA5D69B00173919 /* NSSet(Internal).h in Headers */ = {isa = PBXBuildFile; fileRef = C5C244BE1CA5D69B00173919 /* NSSet(Internal).h */; };
 		C5C244C11CA5D69B00173919 /* NSSet(Internal).m in Sources */ = {isa = PBXBuildFile; fileRef = C5C244BF1CA5D69B00173919 /* NSSet(Internal).m */; };
 		C5C244C41CA6E2FF00173919 /* GLDeduction+InferenceHard.h in Headers */ = {isa = PBXBuildFile; fileRef = C5C244C21CA6E2FF00173919 /* GLDeduction+InferenceHard.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -141,7 +141,7 @@
 		C539036C1C9783E200803508 /* GLQuantifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLQuantifier.m; sourceTree = "<group>"; };
 		C53903701C97870600803508 /* GLFormula(Notation).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GLFormula(Notation).m"; sourceTree = "<group>"; };
 		C53903721C97871D00803508 /* GLFormula(Notation).h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLFormula(Notation).h"; sourceTree = "<group>"; };
-		C5574DA31CB82A8C00044C9F /* GLogic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLogic; path = ../../../Projects/TestLogs/GLogic; sourceTree = "<group>"; };
+		C54F8C051CBADF8A00C93846 /* GLogic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLogic; path = ../../../TestLogs/GLogic; sourceTree = "<group>"; };
 		C5C244BE1CA5D69B00173919 /* NSSet(Internal).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet(Internal).h"; sourceTree = "<group>"; };
 		C5C244BF1CA5D69B00173919 /* NSSet(Internal).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet(Internal).m"; sourceTree = "<group>"; };
 		C5C244C21CA6E2FF00173919 /* GLDeduction+InferenceHard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLDeduction+InferenceHard.h"; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 		C53903281C9780B900803508 /* GLogicTests */ = {
 			isa = PBXGroup;
 			children = (
-				C5574DA31CB82A8C00044C9F /* GLogic */,
+				C54F8C051CBADF8A00C93846 /* GLogic */,
 				C53903291C9780B900803508 /* GLogicTests.m */,
 				C527841E1C99624C0018AA8D /* CustomFormula.h */,
 				C527841F1C99624C0018AA8D /* CustomFormula.m */,
@@ -446,7 +446,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5574DA41CB82A8C00044C9F /* GLogic in Resources */,
+				C54F8C061CBADF8A00C93846 /* GLogic in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
