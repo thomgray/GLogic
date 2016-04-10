@@ -104,6 +104,10 @@
         case GLInference_ReductioAA:
             [out dischargeDependency:nodes.firstObject];
             break;
+        case GLInference_DisjunctionElim:
+            [out dischargeDependency:nodes[1]];
+            [out dischargeDependency:nodes[3]];
+            break;
         default:
             break;
     }

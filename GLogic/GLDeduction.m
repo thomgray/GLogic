@@ -9,6 +9,13 @@
 #import "GLDeduction.h"
 #import "GLDeductionCheckList.h"
 
+@interface GLDeduction (Private)
+
+-(void)setCheckList:(GLDeductionCheckList*)clist;
+-(void)setCurrentTier:(NSInteger)currentTier;
+
+@end
+
 @implementation GLDeduction
 @synthesize sequence = _sequence;
 @synthesize premises = _premises;
@@ -22,6 +29,7 @@
     }
     return self;
 }
+
 -(instancetype)initWithPremises:(NSArray<GLFormula *> *)prems{
     self = [self init];
     if (self) {
@@ -29,6 +37,7 @@
     }
     return self;
 }
+
 -(instancetype)initWithPremises:(NSArray<GLFormula *> *)prems conclusion:(GLFormula *)conc{
     self = [self initWithPremises:prems];
     if (self) {
@@ -37,6 +46,11 @@
     return self;
 }
 
+/**
+ *  Appends each of the parameter premises to the deduction. Should only be called before any other formulas are appended to the deduction.
+ *
+ *  @param premises The formulas to be added to the deduction as premises
+ */
 -(void)addPremises:(NSArray<GLFormula *> *)premises{
     _premises = premises;    
     for (NSInteger i=0; i<premises.count; i++) {
@@ -50,6 +64,13 @@
 //---------------------------------------------------------------------------------------------------------
 #pragma mark Getting / Querying
 
+/**
+*  Checks the ENTIRE deduction for a node with the parameter formula, returning that node if it exists
+*
+*  @param f The formula in question
+*
+*  @return The node with the parameter formula or nil if not in the deduciton
+*/
 -(BOOL)containsFormula:(GLFormula *)f{
     for (NSInteger i=0; i<self.sequence.count; i++) {
         GLDedNode* node = self.sequence[i];
@@ -60,7 +81,30 @@
     return FALSE;
 }
 
+-(id)copyWithZone:(NSZone *)zone{
+    GLDeduction* out = [[self.class alloc]init];
+    
+    [out setPremises:self.premises];
+    [out setConclusion:self.conclusion];
+    [out setSequence:[[NSMutableArray alloc]initWithArray:self.sequence copyItems:YES]];
+    
+    [out setCheckList:_checkList.copy];
+    [out setCurrentTier:_currentTier];
+        
+    return out;
+}
 
 
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark Private Copying Methods
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
+-(void)setCheckList:(GLDeductionCheckList *)clist{
+    _checkList = clist;
+}
+
+-(void)setCurrentTier:(NSInteger)currentTier{
+    _currentTier = currentTier;
+}
 
 @end

@@ -295,8 +295,8 @@
         
         if (conc2) {
             GLDedNode * concNode = [GLDedNode infer:GLInference_DisjunctionElim formula:conclusion withNodes:@[djNode, assumption1, conc1, assumption2, conc2]];
-            [concNode dischargeDependency:assumption1];
-            [concNode dischargeDependency:assumption2];
+//            [concNode dischargeDependency:assumption1];
+//            [concNode dischargeDependency:assumption2];
             [self appendNode:concNode];
             return concNode;
         }else{

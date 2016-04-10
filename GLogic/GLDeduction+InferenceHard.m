@@ -337,12 +337,12 @@
     GLFormula* dj1 = [node.formula firstDecomposition];
     GLFormula* dj2 = [node.formula secondDecomposition];
     
-//    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for DE"] deduction:self];
     GLDeductionIndex index = [self currentIndex];
     
     GLDedNode* conc2Node;
     GLDedNode* assumption2;
     GLDedNode* assumption1 = [GLDedNode infer:GLInference_AssumptionDE formula:dj1 withNodes:nil];
+    
     [self subProofWithAssumption:assumption1];
     GLDedNode* conc1Node = [self proveHard:conclusion];
     [self stepDown];
@@ -351,7 +351,6 @@
     assumption2 = [GLDedNode infer:GLInference_AssumptionDE formula:dj2 withNodes:nil];
     [self subProofWithAssumption:assumption2];
     conc2Node = [self proveHard:conclusion];
-    
     
 here:;
     if (conc1Node && conc2Node) {

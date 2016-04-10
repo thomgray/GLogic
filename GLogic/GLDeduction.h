@@ -52,9 +52,6 @@
 
 -(BOOL)containsFormula:(GLFormula*)f;
 
-#pragma mark Getting
-
-//-(NSArray<GLDedNode*>*)getNodesWithCriterion:(GLDedNodeCriterion)criterion;
 
 @end
 
