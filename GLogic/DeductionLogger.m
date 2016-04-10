@@ -46,7 +46,7 @@
 
 -(void)setFileName:(NSString *)fileName{
     _fileName = fileName;
-    _filePath = [NSString stringWithFormat:@"/Users/thomdikdave/Projects/XCodeDepository/GLogic/TestLogs/%@Log.txt", fileName];
+    _filePath = [NSString stringWithFormat:@"/Users/thomdikdave/Projects/TestLogs/GLogic/%@Log.txt", fileName];
 }
 -(NSString *)fileName{
     return _fileName;

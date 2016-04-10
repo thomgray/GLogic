@@ -9,11 +9,9 @@
 #import <XCTest/XCTest.h>
 #import <GLogic/GLogic.h>
 #import "CustomFormula.h"
-#import "SampleFormulas.h"
 #import "LogAnalysis.h"
-#import <GLogic/GLDeduction(Internal).h>
-#import <GLogic/GLDeduction+InferenceSoft.h>
-#import <GLogic/GLDeduction+InferenceHard.h>
+#import "GLDeduction+Inference.h"
+#import "GLDeduction+Public.h"
 #import <GLogic/DeductionLogger.h>
 
 
@@ -177,7 +175,7 @@ typedef CustomFormula Formula;
 
 -(void)logTestResults{
     NSString* methodName = [self methodName];
-    NSString* path =  [NSString stringWithFormat:@"/Users/thomdikdave/Projects/XCodeDepository/GLogic/TestLogs/%@.txt", methodName];
+    NSString* path =  [NSString stringWithFormat:@"/Users/thomdikdave/Projects/TestLogs/GLogic/%@.txt", methodName];
     NSString* dedString = [deduction sequentString];
     dedString = [dedString stringByAppendingFormat:@"\n\n%@", [deduction toString]];
     

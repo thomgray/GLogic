@@ -6,8 +6,8 @@
 //  Copyright © 2016 Thomas Gray. All rights reserved.
 //
 
-#import "GLDeduction.h"
+#import "GLDeduction+Inference.h"
 
-@interface GLDeduction_Analytics : GLDeduction
+@interface GLDeduction (Analytics)
 
 @end

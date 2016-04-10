@@ -7,7 +7,10 @@
 //
 
 #import "GLDeduction+Public.h"
+#import "GLDeduction+Analytics.h"
 
-@implementation GLDeduction_Public
+@implementation GLDeduction (Public)
+
+
 
 @end

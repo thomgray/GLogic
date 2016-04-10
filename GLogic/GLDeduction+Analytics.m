@@ -8,6 +8,9 @@
 
 #import "GLDeduction+Analytics.h"
 
-@implementation GLDeduction_Analytics
+@implementation GLDeduction (Analytics)
+
+
+
 
 @end

@@ -10,4 +10,13 @@
 
 @implementation GLDeduction
 
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        _sequence = [[NSMutableArray alloc]init];
+        _checkList = [[GLDeductionCheckList alloc]init];
+    }
+    return self;
+}
+
 @end

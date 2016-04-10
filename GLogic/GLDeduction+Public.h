@@ -8,6 +8,6 @@
 
 #import "GLDeduction.h"
 
-@interface GLDeduction_Public : GLDeduction
+@interface GLDeduction (Public)
 
 @end

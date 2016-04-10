@@ -8,6 +8,9 @@
 
 #import "GLDeduction.h"
 
-@interface GLInference : GLDeduction
+@interface GLInference : NSObject
+
+@property GLInferenceRule rule;
+@property GLFormula* formula;
 
 @end
