@@ -7,6 +7,8 @@
 #import "GLDeductionCheckList.h"
 #import "NSSet(Internal).h"
 
+typedef NSInteger GLDeductionIndex;
+
 @interface GLDeduction (Internal)
 
 @property  GLDeductionCheckList* checkList;
@@ -16,18 +18,25 @@
 -(BOOL)isInformedBy:(GLFormula*)f;
 -(BOOL)mayAttempt:(GLInferenceRule)rule forConclusion:(GLFormula*)conclusion;
 
+-(GLDedNode*)findAvailableNode:(GLFormula*)fomula;
+-(NSArray<GLDedNode*>*)availableNodes;
+-(NSArray<GLDedNode*>*)availableNodesWithCriterion:(GLDedNodeCriterion) criterion;
+
+-(GLDeductionIndex)currentIndex;
+
 #pragma mark Modification
 
--(void)appendNode:(GLDedNode*)node;
--(void)addReiteration:(NSArray<GLDedNode*>*)reiteration;
--(GLDedNode*)append:(GLFormula*)conc rule:(GLInferenceRule)rule dependencies:(NSArray<GLDedNode*>*)nodes;
+-(void)stepUp;
+-(void)stepDown;
 
--(void)assimilateDeduction:(GLDeduction*)deduction fromLine:(NSInteger)line;
+-(void)appendNode:(GLDedNode*)node;
+-(void)removeNodesFrom:(GLDedNode*)node;
+-(void)removeNodesFromIndex:(GLDeductionIndex)index;
+
+-(void)addReiteration:(NSArray<GLDedNode*>*)reiteration;
+-(void)subProofWithAssumption:(GLDedNode*)assumption;
 
 -(void)tidyDeductionIncludingNodes:(NSArray<GLDedNode*>*)nodes;
-
--(instancetype)subProofWithAssumption:(GLDedNode*)assumption;
--(instancetype)tempProof;
 
 //phase these out
 -(NSSet<GLFormula*>*)getAllFormulaDecompositions;

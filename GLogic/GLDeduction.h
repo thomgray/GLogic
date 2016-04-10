@@ -31,14 +31,15 @@
 //---------------------------------------------------------------------------------------------------------
 #pragma mark Deduction
 
-@interface GLDeduction : NSObject{
+@interface GLDeduction : NSObject <NSCopying>{
     GLDeductionCheckList* _checkList;
+    NSInteger _currentTier;
 }
 
 @property NSMutableArray<GLDedNode*>* sequence;
 @property GLFormula* conclusion;
 @property NSArray<GLFormula*>* premises;
-@property NSInteger tier;
+
 
 @property (weak) id <DeductionLogDelegate> logger;
 
@@ -53,10 +54,7 @@
 
 #pragma mark Getting
 
--(GLDedNode*)findNodeInSequence:(GLFormula*)form;
--(NSArray<GLDedNode*>*)getNodesWithCriterion:(GLDedNodeCriterion)criterion;
-
--(NSArray<GLDedNode*>*)getLinearSequence;
+//-(NSArray<GLDedNode*>*)getNodesWithCriterion:(GLDedNodeCriterion)criterion;
 
 @end
 

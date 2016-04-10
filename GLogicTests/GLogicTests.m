@@ -11,7 +11,7 @@
 #import "CustomFormula.h"
 #import "SampleFormulas.h"
 #import "LogAnalysis.h"
-#import <GLogic/GLDeduction(Internal).h>
+#import <GLogic/GLDeduction+Internal.h>
 #import <GLogic/GLDeduction+InferenceSoft.h>
 #import <GLogic/GLDeduction+InferenceHard.h>
 #import <GLogic/DeductionLogger.h>
@@ -63,11 +63,11 @@ typedef CustomFormula Formula;
     _RvS = [Formula makeDisjunction:_R f2:_S];
     
     deduction = [[GLDeduction alloc]init];
-    log = [[DeductionLogger alloc]init];
-    [log setFileName:[self methodName]];
-    [log setMainDeduction:deduction];
-    [deduction setLogger:log];
-    [log setDynamicWriteLog:YES];
+//    log = [[DeductionLogger alloc]init];
+//    [log setFileName:[self methodName]];
+//    [log setMainDeduction:deduction];
+//    [deduction setLogger:log];
+//    [log setDynamicWriteLog:YES];
 }
 
 - (void)tearDown {
@@ -85,7 +85,7 @@ typedef CustomFormula Formula;
     
     [self logTestResults]; //write proof to file
     NSLog(@"%@", deduction); //write proof to stderr
-    [log writeLogToSTDErr]; //write log to stderr;
+//    [log writeLogToSTDErr]; //write log to stderr;
 }
 
 
@@ -105,19 +105,44 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
+-(void)testDE2{
+    NSArray<Formula*>* prems = @[
+                                 _PvQ, [Formula makeConditional:_P f2:_R], [Formula makeConditional:_Q f2:_R]
+                                 ];
+    [deduction addPremises:prems];
+    [deduction setConclusion:_R];
+    [self proveEtc];
+}
+
+-(void)testDedSeq{
+    [deduction addPremises:@[_PaQ
+                             ]];
+//    GLDedNode* assumption = [GLDedNode infer:GLInference_AssumptionCP formula:_P withNodes:nil];
+//    [deduction appendNode:assumption];
+//    GLDedNode* minorConc = [deduction findAvailableNode:_PaQ];
+    Formula* PcPaQ = [Formula makeConditional:_P f2:_PaQ];
+//    [deduction appendNode:[GLDedNode infer:GLInference_ConditionalProof formula:PcPaQ withNodes:@[assumption, minorConc]]];
+//    
+//    NSLog(@"%@", deduction);
+    [deduction setConclusion:PcPaQ];
+    [deduction proveHard:PcPaQ];
+    NSLog(@"%@", deduction);
+}
+
 -(void)testPvnP{
     [deduction setConclusion:[Formula makeDisjunction:_P f2:_nP]];
     [self proveEtc];
 }
 
 -(void)test2{
-        NSArray<Formula*>* prems = @[
-                                 [Formula makeConditional:_PaQ f2:_R],
-                                 ];
+    NSArray<Formula*>* prems = @[
+                             [Formula makeConditional:_PaQ f2:_R],
+                             ];
     [deduction addPremises:prems];
     GLFormula* conc = [Formula makeConditional:_Q f2:_R];
     conc = [Formula makeConditional:_P f2:conc];
     [deduction setConclusion:conc];
+    [self proveEtc];
 }
 
 -(void)testUnprovable2{
@@ -162,6 +187,10 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
+-(void)assertCorrectTiering{
+
+}
+
 //---------------------------------------------------------------------------------------------------------
 //      Delegate Methods
 //---------------------------------------------------------------------------------------------------------
@@ -177,7 +206,7 @@ typedef CustomFormula Formula;
 
 -(void)logTestResults{
     NSString* methodName = [self methodName];
-    NSString* path =  [NSString stringWithFormat:@"/Users/thomdikdave/Projects/XCodeDepository/GLogic/TestLogs/%@.txt", methodName];
+    NSString* path =  [NSString stringWithFormat:@"/Users/thomdikdave/Projects/TestLogs/GLogic/%@.txt", methodName];
     NSString* dedString = [deduction sequentString];
     dedString = [dedString stringByAppendingFormat:@"\n\n%@", [deduction toString]];
     

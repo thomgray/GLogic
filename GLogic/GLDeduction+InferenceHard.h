@@ -31,7 +31,6 @@
 
 -(GLDedNode *)infer_Hard_DE:(GLFormula *)conclusion;
 -(GLDedNode *)infer_Hard_DE:(GLFormula *)conclusion withDisjunction:(GLDedNode*)node;
--(GLDedNode *)infer_Hard_CPDE:(GLFormula *)conclusion;
 
 
 

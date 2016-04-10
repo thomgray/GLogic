@@ -18,16 +18,13 @@
     if (self) {
         _sequence = [[NSMutableArray alloc]init];
         _checkList = [[GLDeductionCheckList alloc]init];
-        _tier = 0;
+        _currentTier = 0;
     }
     return self;
 }
 -(instancetype)initWithPremises:(NSArray<GLFormula *> *)prems{
-    self = [super init];
+    self = [self init];
     if (self) {
-        _sequence = [[NSMutableArray alloc]init];
-        _checkList = [[GLDeductionCheckList alloc]init];
-        _tier = 0;
         [self addPremises:prems];
     }
     return self;
@@ -63,41 +60,7 @@
     return FALSE;
 }
 
--(GLDedNode *)findNodeInSequence:(GLFormula *)form{
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[i];
-        if ([node.formula isEqual:form]) {
-            return node;
-        }
-    }
-    return nil;
-}
 
--(NSArray<GLDedNode *> *)getNodesWithCriterion:(GLDedNodeCriterion)criterion{
-    NSMutableArray<GLDedNode*>* out = [[NSMutableArray alloc]init];
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[i];
-        if (criterion(node)) {
-            [out addObject:node];
-        }
-    }
-    return out;
-}
-
-/*!
- Returns an array of arrays. The inner arrays contain [DedNode, NSNumber(of NSInteger)]. The first object is the dednode, the second is the tier
- */
--(NSArray<GLDedNode *> *)getLinearSequence{
-    NSMutableArray<GLDedNode*>* out = [[NSMutableArray alloc]init];
-    for (NSInteger i=0; i<_sequence.count; i++) {
-        GLDedNode* node = _sequence[i];
-        if (node.subProof) {
-            [out addObjectsFromArray:[node.subProof getLinearSequence]];
-        }
-        [out addObject:node];
-    }
-    return out;
-}
 
 
 @end

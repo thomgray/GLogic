@@ -1,10 +1,9 @@
 
 
-#import "GLDeduction(Internal).h"
+#import "GLDeduction+Internal.h"
 
 @interface GLDeduction (InternalPrivate)
 
--(void)recursiveTidyDeduction:(NSMutableArray<GLDedNode*>*)retainList;
 -(NSComparisonResult(^)(GLFormula* f1, GLFormula* f2))formulaInDeductionComparator;
 -(NSString*)callFromStack:(NSArray*)stack;
 
@@ -26,11 +25,76 @@
 #pragma mark Querying
 
 -(BOOL)isInformedBy:(GLFormula *)f{
-    return ![self containsFormula:f];
+    NSArray<GLDedNode*>* availableNodes = [self availableNodes];
+    for (NSInteger i=0; i<availableNodes.count; i++) {
+        if ([availableNodes[i].formula isEqual:f]) {
+            return FALSE;
+        }
+    }
+    return TRUE;
 }
 
 -(BOOL)mayAttempt:(GLInferenceRule)rule forConclusion:(GLFormula *)conclusion{
     return [_checkList mayAttempt:rule conclusion:conclusion];
+}
+
+
+/*!
+ *  Returns an array of nodes that are available from the current tier. No side effects
+ *
+ *  @return The nodes availabe from the current tier
+ */
+-(NSArray<GLDedNode *> *)availableNodes{
+    NSMutableArray<GLDedNode*>* out = [[NSMutableArray alloc]init];
+    for (NSInteger i=self.sequence.count-1; i>=0; i--) {
+        GLDedNode* node = self.sequence[i];
+        if (node.tier<_currentTier) break; //stop if stepping down
+        else if (node.tier>_currentTier) continue; //continue if stepping up
+        
+        [out insertObject:node atIndex:0];
+        if (GLInferenceIsAssumption(node.inferenceRule)) break;
+    }
+    return [NSArray arrayWithArray:out];
+}
+
+/*!
+ *  Returns the node with the parameter formula if it is contained in the deduction AND it is available from the current tier. If the node is found but not at the current tier, then it is reiterated into the current tier before being returned
+ *
+ *  @param fomula The formula in question
+ *
+ *  @return The node with the parameter formula in the deduction within the scope of the current tier
+ */
+-(GLDedNode *)findAvailableNode:(GLFormula *)fomula{
+    NSArray<GLDedNode*>* availableNode = [self availableNodes];
+    for (NSInteger i=0; i<availableNode.count; i++) {
+        GLDedNode* node = availableNode[i];
+        if ([node.formula isEqual:fomula]) {
+            return node;
+        }
+    }
+    return nil;
+}
+
+-(NSArray<GLDedNode *> *)availableNodesWithCriterion:(GLDedNodeCriterion)criterion{
+    NSArray<GLDedNode*>* nodes = [self availableNodes];
+    NSMutableArray<GLDedNode*>* out = [[NSMutableArray alloc]init];
+    for (NSInteger i=0; i<nodes.count; i++) {
+        GLDedNode* node = nodes[i];
+        if (criterion(node)) {
+            [out addObject:node];
+        }
+    }
+    return out;
+}
+
+
+/**
+ *  Returns the index of the next node to be added, i.e: @c self.sequence.count. Hence this is not the index of any existing node.
+ *
+ *  @return Index of the next node in the sequence
+ */
+-(GLDeductionIndex)currentIndex{
+    return self.sequence.count;
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -38,18 +102,62 @@
 //---------------------------------------------------------------------------------------------------------
 #pragma mark Adding / Modifying
 
+-(void)stepUp{
+    _currentTier++;
+}
+
+-(void)stepDown{
+    _currentTier--;
+}
+
+/**
+ *  Appends the parameter node to the end of the sequence. <p/>
+ Side effects:
+ <ul>
+ <li>The tier of the parameter node is set to the current tier</li>
+ <li>The checklist is reset of dynamic restrictions</li>
+ <li>If the inference closes a subproof, the deduction steps down</li>
+ </ul>
+ *
+ *  @param node The node to be appended
+ */
 -(void)appendNode:(GLDedNode *)node{
-    [node setTier:self.tier];
+    switch (node.inferenceRule) {
+        case GLInference_ConditionalProof:
+        case GLInference_ConditionalProofDE:
+        case GLInference_DisjunctionElim:
+        case GLInference_ReductioAA:
+            [self stepDown];
+        default:
+            break;
+    }
+    [node setTier:_currentTier];
     [self.sequence addObject:node];
     [_checkList resetList];
-    NSArray* stack = [[NSThread callStackSymbols]subarrayWithRange:NSMakeRange(0, 5)];
-//    [self.logger logNewNode:node deduction:self method:[self callFromStack:stack] comment:nil];
-    [self.logger logInfo:@{
-                           @"Title":@"Added to deduction",
-                           @"Node":node,
-                           @"Method":[self callFromStack:stack]
-                           }
-               deduction:self];
+}
+
+/**
+ *  Removes all nodes in the sequence from the parameter node (inclusively).<p/> As a side effect, the current tier is set to the tier of the last node in the sequence.
+ *
+ *  @param node The node from which the sequence is to be chopped
+ */
+-(void)removeNodesFrom:(GLDedNode *)node{
+    NSInteger i = [self.sequence indexOfObjectIdenticalTo:node];
+    if (i!=NSNotFound) {
+        [self.sequence removeObjectsInRange:NSMakeRange(i, self.sequence.count-i)];
+        _currentTier = self.sequence.lastObject.tier;
+    }else @throw [NSException exceptionWithName:@"Node not in sequence" reason:nil userInfo:nil];
+}
+
+/**
+ *  Removes all nodes in the sequence from and including the parameter index. The @c _currentTier property is then set to the tier of the new last node in the sequence
+ *
+ *  @param index The index from which to chop the sequence (inclusively)
+ */
+-(void)removeNodesFromIndex:(GLDeductionIndex)index{
+    NSInteger length = self.sequence.count - index;
+    [self.sequence removeObjectsInRange:NSMakeRange(index, length)];
+    _currentTier = self.sequence.lastObject.tier;
 }
 
 -(NSString *)callFromStack:(NSArray *)stack{
@@ -83,33 +191,35 @@
     }
 }
 
-
 /**
- Appends the specified conclusion to the deduction so long as the conclusion is informative.
- <p/>
- If the conclusion informative?
-    <ul>
-        <li>YES</li>
-            <ul>
-            <li>Creates a new DedNode with the parameter conclusion, inference rule and dependencies</li>
-            <li>Appends the new node to the deduction</li>
-            <li>returns the new node</li>
-            </ul>
-        <li>NO</li>
-            <ul><li>returns nil</li></ul>
-    </ul>
- * @param conc The conclusion to infer
- * @param rule The inference rule
- * @param nodes The dependencies to the conclusion
- * @return GLDedNode * <br/>The new node that has been added to the deduction, or nil if the conclusion was not inferred
+ *  Reiterates the parameter node:
+ <ul>
+ <li>If the node's tier == the current tier, the parameter node is returned with no effect</li>
+ <li>Otherwise, a new node is appended to the sequence equal to the reiteration of the parameter node</li>
+ </ul>
+ *
+ *  @param node The node to be reiterated
+ *
+ *  @return The reiteration node, or parameter node if reiteration is not necessary
  */
--(GLDedNode*)append:(GLFormula*)conc rule:(GLInferenceRule)rule dependencies:(NSArray<GLDedNode*>*)nodes{
-    if ([self isInformedBy:conc]) {
-        GLDedNode* node = [GLDedNode infer:rule formula:conc withNodes:nodes];
-        [node setTier:self.tier];
-        [self appendNode:node];
-        return node;
-    }else return nil;
+//-(GLDedNode *)reiterate:(GLDedNode *)node{
+//    if (node.tier==_currentTier) {
+//        return node;
+//    }else{
+//        GLDedNode* reiteration = [GLDedNode infer:GLInference_Reiteration formula:node.formula withNodes:@[node]];
+//        [self appendNode:reiteration];
+//        return reiteration;
+//    }
+//}
+
+-(void)subProofWithAssumption:(GLDedNode *)assumption{
+    NSArray<GLDedNode*>* nodes = [self availableNodes];
+    [self stepUp];
+    [self appendNode:assumption];
+    for (NSInteger i=0; i<nodes.count; i++) {
+        GLDedNode* reiteration = [GLDedNode infer:GLInference_Reiteration formula:nodes[i].formula withNodes:@[nodes[i]]];
+        [self appendNode:reiteration];
+    }
 }
 
 /*!
@@ -135,55 +245,20 @@
  */
 -(void)tidyDeductionIncludingNodes:(NSArray<GLDedNode *> *)nodes{
     NSMutableArray<GLDedNode*>* retainList = [[NSMutableArray alloc]initWithArray:nodes];
-    [self recursiveTidyDeduction:retainList];
-}
-
-/**
- *  Iterates backward through the deduction and includes only those DedNodes in the parameter <code>retailList</code>. If a node is to be included in the deduction, the inference nodes to that node are appended to the retain list.<p/>
-    Should a node contain a subproof, the method is called on that proof, passing the present retail list to that method call, and hence (potentially) augmenting the retainList with nodes from any sub proof.<p/>
-    This is carried out to the beginning of the deduction. <p/> This implies that an empty retail list is guaranteed to remove all objects from the deduction.
- *
- *  @param retainList A mutable array containing the nodes that are to be retained in the trimmed deduction
- */
--(void)recursiveTidyDeduction:(NSMutableArray<GLDedNode *> *)retainList{
-    NSMutableArray<GLDedNode*>* newSequence = [[NSMutableArray alloc]init];
+    NSMutableArray<GLDedNode*>* newSequence= [[NSMutableArray alloc]init];
     for (NSInteger i=self.sequence.count-1; i>=0; i--) {
         GLDedNode* node = self.sequence[i];
         if ([retainList indexOfObjectIdenticalTo:node]!=NSNotFound) {
             [newSequence insertObject:node atIndex:0];
             [retainList addObjectsFromArray:node.inferenceNodes];
-            if (node.subProof) {
-                [node.subProof recursiveTidyDeduction:retainList];
-            }
         }
     }
     [self setSequence:newSequence];
 }
 
-/**
- *  Creates a new subproof beginning with the specified assumptions and reiterating all formulas contained in this deduction
- *
- *  @param assumption The assumption with which to begin the subproof
- *
- *  @return GLDeduction subproof to this proof with the specified assumption
- */
--(instancetype)subProofWithAssumption:(GLDedNode *)assumption{
-    GLDeduction* out = [[self.class alloc]init];
-    [out setTier:self.tier+1];
-    [out setLogger:self.logger];
-    
-    [out setPremises:self.premises];
-    [out setConclusion:self.conclusion];
-    if (assumption) [out appendNode:assumption];
-    [out addReiteration:self.sequence];
-    [out.checkList setDERestrictions:[NSMutableSet setWithSet:_checkList.DERestrictions]];
-    [out.checkList setTempRestrictions:[NSMutableSet setWithSet:_checkList.tempRestrictions]];
-    return out;
-}
 
 -(instancetype)tempProof{
     GLDeduction* out = [[self.class alloc]init];
-    [out setTier:self.tier];
     [out setLogger:self.logger];
     
     [out setPremises:self.premises];
@@ -192,6 +267,7 @@
     [out setCheckList:[_checkList copy]];
     return out;
 }
+
 
 //---------------------------------------------------------------------------------------------------------
 //      Formula Sets

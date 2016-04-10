@@ -6,7 +6,7 @@
 //  Copyright © 2016 Thomas Gray. All rights reserved.
 //
 
-#import "GLDeduction(Internal).h"
+#import "GLDeduction+Internal.h"
 
 @interface GLDeduction (InferenceSoft)
 

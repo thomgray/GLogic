@@ -66,22 +66,18 @@
 -(GLDedNode *)infer_Hard_CI:(GLFormula *)conclusion{
     if (!conclusion.isConjunction || ![self mayAttempt:GLInference_ConjunctionIntro
                                          forConclusion:conclusion]) return nil;
-    
     //Don't try prove the conclusion while trying to prove by CI
    [_checkList addRestriction:conclusion];
     
     GLDedNode* concNode = nil;
     
-    GLDeduction* tempProof = [self tempProof];
+    GLDedNode* cj1 = [self proveHard:conclusion.firstDecomposition];
     
-    GLDedNode* cj1 = [tempProof proveHard:conclusion.firstDecomposition];
     if (cj1) {
-        GLDedNode* cj2= [tempProof proveHard:conclusion.secondDecomposition];
+        GLDedNode* cj2= [self proveHard:conclusion.secondDecomposition];
         if (cj2) {
-            [self assimilateDeduction:tempProof fromLine:self.sequence.count];
-            concNode = [self append:conclusion
-                               rule:GLInference_ConjunctionIntro
-                       dependencies:@[cj1, cj2]];
+            concNode = [GLDedNode infer:GLInference_ConjunctionIntro formula:conclusion withNodes:@[cj1, cj2]];
+            [self appendNode:concNode];
         }
     }
     
@@ -101,7 +97,8 @@
     [_checkList liftRestriction:conclusion];
     
     if (dj) {
-        GLDedNode* concNode = [self append:conclusion rule:GLInference_DisjunctionIntro dependencies:@[dj]];
+        GLDedNode* concNode = [GLDedNode infer:GLInference_DisjunctionIntro formula:conclusion withNodes:@[dj]];
+        [self appendNode:concNode];
         return concNode;
     }
     return nil;
@@ -111,23 +108,25 @@
     if (!conclusion.isBiconditional || ![self mayAttempt:GLInference_BiconditionalIntro
                                            forConclusion:conclusion]) return nil;
     
+    GLDeductionIndex index = [self currentIndex];
     
     GLFormula* cond1 = [conclusion.class makeConditional:conclusion.firstDecomposition f2:conclusion.secondDecomposition];
     GLFormula* cond2 = [conclusion.class makeConditional:conclusion.secondDecomposition f2:conclusion.firstDecomposition];
     
     [_checkList addRestriction:conclusion];
-    GLDeduction* tempProof = [self tempProof];
     
     GLDedNode* concNode = nil;
-    GLDedNode* cond1Node = [tempProof proveHard:cond1];
+    GLDedNode* cond1Node = [self proveHard:cond1];
     if (cond1Node) {
-        GLDedNode* cond2Node = [tempProof proveHard:cond2];
+        GLDedNode* cond2Node = [self proveHard:cond2];
         if (cond2Node) {
-            [self assimilateDeduction:tempProof fromLine:self.sequence.count];
-            concNode = [self append:conclusion rule:GLInference_BiconditionalIntro dependencies:@[cond1Node, cond2Node]];
+            concNode = [GLDedNode infer:GLInference_BiconditionalIntro formula:conclusion withNodes:@[cond1Node, cond2Node]];
+            [self appendNode:concNode];
         }
     }
-    
+    if (!concNode) {
+        [self removeNodesFromIndex:index];
+    }
     [_checkList liftRestriction:conclusion];
     return concNode;
 }
@@ -142,7 +141,8 @@
     GLDedNode* concNode = nil;
     GLDedNode* dneNode = [self proveHard:dne];
     if (dneNode) {
-        concNode = [self append:conclusion rule:GLInference_DNI dependencies:@[dneNode]];
+        concNode = [GLDedNode infer:GLInference_DNI formula:conclusion withNodes:@[dneNode]];
+        [self appendNode:concNode];
     }
     
     [_checkList liftRestriction:conclusion];
@@ -160,14 +160,15 @@
     
     GLDedNode* concNode = nil;
     GLDedNode* assumption = [GLDedNode infer:GLInference_AssumptionCP formula:ant withNodes:nil];
+
+    [self subProofWithAssumption:assumption];
+    GLDedNode* minorConcNode = [self proveHard:cons];
     
-    GLDeduction* subproof = [self subProofWithAssumption:assumption];
-    GLDedNode* minorConcNode = [subproof proveHard:cons];
     if (minorConcNode) {
         concNode = [GLDedNode infer:GLInference_ConditionalProof formula:conclusion withNodes:@[assumption, minorConcNode]];
-        [concNode setSubProof:subproof];
-        [concNode dischargeDependency:assumption];
         [self appendNode:concNode];
+    }else{
+        [self removeNodesFrom:assumption];
     }
     
     [_checkList liftRestriction:conclusion];
@@ -189,9 +190,9 @@
         GLDedNode* conjunctionNode = [self proveHard:conjunctions[i]];
         if (lift) [self.checkList liftRestriction:conjunctions[i] forRule:GLInference_ConjunctionIntro];
         if (conjunctionNode) {
-            return [self append:conclusion
-                           rule:GLInference_ConjunctionElim
-                   dependencies:@[conjunctionNode]];
+            GLDedNode* concNode = [GLDedNode infer:GLInference_ConjunctionElim formula:conclusion withNodes:@[conjunctionNode]];
+            [self appendNode:concNode];
+            return concNode;
         }
     }
     return nil;
@@ -261,30 +262,33 @@
 -(GLDedNode *)infer_Hard_MP:(GLFormula *)conclusion{
     if (![self mayAttempt:GLInference_ModusPonens forConclusion:conclusion]) return nil;
     
+    NSLog(@"Doing MP for %@", conclusion);
+    
     [_checkList addRestriction:conclusion];
     
     NSArray<GLFormula*>* conditionals = [self formulasForMPWithConclusion:conclusion];
     GLDedNode* concNode = nil;
     
     for (NSInteger i=0; i<conditionals.count; i++) {
-        GLDeduction * tempDed = [self tempProof];
-        
-//        [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting modus ponens for conclusion %@ by first proving %@ before proving %@", conclusion, conditionals[i], conditionals[i].firstDecomposition] deduction:self];
+        GLDeductionIndex index = [self currentIndex];
         
         BOOL lift = [_checkList addRestriction:conditionals[i] forRule:GLInference_ConditionalProof];
-        GLDedNode* conditionalNode = [tempDed proveHard:conditionals[i]];
+        GLDedNode* conditionalNode = [self proveHard:conditionals[i]];
         if (lift) [_checkList liftRestriction:conditionals[i] forRule:GLInference_ConditionalProof];
         
-        if (!conditionalNode) continue;
+        if (!conditionalNode){
+            [self removeNodesFromIndex:index];
+            continue;
+        }
         
         GLFormula* antecedent = [conditionals[i] firstDecomposition];
         
-//        [self.logDelegate logNote:[NSString stringWithFormat:@"Proved %@, now we prove %@ to infer conclusion %@", conditionalNode.formula, antecedent, conclusion] deduction:self];
+        GLDedNode* antNode = [self proveHard:antecedent];
+        if (!antNode){
+            [self removeNodesFromIndex:index];
+            continue;
+        }
         
-        GLDedNode* antNode = [tempDed proveHard:antecedent];
-        if (!antNode) continue;
-        
-        [self assimilateDeduction:tempDed fromLine:self.sequence.count];
         concNode = [GLDedNode infer:GLInference_ModusPonens formula:conclusion withNodes:@[conditionalNode, antNode]];
         [self appendNode:concNode];
         break;
@@ -332,50 +336,35 @@
     
     GLFormula* dj1 = [node.formula firstDecomposition];
     GLFormula* dj2 = [node.formula secondDecomposition];
-    GLFormula* cond1 = [dj1.class makeConditional:dj1 f2:conclusion];
-    GLFormula* cond2 = [dj1.class makeConditional:dj2 f2:conclusion];
     
 //    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for DE"] deduction:self];
+    GLDeductionIndex index = [self currentIndex];
     
-    GLDeduction * subproof = [self subProofWithAssumption:nil];
+    GLDedNode* conc2Node;
+    GLDedNode* assumption2;
+    GLDedNode* assumption1 = [GLDedNode infer:GLInference_AssumptionDE formula:dj1 withNodes:nil];
+    [self subProofWithAssumption:assumption1];
+    GLDedNode* conc1Node = [self proveHard:conclusion];
+    [self stepDown];
+    if (!conc1Node) goto here;
     
-    GLDedNode* cond1Node = [subproof infer_Hard_CPDE:cond1];
-    if (!cond1Node) return nil;
+    assumption2 = [GLDedNode infer:GLInference_AssumptionDE formula:dj2 withNodes:nil];
+    [self subProofWithAssumption:assumption2];
+    conc2Node = [self proveHard:conclusion];
     
-    GLDedNode* cond2Node = [subproof infer_Hard_CPDE:cond2];
-    if (!cond2Node) return nil;
     
-    [subproof appendNode:cond1Node];
-    [subproof appendNode:cond2Node];
-    
-    GLDedNode* concNode = [GLDedNode infer:GLInference_DisjunctionElim formula:conclusion withNodes:@[node, cond1Node, cond2Node]];
-    [self appendNode:concNode];
-    [concNode setSubProof:subproof];
-    return concNode;
-}
-
-
--(GLDedNode *)infer_Hard_CPDE:(GLFormula *)conclusion{
-    if (![self mayAttempt:GLInference_ConditionalProofDE forConclusion:conclusion]) return nil;
-    else if (!conclusion.isConditional) return nil;
-    
-    GLFormula* ant = conclusion.firstDecomposition;
-    GLFormula* cons = conclusion.secondDecomposition;
-    
-    GLDedNode* assumptionNode = [GLDedNode infer:GLInference_AssumptionDE formula:ant withNodes:nil];
-    
-//    [self.logDelegate logNote:[NSString stringWithFormat:@"Opening subproof for CPDE to prove %@", conclusion] deduction:self];
-    GLDeduction* subproof = [self subProofWithAssumption:assumptionNode];
-        
-    GLDedNode* minorConc = [subproof proveHard:cons];
-    if (minorConc) {
-        GLDedNode* concNode = [GLDedNode infer:GLInference_ConditionalProofDE formula:conclusion withNodes:@[assumptionNode, minorConc]];
-        [concNode setSubProof:subproof];
-        [concNode dischargeDependency:assumptionNode];
+here:;
+    if (conc1Node && conc2Node) {
+        GLDedNode* concNode = [GLDedNode infer:GLInference_DisjunctionElim formula:conclusion withNodes:@[node, assumption1, conc1Node, assumption2, conc2Node]];
+        [self appendNode:concNode];
         return concNode;
+    }else{
+        [self removeNodesFromIndex:index];
+        return nil;
     }
-    return nil;
 }
+
+
 
 //---------------------------------------------------------------------------------------------------------
 //      Reductio
@@ -396,28 +385,33 @@
     
 //    [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting reductio on %@ to prove %@. The candidate formulas are %@", negConc, conclusion, formulasForReduction] deduction:self];
     
-    GLDeduction* subProof = [self subProofWithAssumption:assumption];
-    
     for (NSInteger i=0; i<formulasForReduction.count; i++) {
         GLFormula* f1 = formulasForReduction[i];
         GLFormula* f2 = [f1.class makeNegation:f1];
+        
+        GLDeductionIndex index = [self currentIndex];
+        [self subProofWithAssumption:assumption];
         
 //        if ([self containsFormula:f1] || [self containsFormula:f2]) continue;
         
 //        [self.logDelegate logNote:[NSString stringWithFormat:@"We first try to prove %@ before attempting %@", f1, f2] deduction:self];
         
-        GLDedNode* cj1 = [subProof proveHard:f1];
-        if (!cj1) continue;
+        GLDedNode* cj1 = [self proveHard:f1];
+        if (!cj1){
+            [self removeNodesFromIndex:index];
+            continue;
+        }
         
 //        [self.logDelegate logNote:[NSString stringWithFormat:@"We have proven %@ for reductio, now we try to prove %@", f1, f2] deduction:self];
         
-        GLDedNode* cj2 = [subProof proveHard:f2];
-        if (!cj2) continue;
+        GLDedNode* cj2 = [self proveHard:f2];
+        if (!cj2) {
+            [self removeNodesFromIndex:index];
+            continue;
+        }
         
         GLFormula* negAssumption = [negConc.class makeNegationStrict:negConc];
         GLDedNode* negAssNode = [GLDedNode infer:GLInference_ReductioAA formula:negAssumption withNodes:@[assumption, cj1, cj2]];
-        [negAssNode setSubProof:subProof];
-        [negAssNode dischargeDependency:assumption];
         [self appendNode:negAssNode];
         return [self proveSoft:conclusion];
     }

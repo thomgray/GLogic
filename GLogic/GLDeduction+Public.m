@@ -6,12 +6,10 @@
 //  Copyright © 2016 Thomas Gray. All rights reserved.
 //
 
-#import "GLDeduction(Public).h"
+#import "GLDeduction+Public.h"
 #import "GLDeduction+InferenceHard.h"
 
 @interface GLDeduction (PublicPrivate)
-
--(NSArray<GLDedNode*>*)deductionSequenceMerged;
 
 +(NSArray<NSString*>*)stringsForDependencies:(NSArray<GLDedNode*>*)deduction;
 +(NSArray<NSString*>*)stringsForInferences:(NSArray<GLDedNode*>*)deduction;
@@ -50,7 +48,7 @@
 -(void)tidyDeductionIncludingFormulas:(NSArray<GLFormula *> *)forms{
     NSMutableArray<GLDedNode*>* nodes = [[NSMutableArray alloc]initWithCapacity:forms.count];
     for (NSInteger i=0; i<forms.count; i++) {
-        GLDedNode* node = [self findNodeInSequence:forms[i]];
+        GLDedNode* node = [self findAvailableNode:forms[i]];
         if (node) [nodes addObject:node];
     }
     if (nodes.count) {
@@ -82,7 +80,7 @@
  */
 -(NSString *)toString{
     NSMutableString* out = [[NSMutableString alloc]init];
-    NSArray<GLDedNode*>* linearSequence = [self deductionSequenceMerged];
+    NSArray<GLDedNode*>* linearSequence = self.sequence;
     NSArray<NSString*>* dependencies = [GLDeduction stringsForDependencies:linearSequence];
     NSArray<NSString*>* formulas = [GLDeduction stringsForFormulas:linearSequence];
     NSArray<NSString*>* inferences = [GLDeduction stringsForInferences:linearSequence];
@@ -241,24 +239,6 @@
     }
     
     return [NSString stringWithString:out];
-}
-
-/*!
- *  Returns a single array merging all subproofs into a single deduction in the required order. <p/>
- *  For any node in the deduction with a subproof, the suproof is incorporated into the deduction just before the node.<p/> Node indexes in the array now represent:<br/> Line Number - 1.
- *
- *  @return An GLDedNode * array merging all subproofs in the currrent deduction in the correct order.
- */
--(NSArray<GLDedNode*> *)deductionSequenceMerged{
-    NSMutableArray* out = [[NSMutableArray alloc]init];
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[i];
-        if (node.subProof) {
-            [out addObjectsFromArray:[node.subProof deductionSequenceMerged]];
-        }
-        [out addObject:node];
-    }
-    return out;
 }
 
 

@@ -10,7 +10,7 @@
 
 @interface GLDeduction (InferenceSoftPrivate)
 
--(GLDedNode*)infer_Soft_CPDE:(GLFormula*)conclusion;
+//-(GLDedNode*)infer_Soft_CPDE:(GLFormula*)conclusion;
 
 @end
 
@@ -29,7 +29,7 @@
 -(GLDedNode *)proveSoftSafe:(GLFormula *)conclusion{
     GLDedNode* out;
     
-    if ((out=[self findNodeInSequence:conclusion])) {}
+    if ((out=[self findAvailableNode:conclusion])) {}
     else if ((out=[self infer_Soft_Generatives:conclusion])){}
     else if ((out=[self infer_Soft_BI:conclusion])){}
     else if ((out=[self infer_Soft_CI:conclusion])){}
@@ -52,7 +52,9 @@
     GLDedNode* cj1Node;
     GLDedNode* cj2Node;
     if ((cj1Node=[self proveSoftSafe:cj1]) && (cj2Node=[self proveSoftSafe:cj2])) {
-        return [self append:conclusion rule:GLInference_ConjunctionIntro dependencies:@[cj1Node, cj2Node]];
+        GLDedNode* out = [GLDedNode infer:GLInference_ConjunctionIntro formula:conclusion withNodes:@[cj1Node, cj2Node]];
+        [self appendNode:out];
+        return out;
     }else return nil;
 }
 
@@ -62,7 +64,9 @@
     GLFormula* dj2 = [conclusion getDecomposition:1];
     GLDedNode* djNode;
     if ((djNode=[self proveSoftSafe:dj1]) || (djNode=[self proveSoftSafe:dj2])) {
-        return [self append:conclusion rule:GLInference_DisjunctionIntro dependencies:@[djNode]];
+        GLDedNode* concNode = [GLDedNode infer:GLInference_DisjunctionIntro formula:conclusion withNodes:@[djNode]];
+        [self appendNode:concNode];
+        return concNode;
     }else return nil;
 }
 
@@ -71,7 +75,9 @@
     GLFormula* dne = [conclusion getDecompositionAtNode:@[@0,@0]];
     GLDedNode* dneNode = [self proveSoftSafe:dne];
     if (dneNode) {
-        return [self append:conclusion rule:GLInference_DNI dependencies:@[dneNode]];
+        GLDedNode* concNode = [GLDedNode infer:GLInference_DNI formula:conclusion withNodes:@[dneNode]];
+        [self appendNode:concNode];
+        return concNode;
     }else return nil;
 }
 
@@ -81,31 +87,39 @@
     GLFormula* antecedent = [conclusion getDecomposition:0];
     GLFormula* consequent = [conclusion getDecomposition:1];
     GLDedNode* assumptionNode = [GLDedNode infer:GLInference_AssumptionCP formula:antecedent withNodes:nil];
-    GLDeduction* subproof = [self subProofWithAssumption:assumptionNode];
-    GLDedNode* minorConcNode = [subproof proveSoftSafe:consequent];
+
+    [self subProofWithAssumption:assumptionNode];
+    GLDedNode* minorConcNode = [self proveSoftSafe:consequent];
+    
     if (minorConcNode) {
-        GLDedNode* concNode = [GLDedNode infer_CP:assumptionNode minorConc:minorConcNode];
-        [concNode setSubProof:subproof];
+        GLDedNode* concNode = [GLDedNode infer:GLInference_ConditionalProof formula:conclusion withNodes:@[assumptionNode, minorConcNode]];
         [self appendNode:concNode];
         return concNode;
-    }else return nil;
+    }else{
+        [self removeNodesFrom:assumptionNode];
+        return nil;
+    }
 }
 
--(GLDedNode *)infer_Soft_CPDE:(GLFormula *)conclusion{
-    if (!conclusion.isConditional) return nil;
-    GLFormula* antecedent = [conclusion getDecomposition:0];
-    GLFormula* consequent = [conclusion getDecomposition:1];
-    GLDedNode* assumptionNode = [GLDedNode infer:GLInference_AssumptionDE formula:antecedent withNodes:nil];
-    GLDeduction* subproof = [self subProofWithAssumption:assumptionNode];
-    GLDedNode* minorConcNode = [subproof proveSoftSafe:consequent];
-    if (minorConcNode) {
-        GLDedNode* concNode = [GLDedNode infer:GLInference_ConditionalProofDE formula:conclusion withNodes:@[assumptionNode, minorConcNode]];
-        [concNode dischargeDependency:assumptionNode];
-        [concNode setSubProof:subproof];
+//-(GLDedNode *)infer_Soft_CPDE:(GLFormula *)conclusion{
+//    if (!conclusion.isConditional) return nil;
+//    GLFormula* antecedent = [conclusion getDecomposition:0];
+//    GLFormula* consequent = [conclusion getDecomposition:1];
+//    GLDedNode* assumptionNode = [GLDedNode infer:GLInference_AssumptionDE formula:antecedent withNodes:nil];
+//    [self stepUp];
+//    [self appendNode:assumptionNode];
+//    GLDedNode* minorConcNode = [self proveSoftSafe:consequent];
+//    [self stepDown];
+//    
+//    if (minorConcNode) {
+//        GLDedNode* concNode = [GLDedNode infer:GLInference_ConditionalProofDE formula:conclusion withNodes:@[assumptionNode, minorConcNode]];
 //        [self appendNode:concNode];
-        return concNode;
-    }else return nil;
-}
+//        return concNode;
+//    }else {
+//        [self removeNodesFrom:assumptionNode];
+//        return nil;
+//    }
+//}
 
 -(GLDedNode*)infer_Soft_BI:(GLFormula *)conclusion{
     if (!conclusion.isBiconditional) return nil;
@@ -116,7 +130,9 @@
     GLDedNode* conditional1Node;
     GLDedNode* conditional2Node;
     if ((conditional1Node=[self proveSoftSafe:conditional1]) && (conditional2Node=[self proveSoftSafe:conditional2])) {
-        return [self append:conclusion rule:GLInference_BiconditionalIntro dependencies:@[conditional1Node, conditional2Node]];
+        GLDedNode* concNode = [GLDedNode infer:GLInference_BiconditionalIntro formula:conclusion withNodes:@[conditional1Node, conditional2Node]];
+        [self appendNode:concNode];
+        return concNode;
     }else return nil;
 }
 
@@ -126,30 +142,32 @@
 #pragma mark Deconstructive Inferences
 
 -(GLDedNode *)infer_Soft_Generatives:(GLFormula *)conclusion{
-    GLDeduction* subproof = [self tempProof];
+    GLDeductionIndex index= [self currentIndex];
     BOOL repeat;
     do {
         repeat = FALSE;
-        repeat = [subproof infer_Deconstructive_BE] || repeat;
-        repeat = [subproof infer_Deconstructive_CE] || repeat;
-        repeat = [subproof infer_Deconstructive_DNE] || repeat;
-        repeat = [subproof infer_Deconstructive_MP] || repeat;
-        repeat = [subproof infer_Deconstructive_MT] || repeat;
+        repeat = [self infer_Deconstructive_BE] || repeat;
+        repeat = [self infer_Deconstructive_CE] || repeat;
+        repeat = [self infer_Deconstructive_DNE] || repeat;
+        repeat = [self infer_Deconstructive_MP] || repeat;
+        repeat = [self infer_Deconstructive_MT] || repeat;
     } while (repeat);
     
-    GLDedNode* concNode = [subproof findNodeInSequence:conclusion];
+    GLDedNode* concNode = [self findAvailableNode:conclusion];
 
     if (concNode) {
-        [subproof tidyDeductionIncludingNodes:@[concNode]];
-        [self assimilateDeduction:subproof fromLine:0];
         return concNode;
-    }else return nil;
+    }else{
+        [self removeNodesFromIndex:index];
+        return nil;
+    }
 }
 
 -(BOOL)infer_Deconstructive_BE{
     BOOL out = FALSE;
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[i];
+    NSArray<GLDedNode*>* availables = [self availableNodes];
+    for (NSInteger i=0; i<availables.count; i++) {
+        GLDedNode* node = availables[i];
         if (node.formula.isBiconditional) {
             GLFormula* cd1 = [node.formula.class makeConditional:node.formula.firstDecomposition f2:node.formula.secondDecomposition];
             GLFormula* cd2 = [node.formula.class makeConditional:node.formula.secondDecomposition f2:node.formula.firstDecomposition];
@@ -170,8 +188,9 @@
 
 -(BOOL)infer_Deconstructive_CE{
     BOOL out = FALSE;
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[i];
+    NSArray<GLDedNode*>* availables = [self availableNodes];
+    for (NSInteger i=0; i<availables.count; i++) {
+        GLDedNode* node = availables[i];
         if (node.formula.isConjunction) {
             if ([self isInformedBy:node.formula.firstDecomposition]) {
                 GLDedNode* cj1 = [GLDedNode infer:GLInference_ConjunctionElim formula:node.formula.firstDecomposition withNodes:@[node]];
@@ -189,8 +208,9 @@
 }
 -(BOOL)infer_Deconstructive_DNE{
     BOOL out = FALSE;
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[i];
+    NSArray<GLDedNode*>* availables = [self availableNodes];
+    for (NSInteger i=0; i<availables.count; i++) {
+        GLDedNode* node = availables[i];
         if (node.formula.isDoubleNegation) {
             GLFormula* f = [node.formula getDecompositionAtNode:@[@0,@0]];
             if ([self isInformedBy:f]) {
@@ -204,13 +224,14 @@
 }
 -(BOOL)infer_Deconstructive_MP{
     BOOL out = FALSE;
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[i];
+    NSArray<GLDedNode*>* availables = [self availableNodes];
+    for (NSInteger i=0; i<availables.count; i++) {
+        GLDedNode* node = availables[i];
         if (node.formula.isConditional) {
             GLFormula* ant = node.formula.firstDecomposition;
             GLFormula* cons = node.formula.secondDecomposition;
             GLDedNode* antNode;
-            if ([self isInformedBy:cons] && (antNode=[self findNodeInSequence:ant])) {
+            if ([self isInformedBy:cons] && (antNode=[self findAvailableNode:ant])) {
                 GLDedNode* consNode = [GLDedNode infer:GLInference_ModusPonens formula:cons withNodes:@[node, antNode]];
                 [self appendNode:consNode];
                 out = TRUE;
@@ -222,15 +243,16 @@
 
 -(BOOL)infer_Deconstructive_MT{
     BOOL out = FALSE;
-    for (NSInteger i=0; i<self.sequence.count; i++) {
-        GLDedNode* node = self.sequence[0];
+    NSArray<GLDedNode*>* availables = [self availableNodes];
+    for (NSInteger i=0; i<availables.count; i++) {
+        GLDedNode* node = availables[i];
         if (node.formula.isConditional) {
             GLFormula* ant = node.formula.firstDecomposition;
             GLFormula* cons = node.formula.secondDecomposition;
             GLFormula* negAnt = [ant.class makeNegationStrict:ant];
             GLFormula* negCons = [cons.class makeNegationStrict:cons];
             GLDedNode* negConsNode;
-            if ([self isInformedBy:negAnt] && (negConsNode=[self findNodeInSequence:negCons])) {
+            if ([self isInformedBy:negAnt] && (negConsNode=[self findAvailableNode:negCons])) {
                 GLDedNode* negAntNode = [GLDedNode infer:GLInference_ModusTollens formula:negAnt withNodes:@[node, negConsNode]];
                 [self appendNode:negAntNode];
                 out = TRUE;
@@ -246,30 +268,40 @@
 #pragma mark Non Safe Inferences
 
 -(GLDedNode *)infer_Soft_DE:(GLFormula *)conclusion{
-    NSArray<GLDedNode*>* disjunctions = [self getNodesWithCriterion:^BOOL(GLDedNode *node) {
+    NSArray<GLDedNode*>* disjunctions = [self availableNodesWithCriterion:^BOOL(GLDedNode *node) {
         return node.formula.isDisjunction;
     }];
     for (NSInteger i=0; i<disjunctions.count; i++) {
         GLDedNode* djNode = disjunctions[i];
+        
         GLFormula* dj1 = djNode.formula.firstDecomposition;
         GLFormula* dj2 = djNode.formula.secondDecomposition;
-        GLFormula* cond1 = [dj1.class makeConditional:dj1 f2:conclusion];
-        GLFormula* cond2 = [dj2.class makeConditional:dj2 f2:conclusion];
         
-        GLDeduction* subproof = [self subProofWithAssumption:nil];
+        GLDeductionIndex index = [self currentIndex];
         
-        GLDedNode* cond1Node = [subproof infer_Soft_CPDE:cond1];
-        if (!cond1Node) continue;
+        GLDedNode* assumption1 = [GLDedNode infer:GLInference_AssumptionDE formula:dj1 withNodes:nil];
+        [self subProofWithAssumption:assumption1];
+        GLDedNode* conc1 = [self proveSoftSafe:conclusion];
         
-        GLDedNode* cond2Node = [subproof infer_Soft_CPDE:cond2];
-        if (!cond2Node) continue;
+        if (!conc1) {
+            [self removeNodesFromIndex:index];
+            continue;
+        }
         
-        [subproof appendNode:cond1Node];
-        [subproof appendNode:cond2Node];
+        [self stepDown];
+        GLDedNode* assumption2 = [GLDedNode infer:GLInference_AssumptionDE formula:dj2 withNodes:nil];
+        [self subProofWithAssumption:assumption2];
+        GLDedNode* conc2 = [self proveSoftSafe:conclusion];
         
-        GLDedNode* concNode = [self append:conclusion rule:GLInference_DisjunctionElim dependencies:@[djNode, cond1Node, cond2Node]];
-        [concNode setSubProof:subproof];
-        return concNode;        
+        if (conc2) {
+            GLDedNode * concNode = [GLDedNode infer:GLInference_DisjunctionElim formula:conclusion withNodes:@[djNode, assumption1, conc1, assumption2, conc2]];
+            [concNode dischargeDependency:assumption1];
+            [concNode dischargeDependency:assumption2];
+            [self appendNode:concNode];
+            return concNode;
+        }else{
+            [self removeNodesFromIndex:index];
+        }
     }
     return nil;
 }

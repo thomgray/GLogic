@@ -8,9 +8,6 @@
 
 #import "LogEvent.h"
 
-NS_INLINE NSString* IndentString(NSInteger i){
-    return [@"" stringByPaddingToLength:i*3 withString:@" | " startingAtIndex:0];
-}
 
 @implementation LogEvent
 
@@ -25,7 +22,7 @@ NS_INLINE NSString* IndentString(NSInteger i){
 }
 
 -(NSString *)description{
-    NSMutableString* out = [[NSMutableString alloc]initWithString:IndentString(_deduction.tier)];
+    NSMutableString* out = [[NSMutableString alloc]init];
     NSArray<NSString*>* keys = [LogEvent establishedKeys];
     for (NSInteger i=0; i<keys.count; i++) {
         id value = [_info objectForKey:keys[i]];
