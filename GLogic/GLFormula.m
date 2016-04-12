@@ -137,6 +137,25 @@
     return out;
 }
 
+/**
+ *  Returns the set of all decompsitions of all parameter formulas
+ *
+ *  @param formulas The formulas to be decomposed
+ *
+ *  @return The decomposition of the parameter formulas
+ */
++(NSSet<GLFormula *> *)getAllDecompositions:(NSArray<GLFormula *> *)formulas{
+    NSMutableSet<GLFormula*>* out = [[NSMutableSet alloc]init];
+    for (NSInteger i=0; i<formulas.count; i++) {
+        [out unionSet:formulas[i].getAllDecompositions];
+    }
+    return [[NSSet alloc]initWithSet:out];
+}
+
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark IsEqual
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
 -(BOOL)isEqual:(id)object{
     if ([object isKindOfClass:[GLFormula class]]) {
         GLFormula* f = (GLFormula*)object;

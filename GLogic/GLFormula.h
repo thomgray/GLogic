@@ -39,7 +39,9 @@
 -(instancetype)secondDecomposition;
 -(instancetype)getDecomposition:(NSInteger)i;
 -(instancetype)getDecompositionAtNode:(NSArray<NSNumber*>*)node;
+
 -(NSSet<GLFormula*>*)getAllDecompositions;
++(NSSet<GLFormula*>*)getAllDecompositions:(NSArray<GLFormula*>*)formulas;
 
 -(BOOL)isPrime;
 -(BOOL)isComposite;

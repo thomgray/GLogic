@@ -53,8 +53,6 @@
 
     else {NSLog(@"Didn't prove it");}
     
-    //Think about directing the order of inference depending on the connective;
-    
     return concNode;
 }
 
@@ -161,7 +159,7 @@
     GLDedNode* concNode = nil;
     GLDedNode* assumption = [GLDedNode infer:GLInference_AssumptionCP formula:ant withNodes:nil];
 
-    [self subProofWithAssumption:assumption];
+    [self appendNode:assumption];
     GLDedNode* minorConcNode = [self proveHard:cons];
     
     if (minorConcNode) {
@@ -262,8 +260,6 @@
 -(GLDedNode *)infer_Hard_MP:(GLFormula *)conclusion{
     if (![self mayAttempt:GLInference_ModusPonens forConclusion:conclusion]) return nil;
     
-    NSLog(@"Doing MP for %@", conclusion);
-    
     [_checkList addRestriction:conclusion];
     
     NSArray<GLFormula*>* conditionals = [self formulasForMPWithConclusion:conclusion];
@@ -343,13 +339,14 @@
     GLDedNode* assumption2;
     GLDedNode* assumption1 = [GLDedNode infer:GLInference_AssumptionDE formula:dj1 withNodes:nil];
     
-    [self subProofWithAssumption:assumption1];
+    [self appendNode:assumption1];
+    
     GLDedNode* conc1Node = [self proveHard:conclusion];
     [self stepDown];
     if (!conc1Node) goto here;
     
     assumption2 = [GLDedNode infer:GLInference_AssumptionDE formula:dj2 withNodes:nil];
-    [self subProofWithAssumption:assumption2];
+    [self appendNode:assumption2];
     conc2Node = [self proveHard:conclusion];
     
 here:;
@@ -382,26 +379,18 @@ here:;
     
     NSArray<GLFormula*>* formulasForReduction = [self formulasForReductio];
     
-//    [self.logDelegate logNote:[NSString stringWithFormat:@"Attempting reductio on %@ to prove %@. The candidate formulas are %@", negConc, conclusion, formulasForReduction] deduction:self];
-    
     for (NSInteger i=0; i<formulasForReduction.count; i++) {
         GLFormula* f1 = formulasForReduction[i];
         GLFormula* f2 = [f1.class makeNegation:f1];
         
         GLDeductionIndex index = [self currentIndex];
-        [self subProofWithAssumption:assumption];
-        
-//        if ([self containsFormula:f1] || [self containsFormula:f2]) continue;
-        
-//        [self.logDelegate logNote:[NSString stringWithFormat:@"We first try to prove %@ before attempting %@", f1, f2] deduction:self];
+        [self appendNode:assumption];
         
         GLDedNode* cj1 = [self proveHard:f1];
         if (!cj1){
             [self removeNodesFromIndex:index];
             continue;
         }
-        
-//        [self.logDelegate logNote:[NSString stringWithFormat:@"We have proven %@ for reductio, now we try to prove %@", f1, f2] deduction:self];
         
         GLDedNode* cj2 = [self proveHard:f2];
         if (!cj2) {

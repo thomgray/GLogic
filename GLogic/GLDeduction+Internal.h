@@ -33,19 +33,11 @@ typedef NSInteger GLDeductionIndex;
 -(void)removeNodesFrom:(GLDedNode*)node;
 -(void)removeNodesFromIndex:(GLDeductionIndex)index;
 
--(void)addReiteration:(NSArray<GLDedNode*>*)reiteration;
--(void)subProofWithAssumption:(GLDedNode*)assumption;
+//-(void)addReiteration:(NSArray<GLDedNode*>*)reiteration;
 
 -(void)tidyDeductionIncludingNodes:(NSArray<GLDedNode*>*)nodes;
 
-//phase these out
--(NSSet<GLFormula*>*)getAllFormulaDecompositions;
--(NSSet<GLFormula*>*)getAllFormulaDecompositions_includingNegations:(BOOL)includeNegations includingConclusion:(BOOL)includeConclusion;
--(NSSet<GLFormula*>*)getAllFormulaDecompositionsAndTheirNegations;
-+(NSSet<GLFormula*>*)getAllFormulaDecompositions:(NSArray<GLFormula*>*)formulas;
-+(NSSet<GLFormula*>*)getAllFormulasAndTheirNegations:(NSSet<GLFormula*>*)formulas;
 
-//keep these
 -(NSMutableSet<GLFormula*>*)allFormulaDecompositions;
 -(NSMutableSet<GLFormula*>*)allFormulaDecompositionsIncludingConclusion;
 

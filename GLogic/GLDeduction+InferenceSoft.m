@@ -8,12 +8,6 @@
 
 #import "GLDeduction+InferenceSoft.h"
 
-@interface GLDeduction (InferenceSoftPrivate)
-
-//-(GLDedNode*)infer_Soft_CPDE:(GLFormula*)conclusion;
-
-@end
-
 @implementation GLDeduction (InferenceSoft)
 
 -(GLDedNode *)proveSoft:(GLFormula *)conclusion{
@@ -88,7 +82,7 @@
     GLFormula* consequent = [conclusion getDecomposition:1];
     GLDedNode* assumptionNode = [GLDedNode infer:GLInference_AssumptionCP formula:antecedent withNodes:nil];
 
-    [self subProofWithAssumption:assumptionNode];
+    [self appendNode:assumptionNode];
     GLDedNode* minorConcNode = [self proveSoftSafe:consequent];
     
     if (minorConcNode) {
@@ -100,26 +94,6 @@
         return nil;
     }
 }
-
-//-(GLDedNode *)infer_Soft_CPDE:(GLFormula *)conclusion{
-//    if (!conclusion.isConditional) return nil;
-//    GLFormula* antecedent = [conclusion getDecomposition:0];
-//    GLFormula* consequent = [conclusion getDecomposition:1];
-//    GLDedNode* assumptionNode = [GLDedNode infer:GLInference_AssumptionDE formula:antecedent withNodes:nil];
-//    [self stepUp];
-//    [self appendNode:assumptionNode];
-//    GLDedNode* minorConcNode = [self proveSoftSafe:consequent];
-//    [self stepDown];
-//    
-//    if (minorConcNode) {
-//        GLDedNode* concNode = [GLDedNode infer:GLInference_ConditionalProofDE formula:conclusion withNodes:@[assumptionNode, minorConcNode]];
-//        [self appendNode:concNode];
-//        return concNode;
-//    }else {
-//        [self removeNodesFrom:assumptionNode];
-//        return nil;
-//    }
-//}
 
 -(GLDedNode*)infer_Soft_BI:(GLFormula *)conclusion{
     if (!conclusion.isBiconditional) return nil;
@@ -280,7 +254,7 @@
         GLDeductionIndex index = [self currentIndex];
         
         GLDedNode* assumption1 = [GLDedNode infer:GLInference_AssumptionDE formula:dj1 withNodes:nil];
-        [self subProofWithAssumption:assumption1];
+        [self appendNode:assumption1];
         GLDedNode* conc1 = [self proveSoftSafe:conclusion];
         
         if (!conc1) {
@@ -290,13 +264,11 @@
         
         [self stepDown];
         GLDedNode* assumption2 = [GLDedNode infer:GLInference_AssumptionDE formula:dj2 withNodes:nil];
-        [self subProofWithAssumption:assumption2];
+        [self appendNode:assumption2];
         GLDedNode* conc2 = [self proveSoftSafe:conclusion];
         
         if (conc2) {
             GLDedNode * concNode = [GLDedNode infer:GLInference_DisjunctionElim formula:conclusion withNodes:@[djNode, assumption1, conc1, assumption2, conc2]];
-//            [concNode dischargeDependency:assumption1];
-//            [concNode dischargeDependency:assumption2];
             [self appendNode:concNode];
             return concNode;
         }else{

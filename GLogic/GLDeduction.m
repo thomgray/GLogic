@@ -65,7 +65,7 @@
 #pragma mark Getting / Querying
 
 /**
-*  Checks the ENTIRE deduction for a node with the parameter formula, returning that node if it exists
+*  Checks the ENTIRE deduction for a node with the parameter formula, returning that node if it exists. This does not check for availability, hence should not be used for internal inferential purposes
 *
 *  @param f The formula in question
 *
