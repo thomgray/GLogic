@@ -17,6 +17,7 @@ typedef NSInteger GLDeductionIndex;
 
 -(BOOL)isInformedBy:(GLFormula*)f;
 -(BOOL)mayAttempt:(GLInferenceRule)rule forConclusion:(GLFormula*)conclusion;
+-(BOOL)mayAttempt:(GLInferenceRule)rule conclusion:(GLFormula *)conclusion;
 
 -(GLDedNode*)findAvailableNode:(GLFormula*)fomula;
 -(NSArray<GLDedNode*>*)availableNodes;
@@ -33,8 +34,6 @@ typedef NSInteger GLDeductionIndex;
 -(void)removeNodesFrom:(GLDedNode*)node;
 -(void)removeNodesFromIndex:(GLDeductionIndex)index;
 
-//-(void)addReiteration:(NSArray<GLDedNode*>*)reiteration;
-
 -(void)tidyDeductionIncludingNodes:(NSArray<GLDedNode*>*)nodes;
 
 
@@ -43,6 +42,7 @@ typedef NSInteger GLDeductionIndex;
 
 -(NSArray<GLFormula*>*)formulasForReductio;
 -(NSArray<GLFormula*>*)formulasForMPWithConclusion:(GLFormula*)conclusion;
+-(NSArray<GLFormula*>*)formulasForMTWithConclusion:(GLFormula *)conclusion;
 -(NSArray<GLFormula*>*)formulasForCEWithConclusion:(GLFormula*)conclusion;
 -(NSArray<GLFormula*>*)formulasForDE;
 

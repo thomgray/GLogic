@@ -18,5 +18,6 @@
 +(NSString*)sequentString:(NSArray<GLFormula*>*)premises conclusion:(GLFormula*)conc;
 
 -(BOOL)prove:(GLFormula*)conclusion;
+-(BOOL)prove;
 
 @end

@@ -15,6 +15,7 @@
     
     if ((out=[self proveSoftSafe:conclusion])) {}
     else if ((out=[self infer_Soft_DE:conclusion])){}
+    else if ((out=[self infer_Soft_RAA:conclusion])){}
     
     return out;
 }
@@ -275,6 +276,41 @@
             [self removeNodesFromIndex:index];
         }
     }
+    return nil;
+}
+
+/**
+ *  Assumes the negation of the conclusion, then iterates the avaible nodes and attemps a soft-safe proof of the negation of each node. If successful, returns the appended conclusion node
+ *
+ *  @param conclusion The desired conclusion
+ *
+ *  @return The conclusion node if inferred, nil otherwise
+ */
+-(GLDedNode *)infer_Soft_RAA:(GLFormula *)conclusion{
+    GLFormula* negConc = [conclusion.class makeNegation:conclusion];
+    GLDedNode* assumption = [GLDedNode infer:GLInference_AssumptionRAA formula:negConc withNodes:nil];
+    [self appendNode:assumption];
+    GLDeductionIndex index = [self currentIndex];
+    
+    NSArray<GLDedNode*>* nodes = [self availableNodes];
+    for (NSInteger i=0; i<nodes.count; i++) {
+        GLDedNode* node = nodes[i];
+        GLFormula* negation = [node.formula.class makeNegationStrict:node.formula];
+        GLDedNode* negNode = [self proveSoftSafe:negation];
+        
+        if (negNode) {
+            GLFormula* negnegConc = [negConc.class makeNegationStrict:negConc];
+            GLDedNode* concNode = [GLDedNode infer:GLInference_ReductioAA formula:negnegConc withNodes:@[node, negNode]];
+            [self appendNode:concNode];
+            
+            if (![concNode.formula isEqual:conclusion]) {
+                concNode = [GLDedNode infer:GLInference_DNE formula:conclusion withNodes:@[concNode]];
+                [self appendNode:concNode];
+            }
+            return concNode;
+        }
+    }
+    [self removeNodesFromIndex:index];
     return nil;
 }
 

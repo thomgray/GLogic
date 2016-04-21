@@ -13,9 +13,10 @@
 #import "LogAnalysis.h"
 #import <GLogic/GLDeduction+Internal.h>
 #import <GLogic/GLDeduction+InferenceSoft.h>
-#import <GLogic/GLDeduction+InferenceHard.h>
+#import <GLogic/GLDeduction+InferenceStack.h>
 #import <GLogic/DeductionLogger.h>
 
+#import "AllocationTestObject.h"
 
 typedef CustomFormula Formula;
 
@@ -94,7 +95,11 @@ typedef CustomFormula Formula;
 //---------------------------------------------------------------------------------------------------------
 #pragma mark Tests
 
--(void)test1{
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark Easy Tests
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
+-(void)test_PcQ_RcS_QcR____PcS{
     NSArray<Formula*>* prems = @[   _PcQ,
                                     _RcS,
                                     [Formula makeConditional:_Q f2:_R]
@@ -105,7 +110,7 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
--(void)testDE2{
+-(void)testDE_PvQ_PcR_QcR___R{
     NSArray<Formula*>* prems = @[
                                  _PvQ, [Formula makeConditional:_P f2:_R], [Formula makeConditional:_Q f2:_R]
                                  ];
@@ -114,27 +119,13 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
--(void)testDedSeq{
-    [deduction addPremises:@[_PaQ
-                             ]];
-//    GLDedNode* assumption = [GLDedNode infer:GLInference_AssumptionCP formula:_P withNodes:nil];
-//    [deduction appendNode:assumption];
-//    GLDedNode* minorConc = [deduction findAvailableNode:_PaQ];
-    Formula* PcPaQ = [Formula makeConditional:_P f2:_PaQ];
-//    [deduction appendNode:[GLDedNode infer:GLInference_ConditionalProof formula:PcPaQ withNodes:@[assumption, minorConc]]];
-//    
-//    NSLog(@"%@", deduction);
-    [deduction setConclusion:PcPaQ];
-    [deduction proveHard:PcPaQ];
-    NSLog(@"%@", deduction);
-}
 
--(void)testPvnP{
+-(void)test_PvnP{
     [deduction setConclusion:[Formula makeDisjunction:_P f2:_nP]];
     [self proveEtc];
 }
 
--(void)test2{
+-(void)test_PaQcR___PcQcR{
     NSArray<Formula*>* prems = @[
                              [Formula makeConditional:_PaQ f2:_R],
                              ];
@@ -145,7 +136,18 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
--(void)testUnprovable2{
+-(void)test_PcQcQ_nP___Q{
+    Formula * p1 = [Formula makeConditional:_PcQ f2:_Q];
+    [deduction addPremises:@[p1, _nP]];
+    [deduction setConclusion:_Q];
+    [self proveEtc];
+}
+
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark Unprovable Tests
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
+-(void)testUnprovable_PvQvRvS___T{
     Formula* PvQvRvS = [Formula makeDisjunction:_PvQ f2:_R];
 //    PvQvRvS = [Formula makeDisjunction:PvQvRvS f2:_S];
     [deduction addPremises:@[PvQvRvS]];
@@ -157,7 +159,7 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
--(void)testUnprovable{
+-(void)testUnprovable_PcQ_R___S{
     [deduction addPremises:@[_PcQ,
                              _R
                              ]];
@@ -165,17 +167,19 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
--(void)testVeryHard{
-    Formula* antecedent = _PcQ;
-    antecedent = [Formula makeBiconditional:antecedent f2:_RaS];
-    antecedent = [Formula makeNegationStrict:antecedent];
-    Formula* consequent = [antecedent restrictToDisjunctions];
-    Formula* conclusion = [Formula makeConditional:antecedent f2:consequent];
-    [deduction setConclusion:conclusion];
+-(void)testUnprovable_PvQ_QcS___S{
+    [deduction addPremises:@[_PvQ, [Formula makeConditional:_Q f2:_S]]];
+    [deduction setConclusion:_S];
     [self proveEtc];
 }
 
--(void)testDE{
+
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark Relatively Hard Tests
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
+
+-(void)testDE_PvQvR_RcS_PcS___SvQ{
     Formula* PvQvR = [Formula makeDisjunction:_PvQ f2:_R];
     
     Formula* RcS = _RcS;
@@ -187,9 +191,39 @@ typedef CustomFormula Formula;
     [self proveEtc];
 }
 
--(void)assertCorrectTiering{
 
+
+-(void)test_PvQ_nP___Q{
+    [deduction addPremises:@[_PvQ, _nP]];
+    [deduction setConclusion:_Q];
+    [self proveEtc];
 }
+
+-(void)test_PcRaS___nPvnnRvnS{
+    Formula * f = [Formula makeConditional:_P f2:_RaS];
+    Formula * g = [f restrictToDisjunctions];
+    
+    [deduction addPremises:@[f]];
+    [deduction setConclusion:g];
+    NSLog(@"%@", [deduction sequentString]);
+    [self proveEtc];
+}
+
+
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark Hard Tests
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
+-(void)testVeryHard{
+    Formula* antecedent = _PcQ;
+    antecedent = [Formula makeBiconditional:antecedent f2:_RaS];
+    antecedent = [Formula makeNegationStrict:antecedent];
+    Formula* consequent = [antecedent restrictToDisjunctions];
+    Formula* conclusion = [Formula makeConditional:antecedent f2:consequent];
+    [deduction setConclusion:conclusion];
+    [self proveEtc];
+}
+
 
 //---------------------------------------------------------------------------------------------------------
 //      Delegate Methods
@@ -214,6 +248,16 @@ typedef CustomFormula Formula;
     
     NSString* logString = [NSString stringWithFormat:@"%@\n\n%@", preample, dedString];
     [logString writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:nil];    
+}
+
+-(void)testDeallocation{
+    AllocationTestObject* testObject = [[AllocationTestObject alloc]init];
+    [testObject setString:@"Hello There"];
+    while (true) {
+        AllocationTestObject* anotherObject = [[AllocationTestObject alloc]init];
+        [anotherObject setString:@"Another Thing Here"];
+        [testObject setThing:anotherObject];
+    }
 }
 
 @end

@@ -12,7 +12,7 @@
 
 @class GLDeductionCheckList;
 @class GLDeduction;
-
+@class GLInference;
 
 //---------------------------------------------------------------------------------------------------------
 //      Log Delegate
@@ -34,6 +34,7 @@
 @interface GLDeduction : NSObject <NSCopying>{
     GLDeductionCheckList* _checkList;
     NSInteger _currentTier;
+    GLInference* _rootInference;
 }
 
 @property NSMutableArray<GLDedNode*>* sequence;

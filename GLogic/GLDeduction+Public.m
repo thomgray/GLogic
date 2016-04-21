@@ -7,7 +7,7 @@
 //
 
 #import "GLDeduction+Public.h"
-#import "GLDeduction+InferenceHard.h"
+#import "GLDeduction+InferenceStack.h"
 
 @interface GLDeduction (PublicPrivate)
 
@@ -33,11 +33,20 @@
  */
 -(BOOL)prove:(GLFormula *)conclusion{
     [self setConclusion:conclusion];
-    GLDedNode* concNode = [self proveHard:conclusion];
-    if (concNode) {
-        [self tidyDeductionIncludingNodes:@[concNode]];
+    return [self prove];
+}
+
+/**
+ *  Prove the conclusion. Will throw an exception at some point if the conclusion is not set
+ *
+ *  @return TRUE if the conclusion is proven, FALSE otherwise
+ */
+-(BOOL)prove{
+    [self proveHard:_rootInference];
+    if (_rootInference.isProven) {
+        [self tidyDeductionIncludingNodes:@[_rootInference.node]];
     }
-    return concNode!=nil;
+    return _rootInference.isProven;
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -45,6 +54,11 @@
 //---------------------------------------------------------------------------------------------------------
 #pragma mark Tidying
 
+/**
+ *  Removes nodes in the deduction if the parameter formulas are not dependent on those nodes
+ *
+ *  @param forms The formulas to be included in the deduction (as well as their dependent nodes)
+ */
 -(void)tidyDeductionIncludingFormulas:(NSArray<GLFormula *> *)forms{
     NSMutableArray<GLDedNode*>* nodes = [[NSMutableArray alloc]initWithCapacity:forms.count];
     for (NSInteger i=0; i<forms.count; i++) {
@@ -61,6 +75,16 @@
 //---------------------------------------------------------------------------------------------------------
 #pragma mark To String
 
+/**
+ *  Returns a string in the following format:
+ <ul>
+ <li>
+ P<sub>1</sub>, ... P<sub>N</sub> ⊢ Conclusion
+ </li>
+ </ul>
+ *
+ *  @return The string sequent for this deduction
+ */
 -(NSString *)sequentString{
     return [GLDeduction sequentString:self.premises conclusion:self.conclusion];
 }

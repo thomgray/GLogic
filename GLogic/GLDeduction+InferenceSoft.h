@@ -26,6 +26,7 @@
 -(GLDedNode*)infer_Soft_CP:(GLFormula*)conclusion;
 
 -(GLDedNode*)infer_Soft_DE:(GLFormula*)conclusion;
+-(GLDedNode*)infer_Soft_RAA:(GLFormula*)conclusion;
 
 //---------------------------------------------------------------------------------------------------------
 //      Deconstructive

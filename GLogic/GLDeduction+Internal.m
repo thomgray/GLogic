@@ -38,7 +38,31 @@
     return [_checkList mayAttempt:rule conclusion:conclusion];
 }
 
-
+-(BOOL)mayAttempt:(GLInferenceRule)rule conclusion:(GLFormula *)conclusion{
+    switch (rule) {
+        case GLInference_DNI:
+            if (!conclusion.isDoubleNegation) return FALSE;
+            break;
+        case GLInference_BiconditionalIntro:
+            if (!conclusion.isBiconditional) return FALSE;
+            break;
+        case GLInference_ConjunctionIntro:
+            if (!conclusion.isConjunction) return FALSE;
+            break;
+        case GLInference_DisjunctionIntro:
+            if (!conclusion.isDisjunction) return FALSE;
+            break;
+        case GLInference_ConditionalProof:
+            if (!conclusion.isConditional) return FALSE;
+            break;
+        case GLInference_BiconditionalElim:
+            if (!conclusion.isConditional) return FALSE;
+            break;
+        default:
+            break;
+    }
+    return [_checkList mayAttempt:rule conclusion:conclusion];
+}
 /*!
  *  Returns an array of nodes that are available from the current tier. No side effects
  *
@@ -192,40 +216,6 @@
     return nil;
 }
 
-///**
-//    Appends reiterations of the parameter nodes to this array. New GLDedNode instances are created for each node with identical formulas and <code>GLInference_Reiteration</code> inference rules. The inference nodes of the reiterations are the nodes which they reiterate.<p/>
-//    To be called on creating a subproof
-//    _text_
-//    I am adding this line, then I will build this project. If this is updated int he appledoc then I know something is going right in the build rules
-//    @sa subProofWithAssumption:
-// *
-// *  @param reiteration The nodes to be reiterated
-// */
-//-(void)addReiteration:(NSArray<GLDedNode *> *)reiteration{
-//    for (NSInteger i=0; i<reiteration.count; i++) {
-//        GLDedNode* node = reiteration[i];
-//        GLDedNode* reiteration = [GLDedNode infer:GLInference_Reiteration formula:node.formula withNodes:@[node]];
-//        [self appendNode:reiteration];
-//    }
-//}
-
-
-//
-///*!
-// Adds the nodes in the parameter deduction to this one starting at the specified index. Nodes are added only if they are not already present in the deduction sequence. <p/>
-// This method should be used when doing a temporary deduction. If that deduction is successful, tidy the deduction so that it only includes the necessary steps to the conclusion, then assimilate using this method. <p/>
-// When initialising deductions for temporary proofs, do not initialise with <code>subproofWithAssumption:</code>, instead, copy the present deduction sequence to the temporary deduction, and go from there.
-// @warning Use @c removeNodesFrom: and @c removeNodesFromIndex: instead of resorting to temp proofs. This is so that all our working stays in the same deduction, for easier recursion control and debugging
-// */
-//-(void)assimilateDeduction:(GLDeduction *)deduction fromLine:(NSInteger)line{
-//    for (NSInteger i=line; i<deduction.sequence.count; i++) {
-//        GLDedNode* node = deduction.sequence[i];
-//        if (![self.sequence containsObject:node]) {
-//            [self.sequence addObject:node];
-//        }
-//    }
-//}
-
 /**
  *  Iterates backwards through the deduction, retaining only nodes that:
  <ul><li>Are contained in the parameter <code>nodes</code> array <br/>OR</li>
@@ -245,19 +235,6 @@
     }
     [self setSequence:newSequence];
 }
-
-
-//-(instancetype)tempProof{
-//    GLDeduction* out = [[self.class alloc]init];
-//    [out setLogger:self.logger];
-//    
-//    [out setPremises:self.premises];
-//    [out setConclusion:self.conclusion];
-//    [out setSequence:[NSMutableArray arrayWithArray:self.sequence]];
-//    [out setCheckList:[_checkList copy]];
-//    return out;
-//}
-
 
 //--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
 #pragma mark Formula Decompositions
@@ -315,6 +292,22 @@
         return object.isConditional && [object.secondDecomposition isEqual:conclusion];
     }];
     NSArray<GLFormula*>* out = set.allObjects;
+    return [out sortedArrayUsingComparator:[self formulaInDeductionComparator]];
+}
+
+-(NSArray<GLFormula *> *)formulasForMTWithConclusion:(GLFormula *)conclusion{
+    NSMutableSet<GLFormula*>* set = [self allFormulaDecompositions];
+    set = [set subsetWithScheme:^BOOL(GLFormula *object) {
+        if (object.isConditional) {
+            GLFormula* antecedent = object.firstDecomposition;
+            if (conclusion.isNegation) {
+                return [conclusion.firstDecomposition isEqual:antecedent];
+            }else{
+                return antecedent.isNegation && [antecedent.firstDecomposition isEqual:conclusion];
+            }
+        }else return FALSE;
+    }];
+    NSArray<GLFormula*>* out = [set allObjects];
     return [out sortedArrayUsingComparator:[self formulaInDeductionComparator]];
 }
 

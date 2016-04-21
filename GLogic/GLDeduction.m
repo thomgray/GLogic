@@ -8,6 +8,7 @@
 
 #import "GLDeduction.h"
 #import "GLDeductionCheckList.h"
+#import "GLInference.h"
 
 @interface GLDeduction (Private)
 
@@ -19,13 +20,14 @@
 @implementation GLDeduction
 @synthesize sequence = _sequence;
 @synthesize premises = _premises;
+@synthesize conclusion = _conclusion;
 
 -(instancetype)init{
     self = [super init];
     if (self) {
         _sequence = [[NSMutableArray alloc]init];
         _checkList = [[GLDeductionCheckList alloc]init];
-        _currentTier = 0;
+        _currentTier = 0;    
     }
     return self;
 }
@@ -94,6 +96,17 @@
     return out;
 }
 
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark Setting
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
+-(void)setConclusion:(GLFormula *)conclusion{
+    _conclusion = conclusion;
+    _rootInference = [GLInference inferenceWithFormula:conclusion];
+}
+-(GLFormula *)conclusion{
+    return _conclusion;
+}
 
 //--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
 #pragma mark Private Copying Methods

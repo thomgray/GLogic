@@ -8,10 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		C505ECF01CB0790000B9A007 /* LogAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = C505ECEF1CB0790000B9A007 /* LogAnalysis.m */; };
+		C508F36D1CC95CE2002CF9C6 /* AllocationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C508F36C1CC95CE2002CF9C6 /* AllocationTestObject.m */; };
 		C51A31291CB1DBAB006FFCCA /* DeductionLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C51A31271CB1DBAA006FFCCA /* DeductionLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C51A312A1CB1DBAB006FFCCA /* DeductionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C51A31281CB1DBAA006FFCCA /* DeductionLogger.m */; };
 		C51A312E1CB1E71F006FFCCA /* LogEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C51A312C1CB1E71F006FFCCA /* LogEvent.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C51A312F1CB1E71F006FFCCA /* LogEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C51A312D1CB1E71F006FFCCA /* LogEvent.m */; };
+		C5243EA01CBEEB30003C2B10 /* GLDeduction+InferenceStack.h in Headers */ = {isa = PBXBuildFile; fileRef = C5243E9E1CBEEB30003C2B10 /* GLDeduction+InferenceStack.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C5243EA11CBEEB30003C2B10 /* GLDeduction+InferenceStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C5243E9F1CBEEB30003C2B10 /* GLDeduction+InferenceStack.m */; };
+		C5243EA51CBEF075003C2B10 /* GLInference.h in Headers */ = {isa = PBXBuildFile; fileRef = C5243EA31CBEF075003C2B10 /* GLInference.h */; };
+		C5243EA61CBEF075003C2B10 /* GLInference.m in Sources */ = {isa = PBXBuildFile; fileRef = C5243EA41CBEF075003C2B10 /* GLInference.m */; };
+		C5243EA91CC193BA003C2B10 /* GLCheckListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = C5243EA71CC193B9003C2B10 /* GLCheckListItem.h */; };
+		C5243EAA1CC193BA003C2B10 /* GLCheckListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C5243EA81CC193BA003C2B10 /* GLCheckListItem.m */; };
 		C524E6FB1C9E2727003E7B0E /* GLDeductionCheckList.h in Headers */ = {isa = PBXBuildFile; fileRef = C524E6F91C9E2727003E7B0E /* GLDeductionCheckList.h */; };
 		C524E6FC1C9E2727003E7B0E /* GLDeductionCheckList.m in Sources */ = {isa = PBXBuildFile; fileRef = C524E6FA1C9E2727003E7B0E /* GLDeductionCheckList.m */; };
 		C524E6FF1C9EF5FF003E7B0E /* GLFormulaCondition.h in Headers */ = {isa = PBXBuildFile; fileRef = C524E6FD1C9EF5FF003E7B0E /* GLFormulaCondition.h */; };
@@ -64,8 +71,6 @@
 		C54F8C061CBADF8A00C93846 /* GLogic in Resources */ = {isa = PBXBuildFile; fileRef = C54F8C051CBADF8A00C93846 /* GLogic */; };
 		C5C244C01CA5D69B00173919 /* NSSet(Internal).h in Headers */ = {isa = PBXBuildFile; fileRef = C5C244BE1CA5D69B00173919 /* NSSet(Internal).h */; };
 		C5C244C11CA5D69B00173919 /* NSSet(Internal).m in Sources */ = {isa = PBXBuildFile; fileRef = C5C244BF1CA5D69B00173919 /* NSSet(Internal).m */; };
-		C5C244C41CA6E2FF00173919 /* GLDeduction+InferenceHard.h in Headers */ = {isa = PBXBuildFile; fileRef = C5C244C21CA6E2FF00173919 /* GLDeduction+InferenceHard.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		C5C244C51CA6E2FF00173919 /* GLDeduction+InferenceHard.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C244C31CA6E2FF00173919 /* GLDeduction+InferenceHard.m */; };
 		C5C244C81CA6EE0200173919 /* GLDeduction+InferenceSoft.h in Headers */ = {isa = PBXBuildFile; fileRef = C5C244C61CA6EE0200173919 /* GLDeduction+InferenceSoft.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C5C244C91CA6EE0200173919 /* GLDeduction+InferenceSoft.m in Sources */ = {isa = PBXBuildFile; fileRef = C5C244C71CA6EE0200173919 /* GLDeduction+InferenceSoft.m */; };
 /* End PBXBuildFile section */
@@ -83,10 +88,18 @@
 /* Begin PBXFileReference section */
 		C505ECEE1CB0790000B9A007 /* LogAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogAnalysis.h; sourceTree = "<group>"; };
 		C505ECEF1CB0790000B9A007 /* LogAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogAnalysis.m; sourceTree = "<group>"; };
+		C508F36B1CC95CE2002CF9C6 /* AllocationTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllocationTestObject.h; sourceTree = "<group>"; };
+		C508F36C1CC95CE2002CF9C6 /* AllocationTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllocationTestObject.m; sourceTree = "<group>"; };
 		C51A31271CB1DBAA006FFCCA /* DeductionLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeductionLogger.h; sourceTree = "<group>"; };
 		C51A31281CB1DBAA006FFCCA /* DeductionLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeductionLogger.m; sourceTree = "<group>"; };
 		C51A312C1CB1E71F006FFCCA /* LogEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEvent.h; sourceTree = "<group>"; };
 		C51A312D1CB1E71F006FFCCA /* LogEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogEvent.m; sourceTree = "<group>"; };
+		C5243E9E1CBEEB30003C2B10 /* GLDeduction+InferenceStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLDeduction+InferenceStack.h"; sourceTree = "<group>"; };
+		C5243E9F1CBEEB30003C2B10 /* GLDeduction+InferenceStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GLDeduction+InferenceStack.m"; sourceTree = "<group>"; };
+		C5243EA31CBEF075003C2B10 /* GLInference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLInference.h; sourceTree = "<group>"; };
+		C5243EA41CBEF075003C2B10 /* GLInference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLInference.m; sourceTree = "<group>"; };
+		C5243EA71CC193B9003C2B10 /* GLCheckListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCheckListItem.h; sourceTree = "<group>"; };
+		C5243EA81CC193BA003C2B10 /* GLCheckListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCheckListItem.m; sourceTree = "<group>"; };
 		C524E6F91C9E2727003E7B0E /* GLDeductionCheckList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDeductionCheckList.h; sourceTree = "<group>"; };
 		C524E6FA1C9E2727003E7B0E /* GLDeductionCheckList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDeductionCheckList.m; sourceTree = "<group>"; };
 		C524E6FD1C9EF5FF003E7B0E /* GLFormulaCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFormulaCondition.h; sourceTree = "<group>"; };
@@ -144,8 +157,6 @@
 		C54F8C051CBADF8A00C93846 /* GLogic */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GLogic; path = ../../../TestLogs/GLogic; sourceTree = "<group>"; };
 		C5C244BE1CA5D69B00173919 /* NSSet(Internal).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet(Internal).h"; sourceTree = "<group>"; };
 		C5C244BF1CA5D69B00173919 /* NSSet(Internal).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet(Internal).m"; sourceTree = "<group>"; };
-		C5C244C21CA6E2FF00173919 /* GLDeduction+InferenceHard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLDeduction+InferenceHard.h"; sourceTree = "<group>"; };
-		C5C244C31CA6E2FF00173919 /* GLDeduction+InferenceHard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GLDeduction+InferenceHard.m"; sourceTree = "<group>"; };
 		C5C244C61CA6EE0200173919 /* GLDeduction+InferenceSoft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLDeduction+InferenceSoft.h"; sourceTree = "<group>"; };
 		C5C244C71CA6EE0200173919 /* GLDeduction+InferenceSoft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GLDeduction+InferenceSoft.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +191,23 @@
 			name = Logging;
 			sourceTree = "<group>";
 		};
+		C5243EA21CBEEBB0003C2B10 /* GLDeduction */ = {
+			isa = PBXGroup;
+			children = (
+				C52784261C99C8F10018AA8D /* GLDeduction.h */,
+				C52784271C99C8F10018AA8D /* GLDeduction.m */,
+				C52784411C9B77EC0018AA8D /* GLDeduction+Public.h */,
+				C52784421C9B77EC0018AA8D /* GLDeduction+Public.m */,
+				C52784451C9B80510018AA8D /* GLDeduction+Internal.h */,
+				C52784461C9B80510018AA8D /* GLDeduction+Internal.m */,
+				C5C244C61CA6EE0200173919 /* GLDeduction+InferenceSoft.h */,
+				C5C244C71CA6EE0200173919 /* GLDeduction+InferenceSoft.m */,
+				C5243E9E1CBEEB30003C2B10 /* GLDeduction+InferenceStack.h */,
+				C5243E9F1CBEEB30003C2B10 /* GLDeduction+InferenceStack.m */,
+			);
+			name = GLDeduction;
+			sourceTree = "<group>";
+		};
 		C52784251C99C8C20018AA8D /* Formula */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,20 +229,15 @@
 		C527842E1C99C9200018AA8D /* Deduction */ = {
 			isa = PBXGroup;
 			children = (
-				C52784261C99C8F10018AA8D /* GLDeduction.h */,
-				C52784271C99C8F10018AA8D /* GLDeduction.m */,
-				C52784411C9B77EC0018AA8D /* GLDeduction+Public.h */,
-				C52784421C9B77EC0018AA8D /* GLDeduction+Public.m */,
-				C52784451C9B80510018AA8D /* GLDeduction+Internal.h */,
-				C52784461C9B80510018AA8D /* GLDeduction+Internal.m */,
-				C5C244C61CA6EE0200173919 /* GLDeduction+InferenceSoft.h */,
-				C5C244C71CA6EE0200173919 /* GLDeduction+InferenceSoft.m */,
-				C5C244C21CA6E2FF00173919 /* GLDeduction+InferenceHard.h */,
-				C5C244C31CA6E2FF00173919 /* GLDeduction+InferenceHard.m */,
+				C5243EA21CBEEBB0003C2B10 /* GLDeduction */,
 				C524E6F91C9E2727003E7B0E /* GLDeductionCheckList.h */,
 				C524E6FA1C9E2727003E7B0E /* GLDeductionCheckList.m */,
 				C527842A1C99C9190018AA8D /* GLDedNode.h */,
 				C527842B1C99C9190018AA8D /* GLDedNode.m */,
+				C5243EA31CBEF075003C2B10 /* GLInference.h */,
+				C5243EA41CBEF075003C2B10 /* GLInference.m */,
+				C5243EA71CC193B9003C2B10 /* GLCheckListItem.h */,
+				C5243EA81CC193BA003C2B10 /* GLCheckListItem.m */,
 			);
 			name = Deduction;
 			sourceTree = "<group>";
@@ -256,6 +279,8 @@
 			children = (
 				C54F8C051CBADF8A00C93846 /* GLogic */,
 				C53903291C9780B900803508 /* GLogicTests.m */,
+				C508F36B1CC95CE2002CF9C6 /* AllocationTestObject.h */,
+				C508F36C1CC95CE2002CF9C6 /* AllocationTestObject.m */,
 				C527841E1C99624C0018AA8D /* CustomFormula.h */,
 				C527841F1C99624C0018AA8D /* CustomFormula.m */,
 				C524E7031C9F401D003E7B0E /* SampleFormulas.h */,
@@ -333,6 +358,7 @@
 				C53903511C97838600803508 /* GLSentence.h in Headers */,
 				C53903691C9783D400803508 /* GLConnective.h in Headers */,
 				C524E6FB1C9E2727003E7B0E /* GLDeductionCheckList.h in Headers */,
+				C5243EA51CBEF075003C2B10 /* GLInference.h in Headers */,
 				C5C244C01CA5D69B00173919 /* NSSet(Internal).h in Headers */,
 				C539033E1C97821300803508 /* GLElement.h in Headers */,
 				C53903551C97839B00803508 /* GLRelation.h in Headers */,
@@ -344,14 +370,15 @@
 				C527841C1C9961E70018AA8D /* GLFormula(Operations).h in Headers */,
 				C539031E1C9780B800803508 /* GLogic.h in Headers */,
 				C53903591C9783A600803508 /* GLEquals.h in Headers */,
+				C5243EA91CC193BA003C2B10 /* GLCheckListItem.h in Headers */,
 				C52784431C9B77EC0018AA8D /* GLDeduction+Public.h in Headers */,
 				C527842C1C99C9190018AA8D /* GLDedNode.h in Headers */,
 				C52784281C99C8F10018AA8D /* GLDeduction.h in Headers */,
 				C539035D1C9783B300803508 /* GLFunction.h in Headers */,
 				C52784231C99B1100018AA8D /* GLFormula(Internal).h in Headers */,
+				C5243EA01CBEEB30003C2B10 /* GLDeduction+InferenceStack.h in Headers */,
 				C5C244C81CA6EE0200173919 /* GLDeduction+InferenceSoft.h in Headers */,
 				C539036D1C9783E200803508 /* GLQuantifier.h in Headers */,
-				C5C244C41CA6E2FF00173919 /* GLDeduction+InferenceHard.h in Headers */,
 				C51A31291CB1DBAB006FFCCA /* DeductionLogger.h in Headers */,
 				C51A312E1CB1E71F006FFCCA /* LogEvent.h in Headers */,
 				C52784471C9B80520018AA8D /* GLDeduction+Internal.h in Headers */,
@@ -459,10 +486,12 @@
 			files = (
 				C539034C1C97835F00803508 /* GLCompositor.m in Sources */,
 				C52784441C9B77EC0018AA8D /* GLDeduction+Public.m in Sources */,
+				C5243EAA1CC193BA003C2B10 /* GLCheckListItem.m in Sources */,
 				C52784481C9B80520018AA8D /* GLDeduction+Internal.m in Sources */,
-				C5C244C51CA6E2FF00173919 /* GLDeduction+InferenceHard.m in Sources */,
 				C53903661C9783C500803508 /* GLVariable.m in Sources */,
 				C524E7001C9EF5FF003E7B0E /* GLFormulaCondition.m in Sources */,
+				C5243EA61CBEF075003C2B10 /* GLInference.m in Sources */,
+				C5243EA11CBEEB30003C2B10 /* GLDeduction+InferenceStack.m in Sources */,
 				C51A312A1CB1DBAB006FFCCA /* DeductionLogger.m in Sources */,
 				C524E6FC1C9E2727003E7B0E /* GLDeductionCheckList.m in Sources */,
 				C539033B1C97820300803508 /* GLFormula.m in Sources */,
@@ -494,6 +523,7 @@
 				C524E7051C9F401D003E7B0E /* SampleFormulas.m in Sources */,
 				C539032A1C9780B900803508 /* GLogicTests.m in Sources */,
 				C505ECF01CB0790000B9A007 /* LogAnalysis.m in Sources */,
+				C508F36D1CC95CE2002CF9C6 /* AllocationTestObject.m in Sources */,
 				C52784201C99624C0018AA8D /* CustomFormula.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

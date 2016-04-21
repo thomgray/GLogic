@@ -9,7 +9,7 @@
 #import "GLFormula(Operations).h"
 
 /*!
- @typedef enum GLInferenceRule
+ Enums representing the various inference rules
  */
 typedef enum {
     //SL Inferences
@@ -28,6 +28,25 @@ NS_INLINE BOOL GLInferenceIsAssumption(GLInferenceRule rule){
     return (rule==GLInference_AssumptionCP || rule==GLInference_AssumptionDE || rule==GLInference_AssumptionRAA);
 }
 
+NS_INLINE BOOL GLInferenceIsAppropriate(GLFormula* formula, GLInferenceRule rule){
+    switch (rule) {
+        case GLInference_BiconditionalElim:
+        case GLInference_ConditionalProof:
+        case GLInference_ConditionalProofDE:
+            return formula.isConditional;
+        case GLInference_BiconditionalIntro:
+            return formula.isBiconditional;
+        case GLInference_ConjunctionIntro:
+            return formula.isConjunction;
+        case GLInference_DisjunctionIntro:
+            return formula.isDisjunction;
+        case GLInference_DNI:
+            return formula.isDoubleNegation;
+        default:
+            return TRUE;
+    }
+}
+
 @interface GLDedNode : NSObject
 
 @property GLFormula* formula;
@@ -42,30 +61,7 @@ NS_INLINE BOOL GLInferenceIsAssumption(GLInferenceRule rule){
 
 -(void)dischargeDependency:(GLDedNode*)node;
 
-
-//---------------------------------------------------------------------------------------------------------
-//      Inferences
-//---------------------------------------------------------------------------------------------------------
-#pragma mark Inferences
-
-//+(instancetype)infer_DNE:(GLDedNode*)dn;
-//+(instancetype)infer_DNI:(GLDedNode *)node;
-//
-//+(instancetype)infer_BE:(GLDedNode *)node leftToRight:(BOOL)leftToRight;
-//+(instancetype)infer_BI:(GLDedNode *)cd1 conditional2:(GLDedNode*)cd2;
-//
-//+(instancetype)infer_CE:(GLDedNode *)conjunction leftFormula:(BOOL)left;
-//+(instancetype)infer_CI:(GLDedNode *)leftNode right:(GLDedNode*)rightNode;
-//
-//+(instancetype)infer_DE:(GLDedNode *)disjunction conditional1:(GLDedNode*)c1 conditional2:(GLDedNode*)c2;
-//+(instancetype)infer_DI:(GLDedNode *)node otherDisjunct:(GLFormula*)dj2 keepLeft:(BOOL)left;
-//
-//+(instancetype)infer_MP:(GLDedNode *)conditinal antecedent:(GLDedNode*)ant;
-//+(instancetype)infer_MT:(GLDedNode *)conditional negConsequent:(GLDedNode*)cons;
-//+(instancetype)infer_CP:(GLDedNode *)assumption minorConc:(GLDedNode*)minorConc;
-//
-//+(instancetype)infer_RAA:(GLDedNode *)assumption contradiction:(GLDedNode*)contra;
-
++(NSArray<NSNumber*>*)allInferenceRules;
 
 @end
 
