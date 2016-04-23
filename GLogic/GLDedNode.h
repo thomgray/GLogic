@@ -8,6 +8,10 @@
 
 #import "GLFormula(Operations).h"
 
+@class NSWeakArray<ObjectType>;
+
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  Enums representing the various inference rules
  */
@@ -47,25 +51,42 @@ NS_INLINE BOOL GLInferenceIsAppropriate(GLFormula* formula, GLInferenceRule rule
     }
 }
 
-@interface GLDedNode : NSObject
+#pragma mark
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+#pragma mark GLDedNode
+//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
+
+@interface GLDedNode : NSObject{
+//    NSArray<GLDedNode*>* _Nullable _inferences;
+//    NSArray<GLDedNode*>* _Nullable _dependencies;
+//    
+    NSWeakArray<GLDedNode*>* _Nullable _weakInferences;
+    NSWeakArray<GLDedNode*>* _weakDependencies;
+}
 
 @property GLFormula* formula;
 @property GLInferenceRule inferenceRule;
+
 @property NSArray<GLDedNode*>* dependencies;
-@property NSArray<GLDedNode*>* inferenceNodes;
+@property NSArray<GLDedNode*>* _Nullable inferenceNodes;
+
 @property NSInteger tier;
 
 -(instancetype)initWithFormula:(GLFormula*)form inference:(GLInferenceRule)inf;
 -(void)inheritDependencies:(NSArray<GLDedNode*>*) nodes;
-+(instancetype)infer:(GLInferenceRule)inf formula:(GLFormula*)form withNodes:(NSArray<GLDedNode*>*)nodes;
++(instancetype)infer:(GLInferenceRule)inf formula:(GLFormula*)form withNodes:(NSArray<GLDedNode*>* _Nullable)nodes;
 
 -(void)dischargeDependency:(GLDedNode*)node;
+-(void)infer:(GLInferenceRule)rule nodes:(NSArray<GLDedNode*>* _Nullable)nodes;
 
 +(NSArray<NSNumber*>*)allInferenceRules;
 
 @end
 
+#pragma mark
+
 typedef BOOL(^GLDedNodeCriterion)(GLDedNode* node);
+
 
 NS_INLINE NSString* GLStringForRule(GLInferenceRule rule){
     switch (rule) {
@@ -109,3 +130,6 @@ NS_INLINE NSString* GLStringForRule(GLInferenceRule rule){
             return nil;
     }
 }
+
+NS_ASSUME_NONNULL_END
+

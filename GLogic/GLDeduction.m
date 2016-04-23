@@ -27,7 +27,7 @@
     if (self) {
         _sequence = [[NSMutableArray alloc]init];
         _checkList = [[GLDeductionCheckList alloc]init];
-        _currentTier = 0;    
+        _currentTier = 0;        
     }
     return self;
 }

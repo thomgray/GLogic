@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C505ECF01CB0790000B9A007 /* LogAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = C505ECEF1CB0790000B9A007 /* LogAnalysis.m */; };
 		C508F36D1CC95CE2002CF9C6 /* AllocationTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C508F36C1CC95CE2002CF9C6 /* AllocationTestObject.m */; };
+		C508F3701CC99714002CF9C6 /* NSWeakArray.h in Headers */ = {isa = PBXBuildFile; fileRef = C508F36E1CC99714002CF9C6 /* NSWeakArray.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C508F3711CC99714002CF9C6 /* NSWeakArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C508F36F1CC99714002CF9C6 /* NSWeakArray.m */; };
 		C51A31291CB1DBAB006FFCCA /* DeductionLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C51A31271CB1DBAA006FFCCA /* DeductionLogger.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C51A312A1CB1DBAB006FFCCA /* DeductionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C51A31281CB1DBAA006FFCCA /* DeductionLogger.m */; };
 		C51A312E1CB1E71F006FFCCA /* LogEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C51A312C1CB1E71F006FFCCA /* LogEvent.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -90,6 +92,8 @@
 		C505ECEF1CB0790000B9A007 /* LogAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogAnalysis.m; sourceTree = "<group>"; };
 		C508F36B1CC95CE2002CF9C6 /* AllocationTestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllocationTestObject.h; sourceTree = "<group>"; };
 		C508F36C1CC95CE2002CF9C6 /* AllocationTestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllocationTestObject.m; sourceTree = "<group>"; };
+		C508F36E1CC99714002CF9C6 /* NSWeakArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWeakArray.h; sourceTree = "<group>"; };
+		C508F36F1CC99714002CF9C6 /* NSWeakArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWeakArray.m; sourceTree = "<group>"; };
 		C51A31271CB1DBAA006FFCCA /* DeductionLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeductionLogger.h; sourceTree = "<group>"; };
 		C51A31281CB1DBAA006FFCCA /* DeductionLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeductionLogger.m; sourceTree = "<group>"; };
 		C51A312C1CB1E71F006FFCCA /* LogEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogEvent.h; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				C52784251C99C8C20018AA8D /* Formula */,
 				C5C244BE1CA5D69B00173919 /* NSSet(Internal).h */,
 				C5C244BF1CA5D69B00173919 /* NSSet(Internal).m */,
+				C508F36E1CC99714002CF9C6 /* NSWeakArray.h */,
+				C508F36F1CC99714002CF9C6 /* NSWeakArray.m */,
 				C527842E1C99C9200018AA8D /* Deduction */,
 				C51A312B1CB1E5B3006FFCCA /* Logging */,
 			);
@@ -378,6 +384,7 @@
 				C52784231C99B1100018AA8D /* GLFormula(Internal).h in Headers */,
 				C5243EA01CBEEB30003C2B10 /* GLDeduction+InferenceStack.h in Headers */,
 				C5C244C81CA6EE0200173919 /* GLDeduction+InferenceSoft.h in Headers */,
+				C508F3701CC99714002CF9C6 /* NSWeakArray.h in Headers */,
 				C539036D1C9783E200803508 /* GLQuantifier.h in Headers */,
 				C51A31291CB1DBAB006FFCCA /* DeductionLogger.h in Headers */,
 				C51A312E1CB1E71F006FFCCA /* LogEvent.h in Headers */,
@@ -508,6 +515,7 @@
 				C51A312F1CB1E71F006FFCCA /* LogEvent.m in Sources */,
 				C53903481C97835500803508 /* GLTerm.m in Sources */,
 				C527841D1C9961E70018AA8D /* GLFormula(Operations).m in Sources */,
+				C508F3711CC99714002CF9C6 /* NSWeakArray.m in Sources */,
 				C53903621C9783BB00803508 /* GLConstant.m in Sources */,
 				C52784291C99C8F10018AA8D /* GLDeduction.m in Sources */,
 				C539036A1C9783D400803508 /* GLConnective.m in Sources */,

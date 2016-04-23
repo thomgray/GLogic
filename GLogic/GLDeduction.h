@@ -35,6 +35,7 @@
     GLDeductionCheckList* _checkList;
     NSInteger _currentTier;
     GLInference* _rootInference;
+    
 }
 
 @property NSMutableArray<GLDedNode*>* sequence;

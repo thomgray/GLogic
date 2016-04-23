@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GLogic/NSWeakArray.h>
 
-@interface AllocationTestObject : NSObject
+@interface AllocationTestObject : NSObject 
+
 
 @property NSString* string;
-
-@property AllocationTestObject* thing;
-@property AllocationTestObject* otherThing;
+@property (weak) id thing;
+@property NSWeakArray* array;
 
 @end

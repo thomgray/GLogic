@@ -14,27 +14,36 @@
 
 -(BOOL)proveHard:(GLInference *)conclusion{
 //    NSLog(@"%@\n%@", _rootInference, self);
-    GLDedNode* concNode = [self proveSoftSafe:conclusion.formula];
-    if (concNode) {
-        [conclusion setNode:concNode];
+//    NSLog(@"Stack count: %ld", [NSThread callStackSymbols].count);
+    
+    @autoreleasepool {
+        GLDedNode* concNode = [self proveSoftSafe:conclusion.formula];
+        if (concNode) {
+            [conclusion setNode:concNode];
+        }
+        
+        //constructive inferences
+        else if ([self infer_Hard_CI:conclusion]){}
+        else if ([self infer_Hard_DI:conclusion]){}
+        else if ([self infer_Hard_BI:conclusion]){}
+        else if ([self infer_Hard_DNI:conclusion]){}
+        else if ([self infer_Hard_CP:conclusion]){}
+        
+        //eliminative inferences
+        else if ([self infer_Hard_CE:conclusion]){}
+        else if ([self infer_Hard_BE:conclusion]){}
+        else if ([self infer_Hard_DNE:conclusion]){}
+        else if ([self infer_Hard_MP:conclusion]){}
+        else if ([self infer_Hard_MT:conclusion]){}
+        
+        //tricky ones
+        else if ([self infer_Hard_DE:conclusion]){}
+        else if ([self infer_Hard_RAA:conclusion]){}
+        
+        else{
+            [conclusion setSubInferences:nil];
+        }
     }
-    //constructive inferences
-    else if ([self infer_Hard_CI:conclusion]){}
-    else if ([self infer_Hard_DI:conclusion]){}
-    else if ([self infer_Hard_BI:conclusion]){}
-    else if ([self infer_Hard_DNI:conclusion]){}
-    else if ([self infer_Hard_CP:conclusion]){}
-    
-    //eliminative inferences
-    else if ([self infer_Hard_CE:conclusion]){}
-    else if ([self infer_Hard_BE:conclusion]){}
-    else if ([self infer_Hard_DNE:conclusion]){}
-    else if ([self infer_Hard_MP:conclusion]){}
-    else if ([self infer_Hard_MT:conclusion]){}
-    
-    //tricky ones
-    else if ([self infer_Hard_DE:conclusion]){}
-    else if ([self infer_Hard_RAA:conclusion]){}
     
     return conclusion.isProven;
 }

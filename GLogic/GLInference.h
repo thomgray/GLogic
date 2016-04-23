@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface GLInference : NSObject <NSCopying>{
     NSMutableSet<GLCheckListItem*>* _restrictions;
-    NSMutableSet<GLFormula*>* _categoricalRestrictions;
+    NSMutableSet<GLFormula*>* _categoricalRestrictions;    
 }
 
 /**

@@ -15,6 +15,7 @@
 #import <GLogic/GLDeduction+InferenceSoft.h>
 #import <GLogic/GLDeduction+InferenceStack.h>
 #import <GLogic/DeductionLogger.h>
+#import <GLogic/NSWeakArray.h>
 
 #import "AllocationTestObject.h"
 
@@ -36,15 +37,12 @@ typedef CustomFormula Formula;
 @property Formula* RvS;
 @property GLDeduction* deduction;
 @property LogAnalysis* logAnalyser;
-@property DeductionLogger* log;
 
 @end
 
 @implementation GLogicTests
 @synthesize deduction;
 @synthesize logAnalyser;
-
-@synthesize log;
 
 
 - (void)setUp {
@@ -64,11 +62,6 @@ typedef CustomFormula Formula;
     _RvS = [Formula makeDisjunction:_R f2:_S];
     
     deduction = [[GLDeduction alloc]init];
-//    log = [[DeductionLogger alloc]init];
-//    [log setFileName:[self methodName]];
-//    [log setMainDeduction:deduction];
-//    [deduction setLogger:log];
-//    [log setDynamicWriteLog:YES];
 }
 
 - (void)tearDown {
@@ -78,15 +71,22 @@ typedef CustomFormula Formula;
 }
 
 -(void)proveEtc{
-    if ([[self methodName]containsString:@"testUnprovable"]) {
-        XCTAssert(![deduction prove:deduction.conclusion]);
-    }else{
-        XCTAssert([deduction prove:deduction.conclusion]);
-    }
+    
+    NSLog(@"%@", deduction.sequentString);
+    BOOL provable = ![[self methodName]containsString:@"Unprovable"];
+    
+    BOOL __block proven;
+    
+    [self measureBlock:^{
+        proven = [deduction prove];
+    }];
+    
+    XCTAssert(provable==proven);
+    
     
     [self logTestResults]; //write proof to file
     NSLog(@"%@", deduction); //write proof to stderr
-//    [log writeLogToSTDErr]; //write log to stderr;
+
 }
 
 
@@ -149,12 +149,8 @@ typedef CustomFormula Formula;
 
 -(void)testUnprovable_PvQvRvS___T{
     Formula* PvQvRvS = [Formula makeDisjunction:_PvQ f2:_R];
-//    PvQvRvS = [Formula makeDisjunction:PvQvRvS f2:_S];
     [deduction addPremises:@[PvQvRvS]];
     [deduction setConclusion:[[Formula alloc]initWithPrimeFormula:GLMakeSentence(4)]];
-    
-//    [log addOutputCriteria:^BOOL(NSDictionary *info, GLDeduction *deduction) {
-//    }];
     
     [self proveEtc];
 }
@@ -205,7 +201,6 @@ typedef CustomFormula Formula;
     
     [deduction addPremises:@[f]];
     [deduction setConclusion:g];
-    NSLog(@"%@", [deduction sequentString]);
     [self proveEtc];
 }
 
@@ -250,14 +245,5 @@ typedef CustomFormula Formula;
     [logString writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:nil];    
 }
 
--(void)testDeallocation{
-    AllocationTestObject* testObject = [[AllocationTestObject alloc]init];
-    [testObject setString:@"Hello There"];
-    while (true) {
-        AllocationTestObject* anotherObject = [[AllocationTestObject alloc]init];
-        [anotherObject setString:@"Another Thing Here"];
-        [testObject setThing:anotherObject];
-    }
-}
 
 @end

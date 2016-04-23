@@ -142,16 +142,19 @@
     for (NSInteger i=0; i<deduction.count; i++) {
         GLDedNode* node = deduction[i];
         NSMutableString* str = [[NSMutableString alloc]init];
-        if (node.inferenceNodes.count) {
-            for (NSInteger j=0; j<node.inferenceNodes.count; j++) {
-                GLDedNode* infNode = node.inferenceNodes[j];
+        NSArray<GLDedNode*>* inferenceNodes = node.inferenceNodes;
+        
+        if (inferenceNodes.count) {
+            for (NSInteger j=0; j<inferenceNodes.count; j++) {
+                GLDedNode* infNode = inferenceNodes[j];
                 NSInteger infLine = [deduction indexOfObjectIdenticalTo:infNode]+1;
                 if (infLine<1) infLine = 0;
-                if (j<node.inferenceNodes.count-1) {
+                if (j<inferenceNodes.count-1) {
                     [str appendFormat:@"%ld,", infLine];
                 }else [str appendFormat:@"%ld: ", infLine];
             }
         }
+        
         [str appendString:GLStringForRule(node.inferenceRule)];
         maxLength = str.length>maxLength? str.length : maxLength;
         [out addObject:[NSString stringWithString:str]];
@@ -205,11 +208,12 @@
     NSInteger maxLength = 0;
     for (NSInteger i=0; i<deduction.count; i++) {
         GLDedNode* node = deduction[i];
+        NSArray<GLDedNode*>* dependencies = node.dependencies;
         NSMutableString* str = [[NSMutableString alloc]initWithString:@"{"];
         NSMutableArray<NSNumber*>* depLines = [[NSMutableArray alloc]initWithCapacity:node.dependencies.count];
         //First make array of the line numbers
-        for (NSInteger j=0; j<node.dependencies.count; j++) {
-            GLDedNode* dep = node.dependencies[j];
+        for (NSInteger j=0; j<dependencies.count; j++) {
+            GLDedNode* dep = dependencies[j];
             NSUInteger lineNumber = [deduction indexOfObjectIdenticalTo:dep];
             lineNumber = (lineNumber==NSNotFound)? 0: lineNumber+1;
             [depLines addObject:[NSNumber numberWithInteger:lineNumber]];

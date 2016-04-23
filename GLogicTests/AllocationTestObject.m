@@ -9,15 +9,13 @@
 #import "AllocationTestObject.h"
 
 @implementation AllocationTestObject
-
 @synthesize thing = _thing;
 
--(void)setThing:(AllocationTestObject *)thing{
-    _thing = thing;
-    thing.otherThing = self;
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        _thing = @"Hello in there";
+    }
+    return self;
 }
--(AllocationTestObject *)thing{
-    return _thing;
-}
-
 @end
